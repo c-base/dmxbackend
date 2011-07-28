@@ -3,16 +3,18 @@ from django.core.files import File
 import simplejson as json
 import logging
 
-f = open('/tmp/json.js', 'r+')
-jsonStoreFile = File(f)
 
 @jsonrpc_method('lightSync.pull()')
 def pullSend(request):
+    f = open('lights.json', 'r+')
+    jsonStoreFile = File(f)
     jsonStoreFile.seek(0)
     return jsonStoreFile.read()
 
 @jsonrpc_method('lightSync.push(newLights=list)', validate=True)
 def pushReceive(request, newLights=None):
+    f = open('lights.json', 'r+')
+    jsonStoreFile = File(f)
     jsonStoreFile.seek(0)
     jsonStore = json.loads(jsonStoreFile.read())
     lightsNotFound = []
