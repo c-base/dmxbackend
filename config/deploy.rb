@@ -1,5 +1,5 @@
 set :application, "dmxacl"
-role :repository, "git://dev.c-base.org/libart-dmxcontrol/django-backend.git"                          # Your HTTP server, Apache/etc
+set :repository, "git://dev.c-base.org/libart-dmxcontrol/django-backend.git"                          # Your HTTP server, Apache/etc
 
 set :scm, 'git'
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
