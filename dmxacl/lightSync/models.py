@@ -1,5 +1,8 @@
 from django.db import models
 
+
+# here is my model
+# seems to be nice right ? but useless, i don;t use this. 
 class Light(models.Model):
     name = models.CharField(max_length=32)
     x = models.IntegerField()
