@@ -6,6 +6,11 @@ import logging
 f = open('/tmp/json.js', 'r+')
 jsonStoreFile = File(f)
 
+@jsonrpc_method('lightSync.pull()')
+def pullSend(request):
+    jsonStoreFile.seek(0)
+    return jsonStoreFile.read()
+
 @jsonrpc_method('lightSync.push(newLights=list)', validate=True)
 def pushReceive(request, newLights=None):
     jsonStoreFile.seek(0)
