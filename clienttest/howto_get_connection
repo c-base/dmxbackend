@@ -1,0 +1,10 @@
+how to check
+
+cd ../clienttest/
+export DJANGO_SETTINGS_MODULE=dmxacl.settings
+python
+  >>> from jsonrpc.proxy import ServiceProxy
+  >>> s = ServiceProxy('http://localhost:8080/json/')
+  >>> s.myapp.gimmeThat('username', 'password', 'test data')
+  {u'error': None, u'id': u'jsonrpc', u'result': {u'sauce': [u'authenticated', u'sauce']}}
+
