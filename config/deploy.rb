@@ -10,14 +10,18 @@ set :use_sudo, false
 set :home_path, "/srv/capistranos/dmxacl"
 set :deploy_to, "/srv/capistranos/dmxacl"
 set :user, "deployer"
+set :shared_children, %w(system log pids config)
 
 namespace :deploy do
     task :restart do
     end
     task :finalize_update do
+        run <<-CMD
+            rm #{latest_release}/dmxacl/settings.py
+            ln -s #{shared_path}/config/settings.py #{latest_release}/dmxacl/settings.py
+        CMD
     end
 end
-
 
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
