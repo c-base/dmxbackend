@@ -16,10 +16,9 @@ namespace :deploy do
     task :restart do
     end
     task :finalize_update do
-        run <<-CMD
-            rm #{latest_release}/dmxacl/settings.py
-            ln -s #{shared_path}/config/settings.py #{latest_release}/dmxacl/settings.py
-        CMD
+        run "rm #{latest_release}/dmxacl/settings.py"
+        run "ln -s #{shared_path}/config/settings.py #{latest_release}/dmxacl/settings.py"
+        run "chmod g+w #{latest_release}/dmxacl/media/lights.json"
     end
 end
 
