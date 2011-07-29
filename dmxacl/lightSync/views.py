@@ -1,20 +1,22 @@
 from jsonrpc import jsonrpc_method
 from django.core.files import File
+from django.core.files.storage import FileSystemStorage
+from django.conf import settings
+
 import simplejson as json
 import logging
 
+fs = FileSystemStorage(location=settings.MEDIA_ROOT)
 
 @jsonrpc_method('lightSync.pull()')
 def pullSend(request):
-    f = open('lights.json', 'r+')
-    jsonStoreFile = File(f)
+    jsonStoreFile = fs.open('lights.json', 'r+')
     jsonStoreFile.seek(0)
     return jsonStoreFile.read()
 
 @jsonrpc_method('lightSync.push(newLights=list)', validate=True)
 def pushReceive(request, newLights=None):
-    f = open('lights.json', 'r+')
-    jsonStoreFile = File(f)
+    jsonStoreFile = fs.open('lights.json', 'r+')
     jsonStoreFile.seek(0)
     jsonStore = json.loads(jsonStoreFile.read())
     lightsNotFound = []
@@ -22,7 +24,7 @@ def pushReceive(request, newLights=None):
         foundLamp = False
         for storeLight in jsonStore:
             if(storeLight['name'] == newLight['name']):
-                logging.debug("lampe %s r %d g %d b %d" % (storeLight['name'], storeLight['red'], storeLight['blue'], storeLight['green']))
+                logging.warn("lampe %s r %d g %d b %d" % (storeLight['name'], storeLight['red'], storeLight['blue'], storeLight['green']))
                 storeLight['red'] = newLight['red']
                 storeLight['green'] = newLight['green']
                 storeLight['blue'] = newLight['blue']
@@ -30,11 +32,10 @@ def pushReceive(request, newLights=None):
         if not foundLamp:
             lightsNotFound.append(newLight['name'])
 
-    if lightsNotFound:
-        logging.warn("light %s not found !" % storeLight['name'])
-    else:
-        jsonStoreFile.seek(0)
-        jsonStoreFile.write(json.dumps(jsonStore))
+    for lights in lightsNotFound:
+        logging.warn("light %s not found !" % lights)
+    jsonStoreFile.seek(0)
+    jsonStoreFile.write(json.dumps(jsonStore))
     return "Hello %d " % len(newLights)
 
 @jsonrpc_method('myapp.gimmeThat', authenticated=True)
