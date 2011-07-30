@@ -5,8 +5,10 @@ from django.conf import settings
 
 import simplejson as json
 import logging
+from sendToDmx import ArtNet
 
 fs = FileSystemStorage(location=settings.MEDIA_ROOT)
+artnet = ArtNet(broadcast=settings.ARTNETIP)
 
 @jsonrpc_method('lightSync.pull()')
 def pullSend(request):
@@ -36,6 +38,7 @@ def pushReceive(request, newLights=None):
         logging.warn("light %s not found !" % lights)
     jsonStoreFile.seek(0)
     jsonStoreFile.write(json.dumps(jsonStore))
+    artnet.sendListToDMX(jsonStore)
     return "Hello %d " % len(newLights)
 
 @jsonrpc_method('myapp.gimmeThat', authenticated=True)

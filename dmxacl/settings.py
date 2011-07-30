@@ -9,6 +9,8 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+ARTNETIP = "192.168.2.255"
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
