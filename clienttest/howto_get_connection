@@ -1,6 +1,6 @@
 how to check
 
-cd ../clienttest/
+cd clienttest/..
 export DJANGO_SETTINGS_MODULE=dmxacl.settings
 python
   >>> from jsonrpc.proxy import ServiceProxy
