@@ -5,7 +5,7 @@ from django.conf import settings
 
 import simplejson as json
 import logging
-from sendToDmx import ArtNet
+from sendtodmx import ArtNet
 
 fs = FileSystemStorage(location=settings.MEDIA_ROOT)
 artnet = ArtNet(broadcast=settings.ARTNETIP)
