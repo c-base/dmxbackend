@@ -26,7 +26,7 @@ def pushReceive(request, newLights=None):
         foundLamp = False
         for storeLight in jsonStore:
             if(storeLight['name'] == newLight['name']):
-                logging.warn("lampe %s r %d g %d b %d" % (storeLight['name'], storeLight['red'], storeLight['blue'], storeLight['green']))
+                logging.debug("updating lampe %s r %d g %d b %d" % (storeLight['name'], storeLight['red'], storeLight['blue'], storeLight['green']))
                 storeLight['red'] = newLight['red']
                 storeLight['green'] = newLight['green']
                 storeLight['blue'] = newLight['blue']
@@ -38,6 +38,8 @@ def pushReceive(request, newLights=None):
         logging.warn("light %s not found !" % lights)
     jsonStoreFile.seek(0)
     jsonStoreFile.write(json.dumps(jsonStore))
+    jsonStoreFile.close()
+    logging.warn("new json data: %s" % json.dumps(jsonStore))
     artnet.sendListToDMX(jsonStore)
     return "Hello %d " % len(newLights)
 
