@@ -59,9 +59,9 @@ class ArtNet(object):
             # dmxchannel 1 = dmxdata[0]
             # dmxchannel 512 = dmxdata[511]
             offset = light['channel']
-            dmxdata[offset] = light['red']
-            dmxdata[offset+1] = light['green']
-            dmxdata[offset+2] = light['blue']
+            dmxdata[offset-1] = light['red']
+            dmxdata[offset] = light['green']
+            dmxdata[offset+1] = light['blue']
             # light : map of red,blue,green,channel,channeloffset,name,x,y,radius,channelsize
         return self.sendToDmx(dmxdata)
 

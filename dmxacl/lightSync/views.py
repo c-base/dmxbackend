@@ -26,16 +26,19 @@ def pushReceive(request, newLights=None):
         foundLamp = False
         for storeLight in jsonStore:
             if(storeLight['name'] == newLight['name']):
-                logging.debug("updating lampe %s r %d g %d b %d" % (storeLight['name'], storeLight['red'], storeLight['blue'], storeLight['green']))
                 storeLight['red'] = newLight['red']
                 storeLight['green'] = newLight['green']
                 storeLight['blue'] = newLight['blue']
+                logging.warn("updated storeLight %s r %d g %d b %d" % (storeLight['name'], storeLight['red'], storeLight['blue'], storeLight['green']))
+                logging.warn("updated   newLight %s r %d g %d b %d" % (newLight['name'], newLight['red'], newLight['blue'], newLight['green']))
                 foundLamp = True
         if not foundLamp:
             lightsNotFound.append(newLight['name'])
 
     for lights in lightsNotFound:
         logging.warn("light %s not found !" % lights)
+    jsonStoreFile.close()
+    jsonStoreFile.open(mode='w')
     jsonStoreFile.seek(0)
     jsonStoreFile.write(json.dumps(jsonStore))
     jsonStoreFile.close()
