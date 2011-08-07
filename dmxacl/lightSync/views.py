@@ -18,9 +18,18 @@ def pullSend(request):
 
 @jsonrpc_method('lightSync.push(newLights=list)', validate=True)
 def pushReceive(request, newLights=None):
-    jsonStoreFile = fs.open('lights.json', 'r+')
-    jsonStoreFile.seek(0)
-    jsonStore = json.loads(jsonStoreFile.read())
+    jsonStoreFile = fs.open('lights.json', 'r')
+
+    try:
+        jsonStore = json.loads(jsonStoreFile.read())
+    except JSONDecodeError:
+        # use defaults file
+        defaultFile = fs.open('defaults.json', 'r')
+        jsonStore = json.loads(defaultFile.read())
+        defaultFile.close()
+
+    jsonStoreFile.close()
+
     lightsNotFound = []
     for newLight in newLights:
         foundLamp = False
@@ -37,9 +46,7 @@ def pushReceive(request, newLights=None):
 
     for lights in lightsNotFound:
         logging.warn("light %s not found !" % lights)
-    jsonStoreFile.close()
     jsonStoreFile.open(mode='w')
-    jsonStoreFile.seek(0)
     jsonStoreFile.write(json.dumps(jsonStore))
     jsonStoreFile.close()
     logging.warn("new json data: %s" % json.dumps(jsonStore))
