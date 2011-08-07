@@ -18,7 +18,8 @@ namespace :deploy do
     task :finalize_update do
         run "rm #{latest_release}/dmxacl/settings.py"
         run "ln -s #{shared_path}/config/settings.py #{latest_release}/dmxacl/settings.py"
-        run "chmod g+w #{latest_release}/dmxacl/media/lights.json"
+        run "rm #{latest_release}/dmxacl/media/lights.json"
+        run "ln -s #{shared_path}/config/lights.json #{latest_release}/dmxacl/media/lights.json"
     end
 end
 
