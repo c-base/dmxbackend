@@ -63,8 +63,3 @@ def pushReceive(request, newLights=None):
     logging.warn("new json data: %s" % json.dumps(jsonStore))
     artnet.sendListToDMX(jsonStore)
     return "Hello %d " % len(newLights)
-
-@jsonrpc_method('myapp.gimmeThat', authenticated=True)
-def something_special(request, secred_data):
-    return {'sauce': ['authenticated', 'sauce']}
-
