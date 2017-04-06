@@ -2,16 +2,23 @@
 
 import socket
 
+
+class ArtNetError(Exception):
+    def __init__(self, message, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.message = message
+
+
 class ArtNet(object):
     def __init__(self, broadcast="255.255.255.255"):
-        self.__udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        self.__udp.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        self.__udp.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
-        self.__broadcast = broadcast
+        self._udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        self._udp.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        self._udp.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+        self._broadcast = broadcast
 
     def __send(self, packet):
         if packet:
-            sendData = self.__udp.sendto(packet, 0, (self.__broadcast, 6454))
+            sendData = self._udp.sendto(packet, 0, (self._broadcast, 6454))
             if sendData == len(packet):
                 return True
             else:
@@ -45,7 +52,7 @@ class ArtNet(object):
 
     def sendToDmx(self, dmx):
         if (len(dmx) > 512):
-            raise RunTimeError("dmx packet > 512")
+            raise ArtNetError("dmx packet > 512")
         plainDmx = bytearray(512)
         for i in range(len(dmx)):
             plainDmx[i] = dmx[i]
