@@ -16,9 +16,12 @@ class ArtNet(object):
         self._udp.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
         self._broadcast = broadcast
 
-    def __send(self, packet):
+    def send(self, packet):
         if packet:
+            print("====")
+            #print(packet)
             sendData = self._udp.sendto(packet, 0, (self._broadcast, 6454))
+            self._udp.close()
             if sendData == len(packet):
                 return True
             else:
@@ -26,13 +29,13 @@ class ArtNet(object):
         else:
             return False
 
-    def buildDMXHeader(self):
-        # a dmx packet contains every time 512 bytes dmx data
+    def build_dmx_header(self):
+        # A DMX packet contains 512 bytes of DMX data every time.
         header = bytearray()
         # id
         header.extend(bytearray(b'Art-Net'))
         header.append(0x0)
-        # opcode low byte first
+        # OP-Code low byte first
         header.append(0x00)
         header.append(0x50)
         # proto ver high byte first
@@ -50,17 +53,19 @@ class ArtNet(object):
         header.append(512 & 0xFF)
         return header
 
-    def sendToDmx(self, dmx):
+    def send_dmx(self, dmx):
         if (len(dmx) > 512):
             raise ArtNetError("dmx packet > 512")
-        plainDmx = bytearray(512)
+        plain_dmx = bytearray(512)
+        for i in range(len(plain_dmx)):
+            plain_dmx[i] = 0x10
         for i in range(len(dmx)):
-            plainDmx[i] = dmx[i]
-        packet = self.buildDMXHeader()
-        packet.extend(plainDmx)
-        return self.__send(packet)
+            plain_dmx[i] = dmx[i]
+        packet = self.build_dmx_header()
+        packet.extend(plain_dmx)
+        return self.send(packet)
 
-    def sendListToDMX(self, lightList):
+    def send_light_list(self, lightList):
         dmxdata = bytearray(512)
         for light in lightList:
             # dmxchannel 1 = dmxdata[0]
@@ -70,7 +75,7 @@ class ArtNet(object):
             dmxdata[offset] = light['green']
             dmxdata[offset+1] = light['blue']
             # light : map of red,blue,green,channel,channeloffset,name,x,y,radius,channelsize
-        return self.sendToDmx(dmxdata)
+        return self.send_dmx(dmxdata)
 
 
 if __name__ == '__main__':
@@ -79,7 +84,7 @@ if __name__ == '__main__':
     fh = open("dmx.dat", 'r')
     for i in fh.readlines():
         dmx.append(int(i))
-    artnet.sendToDmx(dmx)
+    artnet.send_dmx(dmx)
 
     # load file
     # prepare to send

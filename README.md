@@ -9,3 +9,9 @@
 $ pip install -r requirements.txt
 $ pytest
 ```
+
+## Upload PNG
+```
+curl -v --data 'file=@tests/Example.png' http://localhost:8080/png_upload/
+```
+

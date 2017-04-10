@@ -53,6 +53,6 @@ def updateLights(newLights):
     saveLights(jsonStore)
 
     logging.debug("new json data: %s" % json.dumps(jsonStore))
-    artnet.sendListToDMX(jsonStore)
+    artnet.send_light_list(jsonStore)
 
     return lightsNotFound
