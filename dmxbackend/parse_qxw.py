@@ -21,7 +21,8 @@ def find_fixtures(qxw_file):
     """
     Get the DMX fixtures from the .qxw file
     """
-    tree = ET.parse(qxw_file)
+    parser = ET.XMLParser(encoding='utf-8')
+    tree = ET.parse(qxw_file, parser=parser)
     root = tree.getroot()
     fixtures = root.findall(FIXTURE_XPATH)
     return fixtures
