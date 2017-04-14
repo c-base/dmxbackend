@@ -1,6 +1,9 @@
 import asyncio
 import serial.aio
 import time
+import logging
+
+log = logging.getLogger(__file__)
 
 def create_enttec_dmx_message(dmx_bytes:bytearray):
     if len(dmx_bytes) != 512:
@@ -27,11 +30,11 @@ def create_enttec_dmx_message(dmx_bytes:bytearray):
 class EnttecProtocol(asyncio.Protocol):
     def connection_made(self, transport):
         self.transport = transport
-        print('Serial port opened', transport)
+        log.info('Serial port opened', transport)
         transport.serial.rts = False
 
     def data_received(self, data):
-        print('Serial data received', repr(data))
+        log.debug('Serial data received', repr(data))
         # self.transport.close()
 
     def send_dmx(self, dmx):
@@ -39,7 +42,7 @@ class EnttecProtocol(asyncio.Protocol):
         self.transport.write(message)
 
     def connection_lost(self, exc):
-        print('port closed')
+        log.info('Serial port closed')
         asyncio.get_event_loop().stop()
 
 

@@ -18,8 +18,6 @@ class ArtNet(object):
 
     def send(self, packet):
         if packet:
-            print("====")
-            #print(packet)
             sendData = self._udp.sendto(packet, 0, (self._broadcast, 6454))
             self._udp.close()
             if sendData == len(packet):

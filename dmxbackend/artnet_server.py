@@ -1,8 +1,13 @@
 # -*- coding: utf-8 -*-
 import asyncio
+import logging
+
+log = logging.getLogger(__file__)
+
 
 class ArtNetDecodeError(Exception):
     pass
+
 
 class ArtNetLengthMismatchError(ArtNetDecodeError):
     pass
@@ -80,11 +85,11 @@ class ArtNetServerProtocol(asyncio.Protocol):
         if self.enttec_protocol is not None:
             self.enttec_protocol.send_dmx(dmx)
 
-        print('Sequence %d, %d bytes from %s' % (artnet_packet.sequence, len(dmx), addr))
-        print(dmx)
+        log.info('Sequence %d, %d bytes from %s' % (artnet_packet.sequence, len(dmx), addr))
+        log.debug(str(dmx))
         for i,chunk in enumerate([dmx[i:i + 32] for i in range(0, len(dmx), 32)]):
-            print(' '.join(['%3d' % int(x) for x in range(i*32+1, (i+1)*32+1)]))
-            print(' '.join(['%3d' % int(x) for x in chunk]))
+            log.debug(' '.join(['%3d' % int(x) for x in range(i*32+1, (i+1)*32+1)]))
+            log.debug(' '.join(['%3d' % int(x) for x in chunk]))
 
         #print('Send %r to %s' % (message, addr))
         #self.transport.sendto(data, addr)
