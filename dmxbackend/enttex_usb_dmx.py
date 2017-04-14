@@ -30,11 +30,11 @@ def create_enttec_dmx_message(dmx_bytes:bytearray):
 class EnttecProtocol(asyncio.Protocol):
     def connection_made(self, transport):
         self.transport = transport
-        log.info('Serial port opened', transport)
+        log.info('Serial port opened: %s' % transport)
         transport.serial.rts = False
 
     def data_received(self, data):
-        log.debug('Serial data received', repr(data))
+        log.debug('Serial data received: %s' % repr(data))
         # self.transport.close()
 
     def send_dmx(self, dmx):
