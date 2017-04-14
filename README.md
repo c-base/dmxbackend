@@ -1,6 +1,7 @@
 ## What is Needed?
 
  - Python 3.6
+ - USB-to-DMX-Adapter like this one: https://www.enttec.com/eu/products/controls/dmx-usb/dmx-usb-pro/
  
 ## How to run this backend?
 
@@ -17,7 +18,11 @@ $ pip install -r requirements.txt
 $ pytest
 ```
 
-## Upload PNG
+## Upload an Image
+
+You can upload a image (PNG or JPG). Each line in the image represents one frame in an animation.
+When you upload the file the animation is played with a frame-rate of 25 fps.
+
 ```
 curl -v --data 'file=@tests/Example.png' http://localhost:8080/
 ```
