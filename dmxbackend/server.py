@@ -1,4 +1,5 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.6
+# -*- coding: utf-8 -*-
 import os
 import asyncio
 from aiohttp import web
@@ -38,6 +39,6 @@ def setup_web_app(queue):
     app.router.add_get('/', handle_get)
     app.router.add_post('/', handle_post)
     app.router.add_static('/static/',
-                      path=os.path.join(PROJECT_ROOT, 'static'),
-                      name='static')
+                          path=os.path.join(PROJECT_ROOT, 'static'),
+                          name='static')
     return app

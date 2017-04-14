@@ -79,7 +79,7 @@ class ArtNet(object):
 
 
 if __name__ == '__main__':
-    artnet = ArtNet(broadcast='10.0.1.133')
+    artnet = ArtNet(broadcast='127.0.0.1')#'10.0.1.133')
     dmx = bytearray()
     fh = open("dmx.dat", 'r')
     for i in fh.readlines():

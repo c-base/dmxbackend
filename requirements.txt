@@ -1,3 +1,5 @@
 aiohttp==2.0.6
 pytest==3.0.7
 Pillow==4.1.0
+pyserial-asyncio==0.4
+docopt==0.6.2
