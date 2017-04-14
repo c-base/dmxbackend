@@ -30,7 +30,7 @@ def prepare_mapping(qxw_filename):
     fixtures = find_fixtures(qxw_filename)
     mapping = get_mapping_from_qxw(fixtures)
     for i, light in enumerate(mapping):
-        log.info(i, light.name, light.address)
+        log.info('%d, %s, %d' % (i, light.name, light.address))
     return mapping
 
 
