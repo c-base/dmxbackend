@@ -23,8 +23,7 @@ from dmxbackend.artnet_server import ArtNetServerProtocol
 
 
 def prepare_mapping(qxw_filename):
-    with open(qxw_filename, mode='r') as qxw_file:
-        fixtures = find_fixtures(qxw_file)
+    fixtures = find_fixtures(qxw_filename)
     mapping = get_mapping_from_qxw(fixtures)
     for i, light in enumerate(mapping):
         print(i, light.name, light.address)

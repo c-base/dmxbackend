@@ -17,12 +17,11 @@ def retrieve(element, sub_element_name, ns=XML_NAMESPACE):
     return result
 
 
-def find_fixtures(qxw_file):
+def find_fixtures(qxw_filename):
     """
     Get the DMX fixtures from the .qxw file
     """
-    parser = ET.XMLParser(encoding='utf-8')
-    tree = ET.parse(qxw_file, parser=parser)
+    tree = ET.parse(qxw_filename)
     root = tree.getroot()
     fixtures = root.findall(FIXTURE_XPATH)
     return fixtures
