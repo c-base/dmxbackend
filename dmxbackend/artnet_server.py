@@ -5,6 +5,9 @@ import logging
 log = logging.getLogger(__file__)
 
 
+class ArtNetPollReceived(Exception):
+    pass
+
 class ArtNetDecodeError(Exception):
     pass
 
@@ -34,6 +37,9 @@ def decode_artnet_packet(data:bytearray):
 
     # OP-Code low byte first
     opcode = (data[8] & 0x00FF) | ((data[9] << 8) & 0xFF00)
+
+    if opcode == 0x2000:
+        raise ArtNetPollReceived()
 
     # proto ver high byte first
     version = ((data[10] << 8) & 0xFF00) | (data[11] & 0x00FF)
@@ -82,7 +88,12 @@ class ArtNetServerProtocol(asyncio.Protocol):
         self.transport = transport
 
     def datagram_received(self, data, addr):
-        artnet_packet = decode_artnet_packet(data)
+        try:
+            artnet_packet = decode_artnet_packet(data)
+        except ArtNetPollReceived:
+            log.debug("Art-Net poll (opcode 0x2000) received.")
+            return
+
         dmx = artnet_packet.dmx
 
         if self.enttec_protocol is not None:
