@@ -32,7 +32,7 @@ async def animation_loop(loop, queue, frame_duration, artnet, mapping):
             #    artnet.send_dmx(dmx)
             #    await asyncio.sleep(0.01)
 
-            artnet = ArtNet(broadcast='10.0.0.134') #'10.0.1.133')
+            artnet = ArtNet(broadcast='10.0.1.134') #'10.0.1.133')
             artnet.send_dmx(dmx)
             await asyncio.sleep(frame_duration)
         log.debug("Animation done.")
