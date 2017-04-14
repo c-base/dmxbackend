@@ -45,7 +45,10 @@ def decode_artnet_packet(data:bytearray):
     physical = data[13]
 
     # universe, low byte first
-    universe = (data[14] & 0x00FF) | ((data[15] << 8) & 0xFF00)
+    try:
+        universe = (data[14] & 0x00FF) | ((data[15] << 8) & 0xFF00)
+    except:
+        log.info("got udp %s" % repr(data))
 
     # length, high byte first
     length = ((data[16] << 8) & 0xFF00) | (data[17] & 0x00FF)
