@@ -1,6 +1,7 @@
 #!/usr/bin/env python3.6
 # -*- coding: utf-8 -*-
 import os
+import json
 import asyncio
 from aiohttp import web
 from PIL import Image
@@ -8,6 +9,7 @@ from io import BytesIO
 
 PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '..')
 image_queue = None
+light_mapping = None
 
 
 async def handle_get(request):
@@ -32,10 +34,29 @@ async def handle_post(request):
     return web.json_response(data={'success': True, 'message': message})
 
 
-def setup_web_app(queue):
+async def lights(request):
+    global light_mapping
+    ret = []
+    for light in light_mapping:
+        one_light = {
+            'name': light.name,
+            'pos_x': 0,
+            'pos_y': 1,
+            'elements': light.channels
+        }
+        ret.append(one_light)
+    def dump(data, *args, **kwargs):
+        return json.dumps(data, indent=4, *args, **kwargs)
+    return web.json_response(ret, dumps=dump)
+
+
+def setup_web_app(queue, mapping):
     global image_queue
+    global light_mapping
+    light_mapping = mapping
     image_queue = queue
     app = web.Application()
+    app.router.add_get('/lights/', lights)
     app.router.add_get('/', handle_get)
     app.router.add_post('/', handle_post)
     app.router.add_static('/static/',

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import xml.etree.ElementTree as ET
-from .png_handling import RGBMapping, GigabarMapping
+from .channel_mapping import RGBMapping, GigabarMapping
 
 FIXTURE_XPATH = './' \
                 '{http://www.qlcplus.org/Workspace}Engine/' \

@@ -1,18 +1,17 @@
 # -*- coding; utf-8 -*-
 import os
 import pytest
-from unittest.mock import MagicMock, Mock, PropertyMock
+import asyncio
 from PIL import Image
-
-from dmxbackend.png_handling import DMXMapping
-from dmxbackend.png_handling import RGBMapping
+from dmxbackend.channel_mapping import DMXMapping
+from dmxbackend.channel_mapping import RGBMapping
 from dmxbackend.png_handling import image_line_to_dmx
 from dmxbackend.png_handling import get_single_line
 
 
 @pytest.fixture
 def image():
-    im = Image.open(os.path.join(os.path.dirname(__file__), 'Example.png'), 'r')
+    im = Image.open(os.path.join(os.path.dirname(__file__), 'tropical.png'), 'r')
     p = im.convert('RGBA')
     return p
 
@@ -43,7 +42,7 @@ class TestRGBMapping:
 
 def test_image_line_to_dmx(image):
     mapping = [RGBMapping('RGB light', 0, 0)]
-    result = image_line_to_dmx(image, 0, mapping)
+    result = asyncio.ensure_future(image_line_to_dmx(image, 0, mapping))
     assert result[0] == 0
     assert len(result) == 512
 

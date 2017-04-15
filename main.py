@@ -53,7 +53,7 @@ def run_main_loop(usb_device, qxw_filename):
     asyncio.ensure_future( animation_loop(loop, image_queue, 1/30, None, mapping) )
 
     ## Webserver
-    app = setup_web_app(image_queue)
+    app = setup_web_app(image_queue, mapping)
 
     try:
         web.run_app(app, loop=loop)
