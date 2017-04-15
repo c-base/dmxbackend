@@ -39,7 +39,7 @@ async def lights(request):
     ret = []
     for id, light in enumerate(light_mapping):
         one_light = {
-            'id': id,
+            'id': light.channel,
             'name': light.name,
             'pos_x': 0,
             'pos_y': 1,
