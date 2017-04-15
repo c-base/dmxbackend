@@ -37,8 +37,9 @@ async def handle_post(request):
 async def lights(request):
     global light_mapping
     ret = []
-    for light in light_mapping:
+    for id, light in enumerate(light_mapping):
         one_light = {
+            'id': id,
             'name': light.name,
             'pos_x': 0,
             'pos_y': 1,
