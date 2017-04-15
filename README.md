@@ -8,8 +8,16 @@
 ```
 [create and activate virtualenv]
 $ pip install -r requirements.txt
-$ python3.6 main.py /dev/ttyUSB0 /path/to/qxw_filename.qxw
+$ python3.6 main.py /path/to/qxw_filename.qxw --usb /dev/ttyUSB0
 ```
+
+If you just want to test the server without a USB-to-DMX converter
+
+```
+python3.6 main.py /tests/mainhall_2017_010.qxw
+```
+
+
 
 ## How To Run Tests
 

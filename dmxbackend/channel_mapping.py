@@ -3,7 +3,8 @@
 
 
 class DMXMapping(object):
-    def __init__(self, name, address):
+    def __init__(self, model, name, address):
+        self.model = model
         self.name = name
         self.address = int(address)
         self.num_pixels = 1
@@ -25,12 +26,12 @@ class DMXMapping(object):
 
 
 class RGBMapping(DMXMapping):
-    def __init__(self, name, address, pixel):
+    def __init__(self, model, name, address, pixel):
         """
         :param pixel: The pixel in the RGB
         :param channel: The DMX address of the first channel (red) - zero indexed
         """
-        super().__init__(name, address)
+        super().__init__(model, name, address)
         self.pixel = pixel
 
     def map_pixel_to_channels(self, line):
@@ -59,16 +60,15 @@ class RGBMapping(DMXMapping):
             'channels': [
                 {'name': 'r', 'offset':  ch + 0},
                 {'name': 'g', 'offset':  ch + 1},
-                {'name': 'b', 'offset':  ch + 2}],
+                {'name': 'b', 'offset':  ch + 2}
+            ],
         }]
 
 
-
-
 class GigabarMapping(RGBMapping):
-    def __init__(self, name, address, pixel):
+    def __init__(self, model, name, address, pixel):
         # the first 2 addresses in 26-channel mode are reserved for functions
-        super().__init__(name, int(address)+2, pixel)
+        super().__init__(model, name, int(address)+2, pixel)
         self.num_pixels = 8
 
     @property
@@ -83,6 +83,29 @@ class GigabarMapping(RGBMapping):
                 'channels': [
                     {'name': 'r', 'offset': ch + 0},
                     {'name': 'g', 'offset': ch + 1},
-                    {'name': 'b', 'offset': ch + 2}],
+                    {'name': 'b', 'offset': ch + 2}
+                ],
             }]
         return parts
+
+
+class OctagonMapping(DMXMapping):
+    def __init__(self, model, name, address, pixel):
+        # the first 2 addresses in 26-channel mode are reserved for functions
+        super().__init__(model, name, address)
+        self.pixel = pixel
+        self.num_pixels = 4
+
+    @property
+    def channels(self):
+        ch = self.pixel * 3
+        return [{
+            'name': 'cw/ww/a',
+            'pixel': self.pixel,
+            'channels': [
+                {'name': 'cw',  'offset': ch + 0},
+                {'name': 'ww',  'offset': ch + 1},
+                {'name': 'a',   'offset': ch + 2},
+                {'name': 'dim', 'offset': ch + 3}
+            ],
+        }]

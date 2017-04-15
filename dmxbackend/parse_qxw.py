@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import xml.etree.ElementTree as ET
-from .channel_mapping import RGBMapping, GigabarMapping
+from .channel_mapping import RGBMapping
+from .channel_mapping import GigabarMapping
+from .channel_mapping import OctagonMapping
 
 FIXTURE_XPATH = './' \
                 '{http://www.qlcplus.org/Workspace}Engine/' \
@@ -34,16 +36,20 @@ def map_fixture(fixture, first_pixel):
     :return: List of DMXMapping instances.
     """
     name = retrieve(fixture, 'Name')[0].text
+    manufacturer = retrieve(fixture, 'Manufacturer')[0].text
     model = retrieve(fixture, 'Model')[0].text
     address = retrieve(fixture, 'Address')[0].text
     channels = retrieve(fixture, 'Channels')[0].text
 
     if model == 'LED PAR56':
-        return [RGBMapping(name, address, first_pixel)]
+        return [RGBMapping(model, name, address, first_pixel)]
     elif model == 'LED Flood Panel 150':
-        return [RGBMapping(name, address, first_pixel)]
+        return [RGBMapping(model, name, address, first_pixel)]
     elif model == 'Gigabar II':
-        return [GigabarMapping(name, address, first_pixel)]
+        return [GigabarMapping(model, name, address, first_pixel)]
+    elif model == 'Generic' and int(channels) == 4:
+        model = 'Octagon'
+        return [OctagonMapping(model, name, address, first_pixel)]
     else:
         return []
 
@@ -60,8 +66,8 @@ def get_mapping_from_qxw(fixtures):
     def address_of(fixture):
         return int(retrieve(fixture, 'Address')[0].text)
 
+    # sort fixtures by their first DMX channel address
     for fixture in sorted(fixtures, key=address_of):
-        #
         mapped = map_fixture(fixture, current_pixel)
         for mapping in mapped:
             current_pixel = current_pixel + mapping.num_pixels

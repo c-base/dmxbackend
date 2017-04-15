@@ -34,7 +34,7 @@ async def handle_post(request):
     return web.json_response(data={'success': True, 'message': message})
 
 
-async def lights(request):
+async def fixtures(request):
     global light_mapping
     ret = []
     for id, light in enumerate(light_mapping):
@@ -57,7 +57,9 @@ def setup_web_app(queue, mapping):
     light_mapping = mapping
     image_queue = queue
     app = web.Application()
-    app.router.add_get('/lights/', lights)
+    app.router.add_get('/lights/', fixtures)
+    app.router.add_get('/fixtures/', fixtures)
+
     app.router.add_get('/', handle_get)
     app.router.add_post('/', handle_post)
     app.router.add_static('/static/',

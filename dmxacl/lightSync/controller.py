@@ -11,7 +11,7 @@ fs = FileSystemStorage(location=settings.MEDIA_ROOT)
 artnet = ArtNet(broadcast=settings.ARTNETIP)
 
 def loadLights():
-    jsonStoreFile = fs.open('lights.json', 'r+')
+    jsonStoreFile = fs.open('fixtures.json', 'r+')
 
     try:
         jsonStore = json.loads(jsonStoreFile.read())
@@ -26,7 +26,7 @@ def loadLights():
     return jsonStore
 
 def saveLights(jsonStore):
-    jsonStoreFile = fs.open('lights.json', 'w')
+    jsonStoreFile = fs.open('fixtures.json', 'w')
     jsonStoreFile.write(json.dumps(jsonStore))
     jsonStoreFile.close()
 

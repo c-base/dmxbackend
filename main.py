@@ -4,7 +4,8 @@
 """main.py
 
 Usage:
-  main.py <usb_device> <qxw_file>
+  main.py <qxw_file> [--usb <usb_device>]
+  
   
 """
 
@@ -40,13 +41,17 @@ def run_main_loop(usb_device, qxw_filename):
     image_queue = asyncio.Queue()
 
     ## USB-Serial device
-    # Baud rate is not needed with the Enttec device because DMX's baudrate is fixed.
-    usb_serial = create_serial_connection(loop, EnttecProtocol, usb_device)
-    enttec_transport, enttec_protocol = loop.run_until_complete(usb_serial)
+    enttec_protocol = None
+    if usb_device is not None:
+        # Baud rate is not needed with the Enttec device because DMX's baudrate is fixed.
+        usb_serial = create_serial_connection(loop, EnttecProtocol, usb_device)
+        enttec_transport, enttec_protocol = loop.run_until_complete(usb_serial)
 
     ## ArtNet device UDP
-    udp_listen = loop.create_datagram_endpoint(ArtNetServerProtocol, local_addr=('0.0.0.0', 6454))
+    udp_listen = loop.create_datagram_endpoint(ArtNetServerProtocol,
+                                               local_addr=('0.0.0.0', 6454))
     artnet_transport, artnet_protocol = loop.run_until_complete(udp_listen)
+    # tell the artnet protocol about the USB device
     artnet_protocol.enttec_protocol = enttec_protocol
 
     ## Animation play-back
