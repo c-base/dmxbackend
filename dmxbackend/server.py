@@ -39,7 +39,7 @@ async def fixtures(request):
     ret = []
     for id, light in enumerate(light_mapping):
         one_light = {
-            'id': "dmx-%d-%d" % (1, light.address + 1),
+            'fixture_id': "dmx-%d-%d" % (1, light.address + 1),
             'name': light.name,
             'pos_x': 0,
             'pos_y': 1,
@@ -57,7 +57,6 @@ def setup_web_app(queue, mapping):
     light_mapping = mapping
     image_queue = queue
     app = web.Application()
-    app.router.add_get('/lights/', fixtures)
     app.router.add_get('/fixtures/', fixtures)
 
     app.router.add_get('/', handle_get)

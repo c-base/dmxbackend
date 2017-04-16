@@ -48,8 +48,7 @@ def run_main_loop(usb_device, qxw_filename):
         enttec_transport, enttec_protocol = loop.run_until_complete(usb_serial)
 
     ## ArtNet device UDP
-    udp_listen = loop.create_datagram_endpoint(ArtNetServerProtocol,
-                                               local_addr=('0.0.0.0', 6454))
+    udp_listen = loop.create_datagram_endpoint(ArtNetServerProtocol, local_addr=('0.0.0.0', 6454))
     artnet_transport, artnet_protocol = loop.run_until_complete(udp_listen)
     # tell the artnet protocol about the USB device
     artnet_protocol.enttec_protocol = enttec_protocol

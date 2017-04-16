@@ -8,6 +8,7 @@ class DMXMapping(object):
         self.name = name
         self.address = int(address)
         self.num_pixels = 1
+        self.universe = 0
 
     def map_pixel_to_channels(self, line):
         """
@@ -16,6 +17,10 @@ class DMXMapping(object):
         :return: A tuple of (DMX address, value)
         """
         raise NotImplementedError()
+
+    @property
+    def light_id(self):
+        return 'dmx-%d-%d' % (self.universe + 1, self.address + 1)
 
     @property
     def channels(self):
@@ -58,9 +63,9 @@ class RGBMapping(DMXMapping):
             'name': 'rgb',
             'pixel': self.pixel,
             'channels': [
-                {'name': 'r', 'offset':  ch + 0},
-                {'name': 'g', 'offset':  ch + 1},
-                {'name': 'b', 'offset':  ch + 2}
+                {'name': 'r', 'channel_id': self.light_id + '/rgb/r'},
+                {'name': 'g', 'channel_id': self.light_id + '/rgb/g'},
+                {'name': 'b', 'channel_id': self.light_id + '/rgb/b'}
             ],
         }]
 
@@ -77,13 +82,14 @@ class GigabarMapping(RGBMapping):
         for i in range(self.num_pixels):
             current_pixel = self.pixel + i
             ch = current_pixel * 3
+            part_name = 'rgb%d' % (i + 1)
             parts += [{
-                'name': 'rgb%d' % (i + 1),
+                'name': part_name,
                 'pixel': current_pixel,
                 'channels': [
-                    {'name': 'r', 'offset': ch + 0},
-                    {'name': 'g', 'offset': ch + 1},
-                    {'name': 'b', 'offset': ch + 2}
+                    {'name': 'r', 'channel_id': self.light_id + '/' + part_name + '/r'},
+                    {'name': 'g', 'channel_id': self.light_id + '/' + part_name + '/g'},
+                    {'name': 'b', 'channel_id': self.light_id + '/' + part_name + '/b'}
                 ],
             }]
         return parts
@@ -100,12 +106,12 @@ class OctagonMapping(DMXMapping):
     def channels(self):
         ch = self.pixel * 3
         return [{
-            'name': 'cw/ww/a',
+            'name': 'white',
             'pixel': self.pixel,
             'channels': [
-                {'name': 'cw',  'offset': ch + 0},
-                {'name': 'ww',  'offset': ch + 1},
-                {'name': 'a',   'offset': ch + 2},
-                {'name': 'dim', 'offset': ch + 3}
+                {'name': 'cw',  'channel_id': self.light_id + '/white/cw'},
+                {'name': 'ww',  'channel_id': self.light_id + '/white/ww'},
+                {'name': 'a',   'channel_id': self.light_id + '/white/a'},
+                {'name': 'dim', 'channel_id': self.light_id + '/white/dim'}
             ],
         }]
