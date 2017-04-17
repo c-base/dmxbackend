@@ -52,6 +52,10 @@ def as_list():
         ret += [{'channel_id': key, 'value': value}]
     return ret
 
+def as_dmx():
+    global _dmx
+    return _dmx
+
 def get():
     global _state
     return _state
