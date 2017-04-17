@@ -11,14 +11,17 @@ _last_update = None
 _subscribers = []
 _dmx_subscribers = []
 _dmx = None
+_mapping
 
 
 def initialize_state(mapping):
     global _state
     global _last_update
     global _dmx
+    global _mapping
     _dmx = bytearray(512)
     _state = OrderedDict()
+    _mapping = mapping
     for light in mapping:
         for id in light.channel_ids:
             _state[id] = 0x00
@@ -27,9 +30,15 @@ def initialize_state(mapping):
 
 def update_channels(new_data):
     global _last_update
+    global _dmx
     for el in new_data:
         _state[el['channel_id']] = el['value']
-    # TODO convert channels to DMX
+
+    # convert channels to DMX
+    for light in _mapping:
+        for dmx_addr, val in light.state_to_dmx(_state):
+            _dmx[dmx_addr] = val
+
     _last_update = datetime.now()
     notify()
 
@@ -37,8 +46,11 @@ def update_channels(new_data):
 def update_dmx(new_dmx):
     global _dmx
     global _last_update
+    global _mapping
     _dmx = new_dmx
     # TODO convert DMX to channels
+
+
     _last_update = datetime.now()
     notify()
 
