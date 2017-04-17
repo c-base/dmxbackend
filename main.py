@@ -4,7 +4,7 @@
 """main.py
 
 Usage:
-  main.py <qxw_file> [--usb <usb_device>]
+  main.py <qxw_file> [--usb <usb_device>] [--debug]
   
   
 """
@@ -23,6 +23,7 @@ from dmxbackend.server import setup_web_app
 from dmxbackend.parse_qxw import find_fixtures
 from dmxbackend.parse_qxw import get_mapping_from_qxw
 from dmxbackend.artnet_server import ArtNetServerProtocol
+from dmxbackend import channel_state
 
 log = logging.getLogger(__file__)
 
@@ -31,7 +32,7 @@ def prepare_mapping(qxw_filename):
     fixtures = find_fixtures(qxw_filename)
     mapping = get_mapping_from_qxw(fixtures)
     for i, light in enumerate(mapping):
-        log.info('%d, %s, %d' % (i, light.name, light.address))
+        log.info('%s: %s (DMX: %d)' % (light.light_id, light.name, light.address))
     return mapping
 
 
@@ -47,6 +48,7 @@ def run_main_loop(usb_device, qxw_filename):
         usb_serial = create_serial_connection(loop, EnttecProtocol, usb_device)
         enttec_transport, enttec_protocol = loop.run_until_complete(usb_serial)
 
+
     ## ArtNet device UDP
     udp_listen = loop.create_datagram_endpoint(ArtNetServerProtocol, local_addr=('0.0.0.0', 6454))
     artnet_transport, artnet_protocol = loop.run_until_complete(udp_listen)
@@ -58,6 +60,7 @@ def run_main_loop(usb_device, qxw_filename):
 
     ## Webserver
     app = setup_web_app(image_queue, mapping)
+    channel_state.initialize_state(mapping)
 
     try:
         web.run_app(app, loop=loop)
@@ -70,8 +73,11 @@ def run_main_loop(usb_device, qxw_filename):
 
 
 if __name__ == '__main__':
+    arguments = docopt(__doc__, version='main.py 1.0')
+
+
     root = logging.getLogger()
-    root.setLevel(logging.INFO)
+    root.setLevel(logging.DEBUG)
 
     ch = logging.StreamHandler(sys.stdout)
     ch.setLevel(logging.DEBUG)
@@ -79,7 +85,6 @@ if __name__ == '__main__':
     ch.setFormatter(formatter)
     root.addHandler(ch)
 
-    arguments = docopt(__doc__, version='main.py 1.0')
     run_main_loop(arguments['<usb_device>'], arguments['<qxw_file>'])
 
 

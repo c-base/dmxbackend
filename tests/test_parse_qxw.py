@@ -26,7 +26,7 @@ def test_get_mapping_from_qxw(qxw_file):
     assert len(result) == 17
     assert result[0].pixel == 0
     assert result[1].pixel == 1
-    assert result[0].channels[0]['channels'][0] == {'name': 'r', 'offset': 0}
+    assert result[0].elements[0]['elements'][0] == {'name': 'r', 'offset': 0}
 
 
 def test_retreive(qxw_file):

@@ -2,6 +2,8 @@
 import asyncio
 import logging
 
+from dmxbackend import channel_state
+
 log = logging.getLogger(__file__)
 
 
@@ -96,8 +98,9 @@ class ArtNetServerProtocol(asyncio.Protocol):
 
         dmx = artnet_packet.dmx
 
-        if self.enttec_protocol is not None:
-            self.enttec_protocol.send_dmx(dmx)
+        channel_state.update_dmx(dmx)
+        #if self.enttec_protocol is not None:
+        #    self.enttec_protocol.send_dmx(dmx)
 
         log.info('Sequence %d, %d bytes from %s' % (artnet_packet.sequence, len(dmx), addr))
         log.debug(str(dmx))
