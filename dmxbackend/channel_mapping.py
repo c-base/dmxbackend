@@ -36,7 +36,7 @@ class DMXMapping(object):
     def map_consecutive_channels(self, data_dict, channel_ids):
         ret = []
         for i, id in enumerate(channel_ids):
-            ret.append((self.addr + i, data_dict[id]))
+            ret.append((self.address + i, data_dict[id]))
         return ret
 
     def __str__(self):
