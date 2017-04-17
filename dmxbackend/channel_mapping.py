@@ -40,7 +40,7 @@ class DMXMapping(object):
         return ret
 
     def __str__(self):
-        return '{}: {03d}'.format(self.name, self.address)
+        return '{}: {}'.format(self.name, self.address)
 
 
 class RGBMapping(DMXMapping):
