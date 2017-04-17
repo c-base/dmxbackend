@@ -11,7 +11,7 @@ _last_update = None
 _subscribers = []
 _dmx_subscribers = []
 _dmx = None
-_mapping
+_mapping = None
 
 
 def initialize_state(mapping):
