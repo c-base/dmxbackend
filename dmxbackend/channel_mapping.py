@@ -1,6 +1,7 @@
 #!/usr/bin/env python3.6
 # -*- coding: utf-8 -*-
-
+import logging
+log = logging.getLogger(__file__)
 
 class DMXMapping(object):
     def __init__(self, model, name, address):
@@ -35,6 +36,7 @@ class DMXMapping(object):
 
     def map_consecutive_channels(self, data_dict, channel_ids):
         ret = []
+        log.debug('{}'.format(data_dict))
         for i, id in enumerate(channel_ids):
             ret.append((self.address + i, data_dict[id]))
         return ret
