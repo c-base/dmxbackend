@@ -126,12 +126,14 @@ class GigabarMapping(RGBMapping):
                 'name': part_name,
                 'pixel': current_pixel,
                 'elements': [
-                    {'name': 'r', },
-                    {'name': 'g', },
-                    {'name': 'b', }
+                    {'name': 'r', 'channel_id': self.light_id + '/' + part_name + '/r'},
+                    {'name': 'g', 'channel_id': self.light_id + '/' + part_name + '/g'},
+                    {'name': 'b', 'channel_id': self.light_id + '/' + part_name + '/b'}
                 ],
             }]
         return parts
+
+
 
 
 class OctagonMapping(DMXMapping):
@@ -171,6 +173,15 @@ class DimmerMapping(DMXMapping):
         super().__init__(model, name, address)
         self.pixel = pixel
         self.num_pixels = 4
+
+    @property
+    def channel_ids(self):
+        return [
+            self.light_id + '/dimmer/dim1',
+            self.light_id + '/dimmer/dim2',
+            self.light_id + '/dimmer/dim3',
+            self.light_id + '/dimmer/dim4',
+        ]
 
     @property
     def elements(self):
