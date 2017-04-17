@@ -12,6 +12,7 @@ _subscribers = []
 _dmx_subscribers = []
 _dmx = None
 
+
 def initialize_state(mapping):
     global _state
     global _last_update
@@ -25,14 +26,19 @@ def initialize_state(mapping):
 
 
 def update_channels(new_data):
+    global _last_update
     for el in new_data:
         _state[el['channel_id']] = el['value']
+    # TODO convert channels to DMX
     _last_update = datetime.now()
     notify()
 
 
 def update_dmx(new_dmx):
+    global _dmx
+    global _last_update
     _dmx = new_dmx
+    # TODO convert DMX to channels
     _last_update = datetime.now()
     notify()
 
@@ -45,6 +51,7 @@ def notify():
     for call_when_updated in _subscribers:
         asyncio.ensure_future(call_when_updated())
 
+
 def as_list():
     global _state
     ret = []
@@ -52,11 +59,13 @@ def as_list():
         ret += [{'channel_id': key, 'value': value}]
     return ret
 
+
 def as_dmx():
     global _dmx
     return _dmx
 
-def get():
+
+def as_dict():
     global _state
     return _state
 

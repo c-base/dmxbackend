@@ -18,7 +18,7 @@ light_mapping = None
 
 
 async def handle_get(request):
-    # name = request.match_info.get('name', "Anonymous")
+    # name = request.match_info.as_dict('name', "Anonymous")
     text = "OK, Content-Type: " + request.content_type
     return web.Response(text=text)
 
@@ -57,7 +57,7 @@ async def fixtures(request):
 
 
 async def get_state(request):
-    return web.json_response(channel_state.get())
+    return web.json_response(channel_state.as_dict())
 
 
 async def websocket_handler(request):

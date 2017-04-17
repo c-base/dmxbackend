@@ -3,7 +3,7 @@ import pytest
 
 from dmxbackend.channel_mapping import RGBMapping
 from dmxbackend.channel_state import (
-    get,
+    as_dict,
     initialize_state,
     update_channels,
 )
@@ -15,15 +15,15 @@ def mapping():
 
 
 def test_uninitialized_state():
-    assert get() == None
+    assert as_dict() == None
 
 
 def test_initialize_state(mapping):
     initialize_state(mapping)
-    assert get()['dmx-1-1/rgb/r'] == 0x00
+    assert as_dict()['dmx-1-1/rgb/r'] == 0x00
 
 
 def test_update_state(mapping):
     initialize_state(mapping)
     update_channels([{'channel_id': 'dmx-1-1/rgb/r', 'value': 0xff}])
-    assert get()['dmx-1-1/rgb/r'] == 0xff
+    assert as_dict()['dmx-1-1/rgb/r'] == 0xff
