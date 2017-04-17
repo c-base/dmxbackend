@@ -5,6 +5,7 @@ Manages the current state of the lights. You can subscribe to updates.
 import asyncio
 from collections import OrderedDict
 from datetime import datetime
+import logging
 
 _state = None
 _last_update = None
@@ -12,6 +13,9 @@ _subscribers = []
 _dmx_subscribers = []
 _dmx = None
 _mapping = None
+
+
+log = logging.getLogger(__file__)
 
 
 def initialize_state(mapping):
@@ -36,8 +40,12 @@ def update_channels(new_data):
 
     # convert channels to DMX
     for light in _mapping:
-        for dmx_addr, val in light.state_to_dmx(_state):
-            _dmx[dmx_addr] = val
+        try:
+            for dmx_addr, val in light.state_to_dmx(_state):
+                _dmx[dmx_addr] = val
+        except NotImplementedError:
+            log.debug("state_to_dmx() not implemented in {}".format(light))
+            pass
 
     _last_update = datetime.now()
     notify()
