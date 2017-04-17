@@ -133,7 +133,9 @@ class GigabarMapping(RGBMapping):
             }]
         return parts
 
-
+    def state_to_dmx(self, data_dict):
+        channel_ids = self.channel_ids
+        return self.map_consecutive_channels(data_dict, channel_ids)
 
 
 class OctagonMapping(DMXMapping):
