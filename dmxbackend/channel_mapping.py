@@ -22,6 +22,9 @@ class DMXMapping(object):
     def state_to_dmx(self, data):
         raise NotImplementedError()
 
+    def dmx_to_state(self, dmx_data):
+        raise NotImplementedError()
+
     @property
     def light_id(self):
         return 'dmx-%d-%d' % (self.universe + 1, self.address + 1)
@@ -36,9 +39,14 @@ class DMXMapping(object):
 
     def map_consecutive_channels(self, data_dict, channel_ids):
         ret = []
-        log.debug('{}'.format(data_dict))
         for i, id in enumerate(channel_ids):
             ret.append((self.address + i, data_dict[id]))
+        return ret
+
+    def map_consecutive_dmx(self, dmx_data, first_address, channel_ids):
+        ret = []
+        for i, id in enumerate(channel_ids):
+            ret.append((id, dmx_data[first_address + i]))
         return ret
 
     def __str__(self):
@@ -75,6 +83,9 @@ class RGBMapping(DMXMapping):
         channel_ids = [self.light_id + '/rgb/r', self.light_id + '/rgb/g', self.light_id + '/rgb/b']
         return self.map_consecutive_channels(data_dict, channel_ids)
 
+    def dmx_to_state(self, dmx_data):
+        channel_ids = [self.light_id + '/rgb/r', self.light_id + '/rgb/g', self.light_id + '/rgb/b']
+        return self.map_consecutive_dmx(dmx_data, self.address, channel_ids)
 
     @property
     def channel_ids(self):
@@ -136,6 +147,10 @@ class GigabarMapping(RGBMapping):
     def state_to_dmx(self, data_dict):
         channel_ids = self.channel_ids
         return self.map_consecutive_channels(data_dict, channel_ids)
+
+    def dmx_to_state(self, dmx_data):
+        channel_ids = self.channel_ids
+        return self.map_consecutive_dmx(dmx_data, self.address, channel_ids)
 
 
 class OctagonMapping(DMXMapping):

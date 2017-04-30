@@ -49,7 +49,6 @@ def update_channels(new_data):
                 _dmx[dmx_addr] = val
         except NotImplementedError:
             log.debug("state_to_dmx() not implemented in {}".format(light))
-            pass
 
     _last_update = datetime.now()
     notify()
@@ -60,7 +59,15 @@ def update_dmx(new_dmx):
     global _last_update
     global _mapping
     _dmx = new_dmx
-    # TODO convert DMX to channels
+
+    # convert DMX to channel mapping
+    # convert channels to DMX
+    for light in _mapping:
+        try:
+            for channel_id, val in light.state_to_dmx(_state):
+                _state[channel_id] = val
+        except NotImplementedError:
+            log.debug("dmx_to_state() not implemented in {}".format(light))
 
 
     _last_update = datetime.now()
