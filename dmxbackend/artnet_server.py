@@ -102,11 +102,11 @@ class ArtNetServerProtocol(asyncio.Protocol):
         #if self.enttec_protocol is not None:
         #    self.enttec_protocol.send_dmx(dmx)
 
-        log.info('Sequence %d, %d bytes from %s' % (artnet_packet.sequence, len(dmx), addr))
-        log.debug(str(dmx))
-        for i,chunk in enumerate([dmx[i:i + 32] for i in range(0, len(dmx), 32)]):
-            log.debug(' '.join(['%3d' % int(x) for x in range(i*32+1, (i+1)*32+1)]))
-            log.debug(' '.join(['%3d' % int(x) for x in chunk]))
+        #log.info('Sequence %d, %d bytes from %s' % (artnet_packet.sequence, len(dmx), addr))
+        #log.debug(str(dmx))
+        #for i,chunk in enumerate([dmx[i:i + 32] for i in range(0, len(dmx), 32)]):
+        #    log.debug(' '.join(['%3d' % int(x) for x in range(i*32+1, (i+1)*32+1)]))
+        #    log.debug(' '.join(['%3d' % int(x) for x in chunk]))
 
         #print('Send %r to %s' % (message, addr))
         #self.transport.sendto(data, addr)
