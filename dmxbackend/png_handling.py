@@ -1,12 +1,16 @@
 # -*- coding; utf-8 -*-
-from PIL import Image
+import logging
 
+log = logging.getLogger(__name__)
 
 def image_line_to_dmx(line, mapping_list, dmx_packet_old=None):
     dmx_packet = bytearray(512)
     for mapping in mapping_list:
-        for dmx_addr, color_intensity in mapping.map_pixel_to_channels(line):
-            dmx_packet[dmx_addr] = color_intensity
+        try:
+            for dmx_addr, color_intensity in mapping.map_pixel_to_channels(line):
+                dmx_packet[dmx_addr] = color_intensity
+        except NotImplementedError:
+            log.warn('Not implemented pixel to channels')
     return dmx_packet
 
 
