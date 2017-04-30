@@ -66,7 +66,11 @@ class RGBMapping(DMXMapping):
         mapped = []
         current_addr = self.address
         for i in range(self.num_pixels):
-            pixel_val = line[self.pixel + i]
+            try:
+                pixel_val = line[self.pixel + i]
+            except IndexError:
+                log.warn('Not enough pixels: pixel {}'.format(self.pixel + i))
+                continue
             # alpha channel
             if pixel_val[3] < 255:
                 pass
