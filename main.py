@@ -32,7 +32,7 @@ def prepare_mapping(qxw_filename):
     fixtures = find_fixtures(qxw_filename)
     mapping = get_mapping_from_qxw(fixtures)
     for i, light in enumerate(mapping):
-        log.info(u'{}: {} (DMX: {})'.format(light.light_id, light.name, light.address))
+        log.info(u'{}: (DMX: {})'.format(light.light_id, light.address))
     return mapping
 
 
