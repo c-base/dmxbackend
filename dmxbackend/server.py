@@ -33,10 +33,9 @@ async def retrieve_image(post_data):
 async def handle_post(request):
     global image_queue
     post_data = await request.post()
-    message = "{} uploaded".format(post_data['file'].filename)
     image = await retrieve_image(post_data)
     await image_queue.put(image)
-    return web.json_response(data={'success': True, 'message': message})
+    return web.json_response(data={'success': True, 'message': 'Uploaded'})
 
 
 async def fixtures(request):

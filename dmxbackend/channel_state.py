@@ -64,7 +64,6 @@ def update_dmx(new_dmx):
     for light in _mapping:
         try:
             for channel_id, val in light.dmx_to_state(new_dmx):
-                log.debug('channel_id: %s, val: %d' % (channel_id, val))
                 _state[channel_id] = val
         except NotImplementedError:
             log.debug("dmx_to_state() not implemented in {}".format(light))
