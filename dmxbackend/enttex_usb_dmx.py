@@ -5,7 +5,7 @@ import logging
 
 from . import channel_state
 
-log = logging.getLogger(__file__)
+log = logging.getLogger(__name__)
 
 def create_enttec_dmx_message(dmx_bytes:bytearray):
     if len(dmx_bytes) != 512:

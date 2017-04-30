@@ -15,7 +15,7 @@ _dmx = None
 _mapping = None
 
 
-log = logging.getLogger(__file__)
+log = logging.getLogger(__name__)
 
 
 def initialize_state(mapping):

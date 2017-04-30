@@ -1,7 +1,7 @@
 #!/usr/bin/env python3.6
 # -*- coding: utf-8 -*-
 import logging
-log = logging.getLogger(__file__)
+log = logging.getLogger(__name__)
 
 class DMXMapping(object):
     def __init__(self, model, name, address):

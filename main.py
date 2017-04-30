@@ -25,14 +25,14 @@ from dmxbackend.parse_qxw import get_mapping_from_qxw
 from dmxbackend.artnet_server import ArtNetServerProtocol
 from dmxbackend import channel_state
 
-log = logging.getLogger(__file__)
+log = logging.getLogger(__name__)
 
 
 def prepare_mapping(qxw_filename):
     fixtures = find_fixtures(qxw_filename)
     mapping = get_mapping_from_qxw(fixtures)
     for i, light in enumerate(mapping):
-        log.info('%s: %s (DMX: %d)' % (light.light_id, light.name, light.address))
+        log.info(u'{}: {} (DMX: {})'.format(light.light_id, light.name, light.address))
     return mapping
 
 

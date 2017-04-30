@@ -4,7 +4,7 @@ import logging
 
 from dmxbackend import channel_state
 
-log = logging.getLogger(__file__)
+log = logging.getLogger(__name__)
 
 
 class ArtNetPollReceived(Exception):

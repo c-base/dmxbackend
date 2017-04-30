@@ -6,7 +6,7 @@ from .png_handling import get_single_line
 from .png_handling import image_line_to_dmx
 from .sendtodmx import ArtNet
 
-log = logging.getLogger(__file__)
+log = logging.getLogger(__name__)
 
 
 async def animation_loop(loop, queue, frame_duration, artnet, mapping):

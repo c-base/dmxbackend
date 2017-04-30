@@ -10,7 +10,7 @@ from PIL import Image
 from io import BytesIO
 from dmxbackend import channel_state
 
-log = logging.getLogger(__file__)
+log = logging.getLogger(__name__)
 
 PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '..')
 image_queue = None
