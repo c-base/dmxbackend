@@ -115,6 +115,7 @@ def setup_web_app(queue, mapping):
     app.router.add_static('/assets',
                           path=os.path.join(PROJECT_ROOT, 'static/assets'),
                           name='static')
+    app.router.add_post('/', handle_post)
     # Catch all
     r = app.router.add_resource(r'/{name:.*}')
     r.add_route('GET', handle_index)

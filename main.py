@@ -34,8 +34,8 @@ def prepare_mapping(qxw_filename, positions):
     mapping = get_mapping_from_qxw(fixtures)
     for i, light in enumerate(mapping):
         try:
-            light.pos_x = int(positions[light.name]['pos_x']) + 10
-            light.pos_y = int(positions[light.name]['pos_y']) + 10
+            light.pos_x = int(positions[light.name]['pos_x']) 
+            light.pos_y = int(positions[light.name]['pos_y'])
         except KeyError:
             pass
         except NameError:
@@ -74,7 +74,7 @@ def run_main_loop(usb_device, qxw_filename, pos_filename):
     channel_state.initialize_state(mapping)
 
     try:
-        web.run_app(app, loop=loop)
+        web.run_app(app, loop=loop, port=80)
     except KeyboardInterrupt:
         pass
 
