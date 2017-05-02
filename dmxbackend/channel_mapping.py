@@ -105,7 +105,7 @@ class RGBMapping(DMXMapping):
         return [{
             'name': 'rgb',
             'pixel': self.pixel,
-            'channel_ids': [
+            'channels': [
                 {'name': 'r', 'channel_id': self.light_id + '/rgb/r'},
                 {'name': 'g', 'channel_id': self.light_id + '/rgb/g'},
                 {'name': 'b', 'channel_id': self.light_id + '/rgb/b'}
@@ -140,7 +140,7 @@ class GigabarMapping(RGBMapping):
             parts += [{
                 'name': part_name,
                 'pixel': current_pixel,
-                'elements': [
+                'channels': [
                     {'name': 'r', 'channel_id': self.light_id + '/' + part_name + '/r'},
                     {'name': 'g', 'channel_id': self.light_id + '/' + part_name + '/g'},
                     {'name': 'b', 'channel_id': self.light_id + '/' + part_name + '/b'}
@@ -179,7 +179,7 @@ class OctagonMapping(DMXMapping):
         return [{
             'name': 'white',
             'pixel': self.pixel,
-            'elements': [
+            'channels': [
                 {'name': 'cw',  'channel_id': self.light_id + '/white/cw'},
                 {'name': 'ww',  'channel_id': self.light_id + '/white/ww'},
                 {'name': 'a',   'channel_id': self.light_id + '/white/a'},
@@ -210,10 +210,10 @@ class DimmerMapping(DMXMapping):
         return [{
             'name': 'dimmer',
             'pixel': self.pixel,
-            'elements': [
+            'channels': [
                 {'name': 'dim1', 'channel_id': self.light_id + '/dimmer/dim1'},
                 {'name': 'dim2', 'channel_id': self.light_id + '/dimmer/dim2'},
                 {'name': 'dim3', 'channel_id': self.light_id + '/dimmer/dim3'},
                 {'name': 'dim4', 'channel_id': self.light_id + '/dimmer/dim4'}
             ],
-        }]
+        }]  
