@@ -10,6 +10,8 @@ class DMXMapping(object):
         self.address = int(address)
         self.num_pixels = 1
         self.universe = 0
+        self.pos_x = 0
+        self.pos_y = 0
 
     def map_pixel_to_channels(self, line):
         """
@@ -216,4 +218,4 @@ class DimmerMapping(DMXMapping):
                 {'name': 'dim3', 'channel_id': self.light_id + '/dimmer/dim3'},
                 {'name': 'dim4', 'channel_id': self.light_id + '/dimmer/dim4'}
             ],
-        }]  
+        }]
