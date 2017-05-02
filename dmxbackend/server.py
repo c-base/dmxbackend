@@ -10,7 +10,21 @@ from PIL import Image
 from io import BytesIO
 from dmxbackend import channel_state
 
+
 log = logging.getLogger(__name__)
+# create console handler and set level to debug
+ch = logging.StreamHandler()
+ch.setLevel(logging.DEBUG)
+
+# create formatter
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+# add formatter to ch
+ch.setFormatter(formatter)
+
+# add ch to logger
+log.addHandler(ch)
+
 
 PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '..')
 image_queue = None
@@ -45,8 +59,8 @@ async def fixtures(request):
         one_light = {
             'fixture_id': "dmx-%d-%d" % (1, light.address + 1),
             'name': light.name,
-            'pos_x': 0,
-            'pos_y': 1,
+            'pos_x': light.pos_x,
+            'pos_y': light.pos_y,
             'elements': light.elements
         }
         ret.append(one_light)
