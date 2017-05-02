@@ -32,15 +32,14 @@ def initialize_state(mapping):
     _last_update = datetime.now()
 
 
-def update_channels(new_data):
+def update_channels(new_data: list):
     global _last_update
     global _dmx
     global _state
 
-    log.debug("Before update: {}".format(_state))
     for el in new_data:
+        log.debug("el is {}".format(el))
         _state[el['channel_id']] = el['value']
-    log.debug("After update:  {}".format(_state))
 
     # convert channels to DMX
     for light in _mapping:

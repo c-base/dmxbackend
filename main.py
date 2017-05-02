@@ -32,11 +32,10 @@ log = logging.getLogger(__name__)
 def prepare_mapping(qxw_filename, positions):
     fixtures = find_fixtures(qxw_filename)
     mapping = get_mapping_from_qxw(fixtures)
-    print(positions.sections())
     for i, light in enumerate(mapping):
         try:
-            light.pos_x = int(positions[light.name]['pos_x'])
-            light.pos_y = int(positions[light.name]['pos_y'])
+            light.pos_x = int(positions[light.name]['pos_x']) + 10
+            light.pos_y = int(positions[light.name]['pos_y']) + 10
         except KeyError:
             pass
         except NameError:
