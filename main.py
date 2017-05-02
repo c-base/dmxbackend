@@ -32,8 +32,16 @@ log = logging.getLogger(__name__)
 def prepare_mapping(qxw_filename, positions):
     fixtures = find_fixtures(qxw_filename)
     mapping = get_mapping_from_qxw(fixtures)
+    print(positions.sections())
     for i, light in enumerate(mapping):
-        log.info(u'{}: (DMX: {}) -> x={}, y={}'.format(light.light_id, light.address,
+        try:
+            light.pos_x = int(positions[light.name]['pos_x'])
+            light.pos_y = int(positions[light.name]['pos_y'])
+        except KeyError:
+            pass
+        except NameError:
+            pass
+        log.info(u'{}: (DMX: {}) -> x={}, y={}'.format(light.name, light.address,
                                                        light.pos_x, light.pos_y))
     return mapping
 
@@ -41,7 +49,7 @@ def prepare_mapping(qxw_filename, positions):
 def run_main_loop(usb_device, qxw_filename, pos_filename):
     loop = asyncio.get_event_loop()
     positions = configparser.ConfigParser()
-    positions.read('pod_filename')
+    positions.read(pos_filename)
     mapping = prepare_mapping(qxw_filename, positions)
     image_queue = asyncio.Queue()
 
