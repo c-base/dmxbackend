@@ -32,14 +32,15 @@ def initialize_state(mapping):
     _last_update = datetime.now()
 
 
-def update_channels(new_data: list):
+def update_channels(new_data):
     global _last_update
     global _dmx
     global _state
 
+    log.debug("Before update: {}".format(_state))
     for el in new_data:
-        log.debug("el is {}".format(el))
         _state[el['channel_id']] = el['value']
+    log.debug("After update:  {}".format(_state))
 
     # convert channels to DMX
     for light in _mapping:
@@ -79,6 +80,21 @@ def subscribe(call_when_updated):
 def notify():
     for call_when_updated in _subscribers:
         asyncio.ensure_future(call_when_updated())
+        
+        
+def fixtures():
+    global _mapping
+    ret = []
+    for id, light in enumerate(_mapping):
+        one_light = {
+            'fixture_id': "dmx-%d-%d" % (1, light.address + 1),
+            'name': light.name,
+            'pos_x': light.pos_x,
+            'pos_y': light.pos_y,
+            'elements': light.elements
+        }
+        ret.append(one_light)
+    return ret
 
 
 def as_list():
