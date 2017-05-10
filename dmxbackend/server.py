@@ -27,6 +27,8 @@ log.addHandler(ch)
 
 PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '..')
 image_queue = None
+
+# TODO: Deleteme
 light_mapping = None
 
 
@@ -52,17 +54,7 @@ async def handle_post(request):
 
 
 async def fixtures(request):
-    global light_mapping
-    ret = []
-    for id, light in enumerate(light_mapping):
-        one_light = {
-            'fixture_id': "dmx-%d-%d" % (1, light.address + 1),
-            'name': light.name,
-            'pos_x': light.pos_x,
-            'pos_y': light.pos_y,
-            'elements': light.elements
-        }
-        ret.append(one_light)
+    ret = channel_state.fixtures()
     def dump(data, *args, **kwargs):
         return json.dumps(data, indent=4, *args, **kwargs)
     return web.json_response(ret, dumps=dump)
@@ -104,7 +96,10 @@ async def websocket_handler(request):
 
 def setup_web_app(queue, mapping):
     global image_queue
+    
+    # TODO: Deleteme
     global light_mapping
+    
     light_mapping = mapping
     image_queue = queue
     app = web.Application()
