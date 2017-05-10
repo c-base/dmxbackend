@@ -67,7 +67,7 @@ def update_dmx(new_dmx):
         except NotImplementedError:
             log.debug("dmx_to_state() not implemented in {}".format(light))
 
-    _dmx = new_dmx
+    _dmx = bytearray(new_dmx)
     _last_update = datetime.now()
     notify()
 

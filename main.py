@@ -25,7 +25,7 @@ from dmxbackend.parse_qxw import find_fixtures
 from dmxbackend.parse_qxw import get_mapping_from_qxw
 from dmxbackend.artnet_server import ArtNetServerProtocol
 from dmxbackend import channel_state
-from dmxbackend.mqtt import AsyncMQTT
+from dmxbackend.mqtt import mqtt_loop
 
 log = logging.getLogger(__name__)
 
@@ -75,8 +75,9 @@ def run_main_loop(usb_device, qxw_filename, pos_filename, mqtt_server):
     channel_state.initialize_state(mapping)
     
     if mqtt_server is not None:
-        async_mqtt = AsyncMQTT(mqtt_server=mqtt_server)
-        asyncio.ensure_future(async_mqtt.every_semisecond(loop))
+        #async_mqtt = AsyncMQTT(mqtt_server=mqtt_server)
+        #asyncio.ensure_future(async_mqtt.every_semisecond(loop))
+        asyncio.ensure_future(mqtt_loop(loop, mqtt_server))
 
     try:
         web.run_app(app, loop=loop, port=80)
