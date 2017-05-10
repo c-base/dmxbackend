@@ -13,38 +13,25 @@ from dmxbackend import channel_state
 
 log = logging.getLogger(__name__)
 
+
 class AsyncMQTT(object):
-    def __init__(self, client=None, mqtt_server='localhost'):
-        if client is None:
-            self.client = mqtt.Client()
-        else:
-            self.client = client
-        self.client.on_connect = self.on_connect
-        self.client.on_message = self.on_message
-        self.message_queue = deque()
-        self.mqtt_server = mqtt_server
+    def __init__(self):
+        self.C = None
 
-    def on_connect(self, client, userdata, flags, rc):
-        log.debug("Connected with result code " + str(rc))
-        self.client.subscribe("dmx-mainhall/state")
-        self.client.publish("dmx-mainhall/fixtures", payload=json.dumps(), retain=True)
+    async def update_mqtt(self):
+        await self.C.publish('dmx-mainhall/current_state', json.dumps(channel_state.as_dict()).encode('utf-8'), qos=0x00, retain=True)
 
-    def on_message(self, client, userdata, message):
-        self.message_queue.append(message.payload.decode('utf8'))
-    
-    async def every_semisecond(self, loop):
-        self.client.connect(self.mqtt_server)
+    async def mqtt_loop(self, loop, mqtt_server):
+        self.C = MQTTClient()
+        url = "mqtt://{}:{}/".format(mqtt_server, 1883)
+        log.debug("Connecting to MQTT server '{}'".format(url))
+        await self.C.connect(url)
+        channel_state.subscribe(self.update_mqtt)
+        fix = json.dumps(channel_state.fixtures()).encode('utf-8')
+        await self.C.publish('dmx-mainhall/fixtures', fix, qos=0x00, retain=True)
+        await self.C.publish('dmx-mainhall/current_state', json.dumps(channel_state.as_dict()).encode('utf-8'), qos=0x00, retain=True)
+        await self.C.subscribe([ ('dmx-mainhall/state', QOS_1), ])
         while loop.is_running():
-            if self.message_queue:
-                log.debug(self.message_queue)
-                log.debug(self.message_queue.popleft())
-            else:
-                await asyncio.sleep(.5)
-
-async def mqtt_loop(loop, mqtt_server):
-    C = MQTTClient()
-    url = "mqtt://{}:{}/".format(mqtt_server, 1883)
-    log.debug("Connecting to MQTT server '{}'".format(url))
-    await C.connect(url)
-    fix = json.dumps(channel_state.fixtures()).encode('utf-8')
-    await C.publish('dmx-mainhall/fixtures', fix, qos=0x00)
+            message = await self.C.deliver_message()
+            packet = message.publish_packet
+            log.debug("%d: %s => %s" % (i, packet.variable_header.topic_name, str(packet.payload.data)))
