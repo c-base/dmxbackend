@@ -25,7 +25,6 @@ ch.setFormatter(formatter)
 # add ch to logger
 log.addHandler(ch)
 
-
 PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '..')
 image_queue = None
 light_mapping = None

@@ -4,7 +4,7 @@
 """main.py
 
 Usage:
-  main.py <qxw_file> <positions_file> [--usb <usb_device>] [--debug]
+  main.py <qxw_file> <positions_file> [--usb <usb_device>] [--mqtt <mqtt_server>] [--debug]
   
   
 """
@@ -25,6 +25,7 @@ from dmxbackend.parse_qxw import find_fixtures
 from dmxbackend.parse_qxw import get_mapping_from_qxw
 from dmxbackend.artnet_server import ArtNetServerProtocol
 from dmxbackend import channel_state
+from dmxbackend.mqtt import AsyncMQTT
 
 log = logging.getLogger(__name__)
 
@@ -38,7 +39,7 @@ def prepare_mapping(qxw_filename, positions):
     return mapping
 
 
-def run_main_loop(usb_device, qxw_filename, pos_filename):
+def run_main_loop(usb_device, qxw_filename, pos_filename, mqtt_server):
     loop = asyncio.get_event_loop()
     positions = configparser.ConfigParser()
     positions.read('pod_filename')
@@ -65,6 +66,10 @@ def run_main_loop(usb_device, qxw_filename, pos_filename):
     ## Webserver
     app = setup_web_app(image_queue, mapping)
     channel_state.initialize_state(mapping)
+    
+    if mqtt_server is not None:
+        async_mqtt = AsyncMQTT(mqtt_server=mqtt_server)
+        asyncio.ensure_future(async_mqtt.every_semisecond(loop))
 
     try:
         web.run_app(app, loop=loop)
@@ -89,6 +94,6 @@ if __name__ == '__main__':
     ch.setFormatter(formatter)
     root.addHandler(ch)
 
-    run_main_loop(arguments['<usb_device>'], arguments['<qxw_file>'], arguments['<positions_file>'])
+    run_main_loop(arguments['<usb_device>'], arguments['<qxw_file>'], arguments['<positions_file>'], arguments['<mqtt_server>'])
 
 
