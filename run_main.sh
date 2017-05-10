@@ -1,4 +1,4 @@
 #!/bin/bash
 
 source ~/.virtualenvs/dmxbackend/bin/activate
-python ./main.py tests/mainhall_2017_010.qxw --usb /dev/ttyUSB0
+python ./main.py tests/mainhall_2017_010.qxw tests/mainhall_2017_010.ini --usb /dev/ttyUSB0

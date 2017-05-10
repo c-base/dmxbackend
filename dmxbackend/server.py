@@ -30,10 +30,10 @@ image_queue = None
 light_mapping = None
 
 
-async def handle_get(request):
-    # name = request.match_info.as_dict('name', "Anonymous")
-    text = "OK, Content-Type: " + request.content_type
-    return web.Response(text=text)
+async def handle_index(request):
+    path=os.path.join(PROJECT_ROOT, 'static/index.html')
+    with open(path, mode="r") as index_file:
+        return web.Response(body=index_file.read(), content_type="text/html")
 
 
 async def retrieve_image(post_data):
@@ -91,6 +91,7 @@ async def websocket_handler(request):
                 await ws.close()
             else:
                 new_data = json.loads(msg.data)
+                log.debug("new data is type {}".format(type(new_data)))
                 channel_state.update_channels(new_data)
         elif msg.type == aiohttp.WSMsgType.ERROR:
             log.warning('ws connection closed with exception %s' %
@@ -110,11 +111,11 @@ def setup_web_app(queue, mapping):
     app.router.add_get('/api/v1/fixtures/', fixtures)
     app.router.add_get('/api/v1/websocket_state/', websocket_handler)
     app.router.add_get('/api/v1/state/', get_state)
-
-
-    app.router.add_get('/', handle_get)
-    app.router.add_post('/', handle_post)
-    app.router.add_static('/static/',
-                          path=os.path.join(PROJECT_ROOT, 'static'),
+    app.router.add_static('/assets',
+                          path=os.path.join(PROJECT_ROOT, 'static/assets'),
                           name='static')
+    app.router.add_post('/', handle_post)
+    # Catch all
+    r = app.router.add_resource(r'/{name:.*}')
+    r.add_route('GET', handle_index)
     return app
