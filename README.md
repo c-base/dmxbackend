@@ -32,7 +32,7 @@ You can upload a image (PNG or JPG). Each line in the image represents one frame
 When you upload the file the animation is played with a frame-rate of 25 fps.
 
 ```
-curl -v --data 'file=@tests/Example.png' http://localhost:8080/
+curl -v --data 'file=@tests/Example.png' http://dmx/
 ```
 
 ## Update the State Using MQTT
