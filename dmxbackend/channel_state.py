@@ -89,17 +89,20 @@ def notify():
     now = datetime.now()
 
     # Update the the outgoing channels every second.
-    if (now - _last_notify).total_seconds() >= 1.0:
+    if (now - _last_notify).total_seconds() >= 5.0:
         for call_when_updated in _subscribers:
             asyncio.ensure_future(call_when_updated())
         for call_when_updated in _dmx_subscribers:
             asyncio.ensure_future(call_when_updated())
+        _last_notify = now
+        _last_dmx_notify = now
         return
 
     # Update DMX 25 times per second if the other channels did not update.
     if (now - _last_notify).total_seconds() >= 0.04:
         for call_when_updated in _dmx_subscribers:
             asyncio.ensure_future(call_when_updated())
+        _last_dmx_notify = now
 
         
 def fixtures():
