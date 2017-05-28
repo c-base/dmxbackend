@@ -32,7 +32,7 @@ def create_enttec_dmx_message(dmx_bytes:bytearray):
 class EnttecProtocol(asyncio.Protocol):
     def connection_made(self, transport):
         self.transport = transport
-        channel_state.subscribe(self.notify_dmx)
+        channel_state.subscribe_dmx(self.notify_dmx)
         log.info('Serial port opened: %s' % transport)
         transport.serial.rts = False
 

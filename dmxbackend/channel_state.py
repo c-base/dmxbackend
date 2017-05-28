@@ -11,6 +11,8 @@ _state = None
 _last_update = None
 _subscribers = []
 _dmx_subscribers = []
+_last_notify = datetime.now()
+_last_dmx_notify = datetime.now()
 _dmx = None
 _mapping = None
 
@@ -77,10 +79,28 @@ def subscribe(call_when_updated):
     _subscribers.append(call_when_updated)
 
 
+def subscribe_dmx(call_when_updated):
+    _dmx_subscribers.append(call_when_updated)
+
+
 def notify():
-    for call_when_updated in _subscribers:
-        asyncio.ensure_future(call_when_updated())
-        
+    global _last_notify
+    global _last_dmx_notify
+    now = datetime.now()
+
+    # Update the the outgoing channels every second.
+    if (now - _last_notify).total_seconds() >= 1.0:
+        for call_when_updated in _subscribers:
+            asyncio.ensure_future(call_when_updated())
+        for call_when_updated in _dmx_subscribers:
+            asyncio.ensure_future(call_when_updated())
+        return
+
+    # Update DMX 25 times per second if the other channels did not update.
+    if (now - _last_notify).total_seconds() >= 0.04:
+        for call_when_updated in _dmx_subscribers:
+            asyncio.ensure_future(call_when_updated())
+
         
 def fixtures():
     global _mapping
