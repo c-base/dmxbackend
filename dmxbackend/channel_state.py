@@ -15,6 +15,7 @@ _last_notify = datetime.now()
 _last_dmx_notify = datetime.now()
 _dmx = None
 _mapping = None
+_enabled = False
 
 
 log = logging.getLogger(__name__)
@@ -25,6 +26,8 @@ def initialize_state(mapping):
     global _last_update
     global _dmx
     global _mapping
+    global _enabled
+    _enabeld = False
     _dmx = bytearray(512)
     _state = OrderedDict()
     _mapping = mapping
@@ -136,9 +139,5 @@ def as_dmx():
 def as_dict():
     global _state
     return _state
-
-
-
-
 
 

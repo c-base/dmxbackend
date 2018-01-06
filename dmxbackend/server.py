@@ -60,6 +60,34 @@ async def fixtures(request):
     return web.json_response(ret, dumps=dump)
 
 
+async def automode_post(request):
+    post_data = await request.post()
+    param = post_data.get('automode', None)
+    if param == '1':
+        channel_state._enabled = True
+    else:
+        channel_state._enabled = False
+    channel_state.notify()
+    response = await automode(request)
+    return response
+    
+
+async def automode(request):
+    is_enabled = channel_state._enabled
+    html_value = 'checked' if is_enabled == True else ''
+    html = '''
+    <html>
+        <body>
+            <form method="post">
+                <input type="checkbox" name="automode" value="1" {}> Farbgeber aktiviert<br>
+                <input type="submit">
+            </form>
+        </body>
+    </html>
+    '''.format(html_value)
+    return web.Response(body=html, content_type="text/html")
+
+
 async def get_state(request):
     return web.json_response(channel_state.as_dict())
 
@@ -104,6 +132,8 @@ def setup_web_app(queue, mapping):
     image_queue = queue
     app = web.Application()
     app.router.add_get('/api/v1/fixtures/', fixtures)
+    app.router.add_get('/automode/', automode)
+    app.router.add_post('/automode/', automode_post)
     app.router.add_get('/api/v1/websocket_state/', websocket_handler)
     app.router.add_get('/api/v1/state/', get_state)
     app.router.add_static('/assets',
