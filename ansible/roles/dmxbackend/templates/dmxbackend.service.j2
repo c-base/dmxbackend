@@ -1,0 +1,16 @@
+[Unit]
+Description=DMX Backend
+
+[Service]
+Environment=""
+WorkingDirectory={{ project_root }}
+ExecStart={{ project_root }}/run_main.sh
+User=root
+Restart=always
+KillSignal=SIGQUIT
+Type=simple
+StandardError=syslog
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target

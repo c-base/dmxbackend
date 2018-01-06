@@ -1,0 +1,11 @@
+---
+# This playbook deploys the whole application stack in this site.
+
+- name: configure and deploy the webservers and application code
+  hosts: dmxbackends
+#     user: deploy
+
+  roles:
+    - all
+    - base
+    - dmxbackend

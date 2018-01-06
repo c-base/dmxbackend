@@ -1,0 +1,3 @@
+
+[dmxbackends]
+dmx.cbrp3.c-base.org	project_root=/home/uk/dmxbackend ansible_ssh_host=10.0.1.133

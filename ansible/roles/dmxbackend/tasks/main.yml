@@ -1,0 +1,159 @@
+---
+# These tasks installs the PItouch CMS.
+
+- name: Install dmxbackend system dependencies
+  become: yes
+  become_user: root
+  apt: name={{ item }} state=present
+  with_items:
+   - python3-pip
+
+- name: Copy the code from repository
+  git: repo={{ repository }} dest={{ project_root }} version=master
+  become: yes
+  become_user: root
+  args:
+    accept_hostkey: yes
+  notify:
+   - Restart dmxbackend
+  tags: git,codechange
+
+- name: Upgrade the virtualenv.
+  pip: virtualenv_python=python3 requirements={{ project_root }}/requirements.txt virtualenv={{ virtualenvs_root }}/{{ project_name }}
+  notify:
+    - Restart dmxbackend
+  tags: codechange
+
+#- name: Enable docker service
+#  become: yes
+#  become_user: root
+#  service: name=docker state=started enabled=yes
+
+#- name: Upload Private SSH key for github
+#  copy: src=github.pem dest=/home/{{ ansible_ssh_user }}/.ssh/id_rsa mode=0600
+
+
+#- name: Upload celery init script.
+#  sudo: yes
+#  template: src=celery.init.j2 dest=/etc/init.d/celery-{{ ansible_ssh_user }} mode=0755
+#  notify:
+#        - Restart celery
+
+#- name: Enable celery init script.
+#  sudo: yes
+#  command: touch "/var/log/celery-{{ ansible_ssh_user }}.log" && chown "{{ ansible_ssh_user }}" "/var/log/celery-{{ ansible_ssh_user }}.log" && update-rc.d "celery-{{ ansible_ssh_user }}" defaults
+
+
+#- name: Upload uwsgi emperor service file.
+#  become: yes
+#  become_user: root
+#  template: src=emperor.uwsgi.service.j2 dest=/etc/systemd/system/emperor.uwsgi.service mode=0755
+#  notify:
+#        - Restart uwsgi
+#
+- name: Upload dmxbackend service file.
+  become: yes
+  become_user: root
+  template: src=dmxbackend.service.j2 dest=/etc/systemd/system/dmxbackend.service mode=0755
+  notify:
+   - Restart dmxbackend
+
+- name: Daemon reload
+  become: yes
+  become_user: root
+  shell: cmd="/bin/systemctl daemon-reload"
+
+#- name: celery service state
+#  #become: yes
+#  become_user: root
+#  service: name=celery state=started enabled=yes
+
+#- name: redis service state
+#  become: yes
+#  become_user: root
+#  service: name=redis-server state=started enabled=yes
+
+#- name: emperor.uwsgi service state
+#  become: yes
+#  become_user: root
+#  service: name=emperor.uwsgi state=started enabled=yes
+
+#- name: Cronjob to restart elasticsearch once a week
+#  sudo: yes
+#  cron: minute="45" hour="10" weekday="sun"
+#        name="Restart elasticsearch once a week"
+#        user="root" job="service elasticsearch restart"
+
+#- name: Cronjob to rebuild the search index every day
+#  sudo: yes
+#  cron: minute="30" hour="16"
+#        name="Rebuild search index once a day"
+#        user="root" job="/home/{{ ansible_ssh_user }}/pitouch-backend/src/rebuild_index.sh"
+
+#- name: Copy the code from repository
+#  git: repo={{ repository }} dest={{ project_root }}
+#  args:
+#    accept_hostkey: yes
+#  notify:
+#        - Restart uwsgi
+#        - Restart nginx
+#        - Restart celery
+#  tags: git
+#  register: git
+
+#- name: Create local django user
+#  become: root
+#  user:
+#    name: "{{ django_user }}"
+#    shell: /bin/bash
+#    groups: www-data,sudo
+#    append: yes
+
+
+#- name: Load private deployment key
+#  include_vars: "deploykeys.yml"
+#  no_log: true
+#  tags: git,codechange
+
+
+
+
+#- name: Install a cronjob
+#  cron:
+#    user: "django"
+#    minute: "*/5"
+#    name: "whatsmyname"
+#    job: "/opt/{{ project_root }}#/run_userrankings.sh"
+#  tags: codechange
+
+
+# copy from local machine
+#- name: Upload configuration.
+#  template: src=local_settings.j2 dest={{ project_root }}/src/pitouch_backend/local_settings.py
+
+#- name: Install bower dependencies
+#  shell: bower install
+#  args:
+#    chdir: /home/{{ ansible_ssh_user }}/pitouch-backend/
+
+#- name: Create Sphinx documentation
+#  shell: . /home/{{ ansible_ssh_user }}/.virtualenvs/pitouch-backend/bin/activate ; ./make_docs.sh
+#  args:
+#    chdir: /home/{{ ansible_ssh_user }}/pitouch-backend/
+
+
+#- name: Migrate database
+#  django_manage: >
+#    command=migrate
+#    app_path={{ project_root }}
+#    settings=config.settings.production
+#    virtualenv={{ virtualenvs_root }}/{{ project_name }}
+#  tags: codechange
+
+#- name: Collect static files
+#  django_manage: >
+#    command=collectstatic
+#    app_path={{ project_root }}
+#    settings=config.settings.production
+#    virtualenv={{ virtualenvs_root }}/{{ project_name }}
+#  tags: codechange

@@ -1,0 +1,12 @@
+---
+# Variables listed here are applicable to all host groups
+
+project_name: dmxbackend
+# Add the SSH path to the repository here.
+repository: https://github.com/c-base/dmxbackend.git
+backend_user: uk
+database_name: "{{ project_name }}"
+database_user: "{{ django_user }}"
+# database_password: test123 -> see vault secrets.yml for this variable
+project_root: /home/{{ backend_user }}/{{ project_name }}/
+virtualenvs_root: /home/{{ backend_user }}/.virtualenvs

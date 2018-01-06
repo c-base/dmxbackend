@@ -1,0 +1,17 @@
+---
+# Any module can be used for the handler action
+#- name: Restart uwsgi
+#  become: yes
+#  become_user: root
+#  action: service name=emperor.uwsgi state=restarted enabled=true
+
+# Any module can be used for the handler action
+#- name: Reload uwsgi
+#  shell: touch --no-dereference {{ project_root }}/touch-reload.ini
+
+# Any module can be used for the handler action
+- name: Restart dmxbackend
+  become: yes
+  become_user: root
+  action: service name=dmxbackend state=restarted enabled=true
+

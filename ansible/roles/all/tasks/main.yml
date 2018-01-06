@@ -1,0 +1,7 @@
+---
+# These tasks load things needed by all others
+
+#- name: Load secrets
+#  include_vars: "secrets.yml"
+#  no_log: true
+#  tags: git,codechange
