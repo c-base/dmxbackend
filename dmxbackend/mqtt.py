@@ -93,7 +93,8 @@ class AsyncMQTT(object):
                 log.debug("/////////// HIER /////////////////")
                 decoded = None
                 try:
-                    decoded = json.loads(packet.payload.data)
+                    # bytearrays need to be decoded before running json.loads - but only in python3.5
+                    decoded = json.loads(packet.payload.data.decode('utf-8'))
                 except:
                     pass
                 if decoded is not None and isinstance(decoded, list):
