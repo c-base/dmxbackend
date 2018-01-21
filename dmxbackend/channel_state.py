@@ -42,10 +42,10 @@ def update_channels(new_data):
     global _dmx
     global _state
 
-    log.debug("Before update: {}".format(_state))
+    ##log.debug("Before update: {}".format(_state))
     for el in new_data:
         _state[el['channel_id']] = el['value']
-    log.debug("After update:  {}".format(_state))
+    ##log.debug("After update:  {}".format(_state))
 
     # convert channels to DMX
     for light in _mapping:

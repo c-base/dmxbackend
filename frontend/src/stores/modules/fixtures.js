@@ -110,9 +110,9 @@ const actions = {
       value = 0;
     }
     commit('setChannel', [channel_id, value]);
-    if (socket.readyState === 1) {
-      socket.send( JSON.stringify([{'channel_id': channel_id, 'value': value}]) )
-    }
+    //if (socket.readyState === 1) {
+    socket.send( JSON.stringify([{'channel_id': channel_id, 'value': value}]) )
+    //}
 
   },
   connect({ commit }) {

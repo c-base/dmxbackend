@@ -19,29 +19,13 @@ export default {
     'elements'
   ],
   data: function() {
-    let r = 0;
-    let g = 0;
-    let b = 0;
-    for (let el of this.elements) {
-      for (let chan of el.channels) {
-        if (chan.name === 'r') {
-          r = chan.value;
-        }
-        if (chan.name === 'g') {
-          g = chan.value;
-        }
-        if (chan.name === 'b') {
-          r = chan.value;
-        }
-      }
-    }
-
     return {
       isOpen: false,
-      myColor: chroma([r,g,b]).hex()
+      myColor: '#000000'
     }
   },
   computed: {
+    ...mapGetters(['channelState']),
     myStyle() {
       return {
         top: `${ this.posY }px`,
@@ -71,18 +55,41 @@ export default {
       for (let el of this.elements) {
         for (let chan of el.channels) {
           if (chan.name === 'r') {
-            this.updateChannel([chan.name, r])
+            this.updateChannel([chan.channel_id, r])
           }
           if (chan.name === 'g') {
-            this.updateChannel([chan.name, g])
+            this.updateChannel([chan.channel_id, g])
           }
           if (chan.name === 'b') {
-            this.updateChannel([chan.name, g])
+            this.updateChannel([chan.channel_id, b])
           }
         }
       }
+    },
+    doColor() {
+      let r = 0;
+      let g = 0;
+      let b = 0;
+      for (let el of this.elements) {
+        for (let chan of el.channels) {
+          if (chan.name === 'r') {
+            r = this.channelState[chan.channel_id];
+          }
+          if (chan.name === 'g') {
+            g = this.channelState[chan.channel_id];
+          }
+          if (chan.name === 'b') {
+            b = this.channelState[chan.channel_id];
+          }
+        }
+      }
+      this.myColor = chroma([r, g, b]).hex();
     }
-
+  },
+  watch: {
+    channelState: function(oldValue, newValue) {
+      this.doColor();
+    }
   }
 }
 </script>
