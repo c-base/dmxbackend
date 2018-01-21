@@ -120,6 +120,7 @@ def fixtures():
         one_light = {
             'fixture_id': "dmx-%d-%d" % (1, light.address + 1),
             'name': light.name,
+            'model': light.model,
             'pos_x': light.pos_x,
             'pos_y': light.pos_y,
             'elements': light.elements

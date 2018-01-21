@@ -1,3 +1,10 @@
+<!--
+
+  This is a legacy component.
+
+  It has been replace with RoomMap.vue
+
+-->
 <template>
   <div>
   <fixture-item v-for="fix in fixtures"

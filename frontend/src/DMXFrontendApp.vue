@@ -2,14 +2,23 @@
   <div class="container" v-if="fixturesLoaded">
 
     <div class="row">
-      <div class="col-12">
+      <div class="col-6">
         <h1>c-base dmx</h1>
+      </div>
+      <div class="col-6 text-right">
+        WebSocket:
+        <template v-if="isConnected">
+          Connected.
+        </template>
+        <template v-else>
+          Offline.
+        </template>
       </div>
     </div>
 
     <div class="row">
       <div class="col-12">
-        <fixture-list :fixtures="fixtures"></fixture-list>
+        <room-map :fixtures="fixtures"></room-map>
       </div>
     </div>
 
@@ -27,7 +36,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import Spinner from './components/Spinner.vue'
-import FixtureList from './components/FixtureList.vue'
+import RoomMap from './components/RoomMap.vue'
 
 // 20% kaltweis
 // 40% warmmweiss
@@ -36,7 +45,7 @@ import FixtureList from './components/FixtureList.vue'
 export default {
   components: {
     Spinner,
-    FixtureList,
+    RoomMap,
   },
   data: function() {
     return {
@@ -47,7 +56,7 @@ export default {
     ...mapActions(['loadFixtures', 'loadChannelState', 'connect']),
   },
   computed: {
-    ...mapGetters(['fixtures', 'fixturesLoaded'])
+    ...mapGetters(['fixtures', 'fixturesLoaded', 'isConnected',])
   },
   created: function() {
     this.loadFixtures();
