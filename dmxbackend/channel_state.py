@@ -51,6 +51,11 @@ def update_channels(new_data):
     for light in _mapping:
         try:
             for dmx_addr, val in light.state_to_dmx(_state):
+                # Values for bytes must be in range [0, 256]
+                if val > 255:
+                    val = 255
+                if val < 0:
+                    val = 0
                 _dmx[dmx_addr] = val
         except NotImplementedError:
             log.debug("state_to_dmx() not implemented in {}".format(light))

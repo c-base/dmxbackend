@@ -118,11 +118,10 @@ async def websocket_handler(request):
                   ws.exception())
 
     print('websocket connection closed')
-
     return ws
 
 
-def setup_web_app(queue, mapping):
+def setup_web_app(queue, mapping, dev_mode):
     global image_queue
     
     # TODO: Deleteme
@@ -136,11 +135,20 @@ def setup_web_app(queue, mapping):
     app.router.add_post('/automode/', automode_post)
     app.router.add_get('/api/v1/websocket_state/', websocket_handler)
     app.router.add_get('/api/v1/state/', get_state)
-    app.router.add_static('/assets',
-                          path=os.path.join(PROJECT_ROOT, 'static/assets'),
+    app.router.add_static('/static',
+                          path=os.path.join(PROJECT_ROOT, 'static/'),
                           name='static')
+    if dev_mode is True:
+        app.router.add_static('/dist',
+                              path=os.path.join(PROJECT_ROOT, 'frontend/dist/'),
+                              name='dist')
+    else:
+        app.router.add_static('/dist',
+                              path=os.path.join(PROJECT_ROOT, 'frontend/release/'),
+                              name='dist')
     app.router.add_post('/', handle_post)
+    app.router.add_get('/', handle_index)
     # Catch all
-    r = app.router.add_resource(r'/{name:.*}')
-    r.add_route('GET', handle_index)
+    #r = app.router.add_resource(r'/{name:.*}')
+    #r.add_route('GET', handle_index)
     return app

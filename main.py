@@ -14,9 +14,10 @@ import sys
 import logging
 import asyncio
 import configparser
+import click
+
 from aiohttp import web
 from serial.aio import create_serial_connection
-from docopt import docopt
 
 from dmxbackend.animation import animation_loop
 from dmxbackend.enttex_usb_dmx import EnttecProtocol
@@ -46,7 +47,7 @@ def prepare_mapping(qxw_filename, positions):
     return mapping
 
 
-def run_main_loop(usb_device, qxw_filename, pos_filename, mqtt_server):
+def run_main_loop(usb_device, qxw_filename, pos_filename, mqtt_server, port, dev_mode):
     loop = asyncio.get_event_loop()
     positions = configparser.ConfigParser()
     positions.read(pos_filename)
@@ -71,7 +72,7 @@ def run_main_loop(usb_device, qxw_filename, pos_filename, mqtt_server):
     asyncio.ensure_future( animation_loop(loop, image_queue, 1/30, None, mapping) )
 
     ## Webserver
-    app = setup_web_app(image_queue, mapping)
+    app = setup_web_app(image_queue, mapping, dev_mode)
     channel_state.initialize_state(mapping)
     
     if mqtt_server is not None:
@@ -80,7 +81,7 @@ def run_main_loop(usb_device, qxw_filename, pos_filename, mqtt_server):
         asyncio.ensure_future(async_mqtt.mqtt_loop(loop, mqtt_server))
 
     try:
-        web.run_app(app, loop=loop, port=80)
+        web.run_app(app, loop=loop, port=port)
     except KeyboardInterrupt:
         pass
 
@@ -89,10 +90,14 @@ def run_main_loop(usb_device, qxw_filename, pos_filename, mqtt_server):
     loop.close()
 
 
-if __name__ == '__main__':
-    arguments = docopt(__doc__, version='main.py 0.9')
-
-
+@click.command()
+@click.argument('qxw_file')
+@click.argument('pos_file')
+@click.option('--usb', default=None, help='USB device')
+@click.option('--mqtt', default=None, help='MQTT server')
+@click.option('--port', default=80, help='Web server port')
+@click.option('--devmode', default=False)
+def main(qxw_file, pos_file, usb, mqtt, port, devmode):
     root = logging.getLogger()
     root.setLevel(logging.DEBUG)
 
@@ -102,6 +107,12 @@ if __name__ == '__main__':
     ch.setFormatter(formatter)
     root.addHandler(ch)
 
-    run_main_loop(arguments['<usb_device>'], arguments['<qxw_file>'], arguments['<positions_file>'], arguments['<mqtt_server>'])
+    dev_mode_on = True
+    if devmode is False:
+        dev_mode_on = False
+
+    run_main_loop(usb, qxw_file, pos_file, mqtt, port, dev_mode_on)
 
 
+if __name__ == '__main__':
+    main()
