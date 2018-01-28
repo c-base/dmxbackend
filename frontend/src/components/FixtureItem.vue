@@ -7,24 +7,16 @@
                :elements="elements">
     </component>
   </div>
-
 </template>
-<!--<div>-->
-    <!--<h5>{{ name }} <small>id="{{ fixtureId }}"</small></h5>
-
-    <light-element v-for="el in elements"
-                   :key="el.name"
-                   :name="el.name"
-                   :channels="el.channels">
-    </light-element>-->
-  <!--</div>-->
 <script>
 import LightElement from './LightElement.vue'
+import Octagon from './Octagon.vue'
 import RGBSpot from './RGBSpot.vue'
 
 export default {
   name: 'fixture-item',
   components: {
+    Octagon,
     RGBSpot,
     LightElement
   },
@@ -47,6 +39,9 @@ export default {
       return `spot-${ this.fixtureId }`;
     },
     lightType() {
+      if (this.model === 'Octagon') {
+        return Octagon;
+      }
       return RGBSpot;
     }
   },

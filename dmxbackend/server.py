@@ -9,7 +9,7 @@ from aiohttp import web
 from PIL import Image
 from io import BytesIO
 from dmxbackend import channel_state
-
+from dmxbackend import presets
 
 log = logging.getLogger(__name__)
 # create console handler and set level to debug
@@ -121,6 +121,13 @@ async def websocket_handler(request):
     return ws
 
 
+async def json_respond(request, call_func, arguments=None):
+    if arguments == None:
+        arguments = []
+    response = call_func(*arguments)
+    return web.Response(body=json.dumps(response), content_type='application/json')
+
+
 def setup_web_app(queue, mapping, dev_mode):
     global image_queue
     
@@ -135,6 +142,11 @@ def setup_web_app(queue, mapping, dev_mode):
     app.router.add_post('/automode/', automode_post)
     app.router.add_get('/api/v1/websocket_state/', websocket_handler)
     app.router.add_get('/api/v1/state/', get_state)
+
+    async def get_presets(request):
+        return await json_respond(request, presets.get_presets, arguments=['bla'])
+    app.router.add_get('/api/v1/presets/', get_presets)
+
     app.router.add_static('/static',
                           path=os.path.join(PROJECT_ROOT, 'static/'),
                           name='static')
