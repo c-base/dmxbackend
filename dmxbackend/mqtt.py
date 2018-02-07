@@ -74,7 +74,7 @@ class AsyncMQTT(object):
         self.C = MQTTClient(config={
             'auto_reconnect': True,
             'reconnect_max_interval': 10,
-            'reconnect_retries': 100,
+            'reconnect_retries': 100000,
         })
         url = "mqtt://{}:{}/".format(mqtt_server, 1883)
         log.debug("Connecting to MQTT server '{}'".format(url))
@@ -89,11 +89,11 @@ class AsyncMQTT(object):
         while loop.is_running():
             message = None 
             try:
-                message = await self.C.deliver_message(timeout=120)
+                message = await self.C.deliver_message(timeout=600)
             except asyncio.TimeoutError as e:
                 pass
-                
-            log.debug("Mesage is %s" % message)
+
+            # after a successful reconnect we need to resubscribe
             if message is None:
                 try:
                     await self.C.unsubscribe(['dmx-mainhall/state', ])
@@ -102,12 +102,9 @@ class AsyncMQTT(object):
                     pass
                 continue
 
-            log.debug('Message; %s' % message)
             packet = message.publish_packet
-            log.debug('Packet; %s' % packet)
             # log.debug("%d: %s => %s" % (i, packet.variable_header.topic_name, str(packet.payload.data)))
             topic = packet.variable_header.topic_name
-            log.debug('Topic; %s' % topic)
             if topic == 'dmx-mainhall/state':
                 decoded = None
                 try:
