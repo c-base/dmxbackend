@@ -89,9 +89,12 @@ class AsyncMQTT(object):
         while loop.is_running():
 
             message = await self.C.deliver_message()
+            log.debug('Message; %s' % message)
             packet = message.publish_packet
+            log.debug('Packet; %s' % packet)
             # log.debug("%d: %s => %s" % (i, packet.variable_header.topic_name, str(packet.payload.data)))
             topic = packet.variable_header.topic_name
+            log.debug('Topic; %s' % topic)
             if topic == 'dmx-mainhall/state':
                 decoded = None
                 try:
