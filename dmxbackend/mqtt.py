@@ -73,8 +73,8 @@ class AsyncMQTT(object):
     async def mqtt_loop(self, loop, mqtt_server):
         self.C = MQTTClient(config={
             'auto_reconnect': True,
-            'reconnect_max_interval': 5,
-            'reconnect_retries': 30,
+            'reconnect_max_interval': 10,
+            'reconnect_retries': 100,
         })
         url = "mqtt://{}:{}/".format(mqtt_server, 1883)
         log.debug("Connecting to MQTT server '{}'".format(url))
@@ -87,8 +87,21 @@ class AsyncMQTT(object):
         await self.C.subscribe([ ('dmx-mainhall/state', QOS_0), ])
         asyncio.ensure_future(self.discovery_loop(loop))
         while loop.is_running():
+            message = None 
+            try:
+                message = await self.C.deliver_message(timeout=120)
+            except asyncio.TimeoutError as e:
+                pass
+                
+            log.debug("Mesage is %s" % message)
+            if message is None:
+                try:
+                    await self.C.unsubscribe(['dmx-mainhall/state', ])
+                    await self.C.subscribe([ ('dmx-mainhall/state', QOS_0), ])
+                except:
+                    pass
+                continue
 
-            message = await self.C.deliver_message()
             log.debug('Message; %s' % message)
             packet = message.publish_packet
             log.debug('Packet; %s' % packet)
