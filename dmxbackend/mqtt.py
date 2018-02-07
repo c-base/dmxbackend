@@ -67,11 +67,15 @@ class AsyncMQTT(object):
                 }
             }
             log.debug(json.dumps(msg, indent=2))
-            await self.C.publish('fbp', json.dumps(msg).encode('utf-8'), qos=0x00, retain=True)
-            await asyncio.sleep(10.0)
+            await self.C.publish('fbp', json.dumps(msg).encode('utf-8'), qos=0x00, retain=False)
+            await asyncio.sleep(20.0)
 
     async def mqtt_loop(self, loop, mqtt_server):
-        self.C = MQTTClient()
+        self.C = MQTTClient(config={
+            'auto_reconnect': True,
+            'reconnect_max_interval': 5,
+            'reconnect_retries': 30,
+        })
         url = "mqtt://{}:{}/".format(mqtt_server, 1883)
         log.debug("Connecting to MQTT server '{}'".format(url))
         await self.C.connect(url)
@@ -82,15 +86,13 @@ class AsyncMQTT(object):
         await self.C.publish('dmx-mainhall/automode', json.dumps(channel_state._enabled).encode('utf-8'), qos=0x00, retain=True)
         await self.C.subscribe([ ('dmx-mainhall/state', QOS_0), ])
         asyncio.ensure_future(self.discovery_loop(loop))
-        i = 0
         while loop.is_running():
-            i += 1
+
             message = await self.C.deliver_message()
             packet = message.publish_packet
-            log.debug("%d: %s => %s" % (i, packet.variable_header.topic_name, str(packet.payload.data)))
+            # log.debug("%d: %s => %s" % (i, packet.variable_header.topic_name, str(packet.payload.data)))
             topic = packet.variable_header.topic_name
             if topic == 'dmx-mainhall/state':
-                log.debug("/////////// HIER /////////////////")
                 decoded = None
                 try:
                     # bytearrays need to be decoded before running json.loads - but only in python3.5
