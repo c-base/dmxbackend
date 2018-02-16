@@ -15,7 +15,6 @@ class DMXMapping(object):
 
     def map_pixel_to_channels(self, line):
         """
-
         :param line:
         :return: A tuple of (DMX address, value)
         """
@@ -113,6 +112,16 @@ class RGBMapping(DMXMapping):
                 {'name': 'b', 'channel_id': self.light_id + '/rgb/b'}
             ]
         }]
+
+
+class StairVilleMapping(RGBMapping):
+    """
+    The older StairVille models have a different channel layout.
+    Channel 1 is mode, Channels 2-4 are RGB.
+    """
+    def __init__(self, model, name, address, pixel):
+        # the first 2 addresses in 26-channel mode are reserved for functions
+        super().__init__(model, name, int(address)+1, pixel)
 
 
 class GigabarMapping(RGBMapping):

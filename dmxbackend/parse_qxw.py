@@ -3,6 +3,7 @@
 import xml.etree.ElementTree as ET
 from .channel_mapping import (
     RGBMapping,
+    StairVilleMapping,
     GigabarMapping,
     OctagonMapping,
     DimmerMapping,
@@ -45,7 +46,10 @@ def map_fixture(fixture, first_pixel):
     channels = retrieve(fixture, 'Channels')[0].text
 
     if model == 'LED PAR56':
-        return [RGBMapping(model, name, address, first_pixel)]
+        if manufacturer == 'Stairville':
+            return [StairVilleMapping(model, name, address, first_pixel)]
+        elif manufacturer == 'Eurolite':
+            return [RGBMapping(model, name, address, first_pixel)]
     elif model == 'LED Flood Panel 150':
         return [RGBMapping(model, name, address, first_pixel)]
     elif model == 'Gigabar II':
