@@ -246,3 +246,22 @@ class DimmerMapping(DMXMapping):
                 {'name': 'dim4', 'channel_id': self.light_id + '/dimmer/dim4'}
             ],
         }]
+
+    def state_to_dmx(self, data_dict):
+        channel_ids = [
+            self.light_id + '/dimmer/dim1',
+            self.light_id + '/dimmer/dim2',
+            self.light_id + '/dimmer/dim3',
+            self.light_id + '/dimmer/dim4'
+        ]
+        return self.map_consecutive_channels(data_dict, channel_ids)
+
+    def dmx_to_state(self, dmx_data):
+        channel_ids = [
+            self.light_id + '/dimmer/dim1',
+            self.light_id + '/dimmer/dim2',
+            self.light_id + '/dimmer/dim3',
+            self.light_id + '/dimmer/dim4',
+        ]
+        return self.map_consecutive_dmx(dmx_data, self.address, channel_ids)
+
