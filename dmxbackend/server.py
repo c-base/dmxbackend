@@ -150,6 +150,9 @@ def setup_web_app(queue, mapping, dev_mode):
     app.router.add_static('/static',
                           path=os.path.join(PROJECT_ROOT, 'static/'),
                           name='static')
+    app.router.add_static('/assets',
+                          path=os.path.join(PROJECT_ROOT, 'static/assets'),
+                          name='assets')
     if dev_mode is True:
         app.router.add_static('/dist',
                               path=os.path.join(PROJECT_ROOT, 'frontend/dist/'),
