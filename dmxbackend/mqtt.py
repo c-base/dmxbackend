@@ -6,8 +6,8 @@ import logging
 import json
 import paho.mqtt.client as mqtt
 from collections import deque
-from hbmqtt.client import MQTTClient, ConnectException
-from hbmqtt.mqtt.constants import *
+from amqtt.client import MQTTClient, ConnectError
+from amqtt.mqtt.constants import *
 
 from dmxbackend import channel_state
 
@@ -118,4 +118,3 @@ class AsyncMQTT(object):
                     log.warning("Something went wrong deserializing the string '%s'" % packet.payload.data)
             else:
                 log.info("Got unknown topic '%s'" % topic)
-                    

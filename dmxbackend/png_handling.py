@@ -3,6 +3,7 @@ import logging
 
 log = logging.getLogger(__name__)
 
+
 def image_line_to_dmx(line, mapping_list, dmx_packet_old=None):
     dmx_packet = bytearray(512)
     for mapping in mapping_list:
@@ -26,5 +27,3 @@ async def get_single_line(image, line_number):
     for x in range(width):
         line.append(image.getpixel((x, line_number)))
     return line
-
-

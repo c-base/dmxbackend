@@ -1,7 +1,6 @@
 aiohttp==2.3.9
 hbmqtt==0.9.1
 pytest==3.0.7
-Pillow==4.1.0
 # weird bug in pyserial
 pyserial==3.1.1
 pyserial-asyncio==0.4

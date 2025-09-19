@@ -145,5 +145,3 @@ def as_dmx():
 def as_dict():
     global _state
     return _state
-
-

@@ -6,7 +6,7 @@ import asyncio
 import logging
 import aiohttp
 from aiohttp import web
-from PIL import Image
+# from PIL import Image
 from io import BytesIO
 from dmxbackend import channel_state
 from dmxbackend import presets
@@ -41,7 +41,8 @@ async def handle_index(request):
 async def retrieve_image(post_data):
     file = post_data['file'].file
     content = BytesIO(file.read())
-    image = Image.open(content).convert('RGBA')
+    # image = Image.open(content).convert('RGBA')
+    image = None
     return image
 
 
@@ -161,7 +162,7 @@ def setup_web_app(queue, mapping, dev_mode):
         app.router.add_static('/dist',
                               path=os.path.join(PROJECT_ROOT, 'frontend/release/'),
                               name='dist')
-    app.router.add_post('/', handle_post)
+    #app.router.add_post('/', handle_post)
     app.router.add_get('/', handle_index)
     # Catch all
     #r = app.router.add_resource(r'/{name:.*}')

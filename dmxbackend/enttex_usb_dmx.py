@@ -1,7 +1,7 @@
 import asyncio
-import serial.aio
 import time
 import logging
+import serial
 
 from . import channel_state
 
@@ -71,4 +71,3 @@ if __name__ == '__main__':
         time.sleep(0.02)
     time.sleep(0.5)
     ser.close()
-

@@ -5,8 +5,7 @@
 
 Usage:
   main.py <qxw_file> <positions_file> [--usb <usb_device>] [--mqtt <mqtt_server>] [--debug]
-  
-  
+
 """
 
 import os
@@ -15,9 +14,8 @@ import logging
 import asyncio
 import configparser
 import click
-
+import serial_asyncio
 from aiohttp import web
-from serial.aio import create_serial_connection
 
 from dmxbackend.animation import animation_loop
 from dmxbackend.enttex_usb_dmx import EnttecProtocol
@@ -58,9 +56,8 @@ def run_main_loop(usb_device, qxw_filename, pos_filename, mqtt_server, port, dev
     enttec_protocol = None
     if usb_device is not None:
         # Baud rate is not needed with the Enttec device because DMX's baudrate is fixed.
-        usb_serial = create_serial_connection(loop, EnttecProtocol, usb_device)
+        usb_serial = serial_asyncio.create_serial_connection(loop, EnttecProtocol, usb_device)
         enttec_transport, enttec_protocol = loop.run_until_complete(usb_serial)
-
 
     ## ArtNet device UDP
     udp_listen = loop.create_datagram_endpoint(ArtNetServerProtocol, local_addr=('0.0.0.0', 6454))
