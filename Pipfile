@@ -1,9 +1,0 @@
-[[source]]
-url = "https://pypi.python.org/simple"
-verify_ssl = true
-
-[packages]
-aiohttp = "==2.0.6"
-
-[dev-packages]
-pytest = ">=2.8.0"
