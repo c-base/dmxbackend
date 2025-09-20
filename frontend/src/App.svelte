@@ -1,5 +1,14 @@
 <script lang="ts">
+  import { onMount } from "svelte"
   import Counter from './lib/Counter.svelte'
+
+
+  onMount(async function () {
+    const response = await fetch('/api/v1/fixtures/')
+    debugger
+    const data = await response.json()
+    console.log(data)
+  });
 </script>
 
 <main>

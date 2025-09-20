@@ -33,9 +33,10 @@ light_mapping = None
 
 
 async def handle_index(request):
-    path=os.path.join(PROJECT_ROOT, 'static/index.html')
-    with open(path, mode="r") as index_file:
-        return web.Response(body=index_file.read(), content_type="text/html")
+    #path=os.path.join(PROJECT_ROOT, 'frontend/dist/index.html')
+    #with open(path, mode="r") as index_file:
+    #    return web.Response(body=index_file.read(), content_type="text/html")
+    return web.HTTPFound('/frontend/index.html')
 
 
 async def retrieve_image(post_data):
@@ -152,15 +153,15 @@ def setup_web_app(queue, mapping, dev_mode):
                           path=os.path.join(PROJECT_ROOT, 'static/'),
                           name='static')
     app.router.add_static('/assets',
-                          path=os.path.join(PROJECT_ROOT, 'static/assets'),
+                          path=os.path.join(PROJECT_ROOT, 'frontend/dist/assets/'),
                           name='assets')
     if dev_mode is True:
-        app.router.add_static('/dist',
+        app.router.add_static('/',
                               path=os.path.join(PROJECT_ROOT, 'frontend/dist/'),
                               name='dist')
     else:
-        app.router.add_static('/dist',
-                              path=os.path.join(PROJECT_ROOT, 'frontend/release/'),
+        app.router.add_static('/frontend',
+                              path=os.path.join(PROJECT_ROOT, 'frontend/dist/'),
                               name='dist')
     #app.router.add_post('/', handle_post)
     app.router.add_get('/', handle_index)
