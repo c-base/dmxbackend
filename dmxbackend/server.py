@@ -99,7 +99,8 @@ async def websocket_handler(request):
     ws = web.WebSocketResponse()
     await ws.prepare(request)
 
-    ws.send_json(channel_state.as_list())
+    # In the beginning of each session send the full state once
+    await ws.send_json(channel_state.as_list())
 
     async def on_update():
         if not ws.closed:
