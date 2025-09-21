@@ -1,15 +1,19 @@
 <script lang="ts">
   let {fixture, selected, onToggle, channelState} = $props();
 
-  /*const myColor = $derived.by(() => {
+  const myColor = $derived.by(() => {
+    const r:number = 0
+    const g:number = 0
+    const b:number = 0
     for(let i: number = 0; i < channelState.length; i++) {
       const chan = channelState[i]
       if (chan.channel_id.startsWith(fixture.fixture_id)) {
         console.log(fixture.fixture_id)
-        console.log(fixture.fixture_idchan)
+        console.log(chan.value)
       }
     }
-  })*/
+    return `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`
+  })
 </script>
 
 <div role="checkbox" tabindex="0" aria-checked={selected}
@@ -18,9 +22,9 @@
      title="{fixture.model} ({fixture.fixture_id})" 
      class="light" 
      class:selected={selected} 
+     style:background-color="{myColor}"
      style:left="{fixture.pos_x - 10}px"
-     style:top="{fixture.pos_y - 10}px" >
-</div>
+     style:top="{fixture.pos_y - 10}px"></div>
 
 <style>
   .light {
