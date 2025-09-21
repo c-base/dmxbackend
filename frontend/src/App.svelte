@@ -42,6 +42,10 @@
     console.log("selected: " +JSON.stringify($state.snapshot(selectedFixtures)))
   }
 
+  const onDeselect = () => {
+    selectedFixtures = []
+  }
+
 </script>
 
 <main>
@@ -54,6 +58,14 @@
       </Light>
     {/each}
   </div>
+  <div class="button-row">
+    <div class="button-left">
+      <button onclick={() => onDeselect()} disabled={selectedFixtures.length === 0  }>Select none</button>
+    </div>
+    <div class="button-right">
+      {selectedFixtures.length} selected.
+    </div>
+  </div>
 </main>
 
 <style>
@@ -63,5 +75,21 @@
     height: 569px;
     background-color: transparent;
     background-image: url('assets/mainhall.png');
+  }
+
+  .button-row {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    padding: 0 5px;
+  }
+  .button-left {
+    flex-basis: 50%;
+    text-align: left;
+  }
+  .button-right {
+    margin-top: 5px;
+    flex-basis: 50%;
+    text-align: right;
   }
 </style>
