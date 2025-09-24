@@ -28,6 +28,26 @@
    <Address>0</Address>
    <Channels>3</Channels>
   </Fixture>
+  <Fixture>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Generic RGB</Model>
+   <Mode>RGB</Mode>
+   <ID>0</ID>
+   <Name>Generic RGB2</Name>
+   <Universe>0</Universe>
+   <Address>3</Address>
+   <Channels>3</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Generic RGB</Model>
+   <Mode>RGB</Mode>
+   <ID>0</ID>
+   <Name>Generic RGB3</Name>
+   <Universe>0</Universe>
+   <Address>6</Address>
+   <Channels>3</Channels>
+  </Fixture>
  </Engine>
  <VirtualConsole>
   <Frame Caption="">

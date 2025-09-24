@@ -48,8 +48,8 @@
 
 
 <div>
-  {JSON.stringify(channels)}
-  <input type="color" value={initialValue} onchange={(ev) => colorChanged(ev)}/>
+  <!--{JSON.stringify(channels)} -->
+  <input type="color" value={initialValue} oninput={(ev) => colorChanged(ev)}/>
 </div>
 
 <style>
