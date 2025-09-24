@@ -6,23 +6,31 @@
   let fixtures = $state<object[]>([])
   let selectedFixtures = $state<string[]>([])
   let channelState = $state<object[]>([])
+  let socket: Websocket = null;
 
   onMount(async function () {
     const response = await fetch('/api/v1/fixtures/')
     fixtures = await response.json()
     console.log($state.snapshot(fixtures))
 
-    const socket = new WebSocket('/api/v1/websocket_state/')
+    socket = new WebSocket('/api/v1/websocket_state/')
 
     // Connection opened
-    socket.addEventListener("open", (event) => {
+    socket.addEventListener("open", (event: any) => {
       console.log("websocket open")
       console.log(event)
       // do nothing
     });
 
+    // Connection opened
+    socket.addEventListener("close", (event: any) => {
+      console.log("websocket close")
+      console.log(event)
+      // do nothing
+    });
+
     // Listen for messages
-    socket.addEventListener("message", (event) => {onMessage(event)})
+    socket.addEventListener("message", (event: any) => {onMessage(event)})
   });
 
   const onMessage = (event: any) => {
@@ -40,11 +48,27 @@
     else {
       selectedFixtures.push(id)
     }
-    console.log("selected: " +JSON.stringify($state.snapshot(selectedFixtures)))
+    console.log("selected: " + JSON.stringify($state.snapshot(selectedFixtures)))
   }
 
   const onDeselect = () => {
     selectedFixtures = []
+  }
+
+  const updateChannel = (channel_id: string, value: number) => {
+    let state = $state.snapshot(channelState)
+    for (let channel of state) {
+      if (channel.channel_id === channel_id) {
+        channel.value = value
+      }
+    }
+    channelState = state
+  }
+
+  const finnishUpdate = () => {
+    const state = $state.snapshot(channelState)
+    console.log("finnish")
+    socket.send(JSON.stringify(state))
   }
 
 
@@ -115,11 +139,19 @@
       {/each}
     </div>
     <div class="main-controls">
-      {#each Object.entries(visibleControls) as [bla, blub]}
-        {#if bla == 'rgb'}
-        <RGBControl element={blub}></RGBControl>
-        {/if}
+      {#each Object.entries(visibleControls) as [element, channels]}
+      <div class="control-row">
+        <div class="control-label">
+          {element}
+        </div>
+        <div class="control-element">
+          {#if element == 'rgb'}
+          <RGBControl channelState={channelState} channels={channels} onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></RGBControl>
+          {/if}
+        </div>
+      </div>
       {/each}
+      
     </div>
   </div>
   <div class="button-row">
@@ -146,6 +178,15 @@
   }
   .main-controls {
     width: 150px;
+  }
+
+  .control-row {
+    display: flex;
+    flex-direction: row;
+  }
+  .control-label {
+    width: 100px;
+    text-transform: uppercase;
   }
 
   .button-row {
