@@ -32,7 +32,7 @@
   }
 
   onMount(() => {
-    iroPicker = new iro.ColorPicker(pickerElement)
+    iroPicker = new iro.ColorPicker(pickerElement, {width: 250})
     iroPicker.color.rgb = initialValue()
     //  = initialValue()
     iroPicker.on('color:change', colorChanged)

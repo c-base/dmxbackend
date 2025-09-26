@@ -224,16 +224,20 @@
     background-image: url('assets/mainhall.png');
   }
   .main-controls {
-    width: 150px;
+    width: 250px;
   }
 
   .control-row {
+    width: 250px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
   }
   .control-label {
-    width: 100px;
+    width: 100%;
     text-transform: uppercase;
+  }
+  .control-element {
+    width: 100%;
   }
 
   .button-row {

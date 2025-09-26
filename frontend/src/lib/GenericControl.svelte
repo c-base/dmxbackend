@@ -25,12 +25,19 @@
 </script>
 
 
-<div>
-  <label for="bla">{channelName}</label>
-  <input id="bla" type="range" min="0" max="255" bind:value={faderValue} onchange={() => valueChanged} class="fader">
+<div class="fader-wrapper">
+  <input type="range" min="0" max="255" bind:value={faderValue} onchange={() => valueChanged} class="fader">
 </div>
 
 <style>
+  .fader-wrapper {
+    height: 24px;
+    border: 1px solid #000;
+    padding-top: 3px;
+    padding-left: 3px;
+    padding-right: 8px;
+    border-radius: 24px;
+  }
   .fader {
     width: 100%;
   }

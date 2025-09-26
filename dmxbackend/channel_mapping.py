@@ -278,6 +278,15 @@ class CameoRootPAR6Mapping(DMXMapping):
     def elements(self):
         return [
             {
+                'name': 'rgb',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'r', 'channel_id': self.light_id + '/rgb/r'},
+                    {'name': 'g', 'channel_id': self.light_id + '/rgb/g'},
+                    {'name': 'b', 'channel_id': self.light_id + '/rgb/b'}
+                ],
+            },
+            {
                 'name': 'dimmer',
                 'pixel': self.pixel,
                 'channels': [
@@ -289,15 +298,6 @@ class CameoRootPAR6Mapping(DMXMapping):
                 'pixel': self.pixel,
                 'channels': [
                     {'name': 'str', 'channel_id': self.light_id + '/strobe/str'},
-                ],
-            },
-            {
-                'name': 'rgb',
-                'pixel': self.pixel,
-                'channels': [
-                    {'name': 'r', 'channel_id': self.light_id + '/rgb/r'},
-                    {'name': 'g', 'channel_id': self.light_id + '/rgb/g'},
-                    {'name': 'b', 'channel_id': self.light_id + '/rgb/b'}
                 ],
             },
             {
