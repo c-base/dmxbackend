@@ -6,7 +6,8 @@ from .channel_mapping import (
     StairVilleMapping,
     GigabarMapping,
     OctagonMapping,
-    DimmerMapping,
+    DimmerPackMapping,
+    CameoRootPAR6Mapping,
 )
 
 FIXTURE_XPATH = './' \
@@ -64,10 +65,13 @@ def map_fixture(fixture, first_pixel):
         return [OctagonMapping(my_model, name, address, first_pixel)]
     elif model == 'Generic' and int(channels) == 4 and 'dimmer' in name.lower():
         my_model = 'Dimmer 4 CH'
-        return [DimmerMapping(my_model, name, address, first_pixel)]
+        return [DimmerPackMapping(my_model, name, address, first_pixel)]
     elif model == 'Generic RGB' and int(channels) == 3:
         my_model = 'RGB 3 CH'
         return [RGBMapping(my_model, name, address, first_pixel)]
+    elif model == 'Root PAR 6' and int(channels) == 8:
+        my_model = 'Root PAR 6'
+        return [CameoRootPAR6Mapping(my_model, name, address, first_pixel)]
     else:
         return []
 

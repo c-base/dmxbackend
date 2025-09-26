@@ -2,11 +2,13 @@
   import { onMount } from "svelte"
   import Light from './lib/Light.svelte'
   import RGBControl from "./lib/RGBControl.svelte"
-  import DimmerControl from "./lib/DimmerControl.svelte"
+  import DimmerPackControl from "./lib/DimmerPackControl.svelte"
+  import GenericControl from "./lib/GenericControl.svelte"
 
   let fixtures = $state<object[]>([])
   let selectedFixtures = $state<string[]>([])
   let channelState = $state<object[]>([])
+  let channelStateByID = $state({})
   let socket: Websocket = null;
 
   onMount(async function () {
@@ -35,8 +37,11 @@
   });
 
   const onMessage = (event: any) => {
-    console.log(event)
-    channelState = JSON.parse(event.data)
+    const channel_data = JSON.parse(event.data)
+    channelState = channel_data
+    for(let chan of channel_data) {
+      channelStateByID[chan.channel_id] = chan.value
+    }
   }
 
   const onToggle = (id: string) => {
@@ -65,6 +70,7 @@
       }
     }
     channelState = state
+    channelStateByID[chan.channel_id] = chan.value
   }
 
   const finnishUpdate = () => {
@@ -148,9 +154,46 @@
         </div>
         <div class="control-element">
           {#if element == 'rgb'}
-          <RGBControl channelState={channelState} channels={channels} onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></RGBControl>
+          <RGBControl 
+            channelStateByID={channelStateByID} 
+            channels={channels}
+            onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></RGBControl>
+          {:else if element == 'dimmerpack'}
+          <DimmerPackControl 
+            channelStateByID={channelStateByID} 
+            channelState={channelState}
+            channels={channels}
+            onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></DimmerPackControl>
           {:else if element == 'dimmer'}
-          <DimmerControl channelState={channelState} channels={channels} onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></DimmerControl>
+          <GenericControl
+            channelName="dim"
+            channelStateByID={channelStateByID} 
+            channels={channels} 
+            onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
+          {:else if element == 'strobe'}
+          <GenericControl
+            channelName="str"
+            channelStateByID={channelStateByID} 
+            channels={channels} 
+            onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
+          {:else if element == 'white'}
+          <GenericControl
+            channelName="whi"
+            channelStateByID={channelStateByID} 
+            channels={channels} 
+            onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
+          {:else if element == 'amber'}
+          <GenericControl
+            channelName="amb"
+            channelStateByID={channelStateByID} 
+            channels={channels} 
+            onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
+          {:else if element == 'uv'}
+          <GenericControl
+            channelName="uv"
+            channelStateByID={channelStateByID} 
+            channels={channels} 
+            onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
           {/if}
         </div>
       </div>

@@ -218,7 +218,7 @@ class OctagonMapping(DMXMapping):
         return self.map_consecutive_dmx(dmx_data, self.address, channel_ids)
 
 
-class DimmerMapping(DMXMapping):
+class DimmerPackMapping(DMXMapping):
     def __init__(self, model, name, address, pixel):
         # the first 2 addresses in 26-channel mode are reserved for functions
         super().__init__(model, name, address)
@@ -228,41 +228,103 @@ class DimmerMapping(DMXMapping):
     @property
     def channel_ids(self):
         return [
-            self.light_id + '/dimmer/dim1',
-            self.light_id + '/dimmer/dim2',
-            self.light_id + '/dimmer/dim3',
-            self.light_id + '/dimmer/dim4',
+            self.light_id + '/dimmerpack/dim1',
+            self.light_id + '/dimmerpack/dim2',
+            self.light_id + '/dimmerpack/dim3',
+            self.light_id + '/dimmerpack/dim4',
         ]
 
     @property
     def elements(self):
         ch = self.pixel * 3
         return [{
-            'name': 'dimmer',
+            'name': 'dimmerpack',
             'pixel': self.pixel,
             'channels': [
-                {'name': 'dim1', 'channel_id': self.light_id + '/dimmer/dim1'},
-                {'name': 'dim2', 'channel_id': self.light_id + '/dimmer/dim2'},
-                {'name': 'dim3', 'channel_id': self.light_id + '/dimmer/dim3'},
-                {'name': 'dim4', 'channel_id': self.light_id + '/dimmer/dim4'}
+                {'name': 'dim1', 'channel_id': self.light_id + '/dimmerpack/dim1'},
+                {'name': 'dim2', 'channel_id': self.light_id + '/dimmerpack/dim2'},
+                {'name': 'dim3', 'channel_id': self.light_id + '/dimmerpack/dim3'},
+                {'name': 'dim4', 'channel_id': self.light_id + '/dimmerpack/dim4'}
             ],
         }]
 
     def state_to_dmx(self, data_dict):
-        channel_ids = [
-            self.light_id + '/dimmer/dim1',
-            self.light_id + '/dimmer/dim2',
-            self.light_id + '/dimmer/dim3',
-            self.light_id + '/dimmer/dim4'
-        ]
-        return self.map_consecutive_channels(data_dict, channel_ids)
+        return self.map_consecutive_channels(data_dict, self.channel_ids)
 
     def dmx_to_state(self, dmx_data):
-        channel_ids = [
-            self.light_id + '/dimmer/dim1',
-            self.light_id + '/dimmer/dim2',
-            self.light_id + '/dimmer/dim3',
-            self.light_id + '/dimmer/dim4',
-        ]
-        return self.map_consecutive_dmx(dmx_data, self.address, channel_ids)
+        return self.map_consecutive_dmx(dmx_data, self.address, self.channel_ids)
 
+
+class CameoRootPAR6Mapping(DMXMapping):
+    def __init__(self, model, name, address, pixel):
+        super().__init__(model, name, address)
+        self.pixel = pixel
+        self.num_pixels = 1
+
+    @property
+    def channel_ids(self):
+        return [
+            self.light_id + '/dimmer/dim',
+            self.light_id + '/strobe/str',
+            self.light_id + '/rgb/r',
+            self.light_id + '/rgb/g',
+            self.light_id + '/rgb/b',
+            self.light_id + '/white/whi',
+            self.light_id + '/amber/amb',
+            self.light_id + '/uv/uv'
+        ]
+
+    @property
+    def elements(self):
+        return [
+            {
+                'name': 'dimmer',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'dim', 'channel_id': self.light_id + '/dimmer/dim'},
+                ],
+            },
+            {
+                'name': 'strobe',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'str', 'channel_id': self.light_id + '/strobe/str'},
+                ],
+            },
+            {
+                'name': 'rgb',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'r', 'channel_id': self.light_id + '/rgb/r'},
+                    {'name': 'g', 'channel_id': self.light_id + '/rgb/g'},
+                    {'name': 'b', 'channel_id': self.light_id + '/rgb/b'}
+                ],
+            },
+            {
+                'name': 'white',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'whi', 'channel_id': self.light_id + '/white/whi'},
+                ],
+            },
+            {
+                'name': 'amber',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'amb', 'channel_id': self.light_id + '/amber/amb'},
+                ],
+            },
+            {
+                'name': 'uv',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'uv', 'channel_id': self.light_id + '/uv/uv'},
+                ],
+            },
+            ]
+
+    def state_to_dmx(self, data_dict):
+        return self.map_consecutive_channels(data_dict, self.channel_ids)
+
+    def dmx_to_state(self, dmx_data):
+        return self.map_consecutive_dmx(dmx_data, self.address, self.channel_ids)

@@ -2,7 +2,7 @@
   import iro from '@jaames/iro'
   import { onMount } from 'svelte'
 
-  let {channels, onUpdate, onFinished, channelState} = $props()
+  let {channels, onUpdate, onFinished, channelStateByID} = $props()
   let pickerElement: HTMLElement
   let iroPicker: iro.ColorPicker
 
@@ -10,21 +10,10 @@
     const r_channel: string = channels['r'][0]
     const g_channel: string = channels['g'][0]
     const b_channel: string = channels['b'][0]
-    const state = $state.snapshot(channelState)
-    let r = 0
-    let g = 0
-    let b = 0
-    for (const channel of state) {
-      if (channel.channel_id === r_channel) {
-        r = channel.value
-      }
-      if (channel.channel_id === g_channel) {
-        g = channel.value
-      }
-      if (channel.channel_id === b_channel) {
-        b = channel.value
-      }
-    }
+    const state = $state.snapshot(channelStateByID)
+    let r = channelStateByID[r_channel]
+    let g = channelStateByID[g_channel]
+    let b = channelStateByID[b_channel]
     const color = {"r": r, "g": g, "b": b}
     return color
   }
