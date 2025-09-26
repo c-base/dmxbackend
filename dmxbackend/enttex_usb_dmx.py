@@ -25,9 +25,8 @@ def create_enttec_dmx_message(dmx_bytes:bytearray):
     b[4] = 0x00
     b[5:517] = dmx_bytes
     b[517] = 0xe7
-
+    
     return b
-
 
 class EnttecProtocol(asyncio.Protocol):
     def connection_made(self, transport):
@@ -46,6 +45,8 @@ class EnttecProtocol(asyncio.Protocol):
 
     def send_dmx(self, dmx):
         message = create_enttec_dmx_message(dmx)
+        print(''.join('{:02x}'.format(x) for x in message))
+        # print("+++ {:02x} +++".format(message))
         self.transport.write(message)
 
     def connection_lost(self, exc):

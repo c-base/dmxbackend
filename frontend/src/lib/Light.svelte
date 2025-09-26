@@ -7,23 +7,23 @@
     let b:number = 0
     for(let i: number = 0; i < channelState.length; i++) {
       const chan = channelState[i]
-      if (chan.channel_id.startsWith(fixture.fixture_id)) {
+      if (chan.channel_id.startsWith(fixture.fixture_id + '/')) {
         const parts = chan.channel_id.split('/')
         if (parts[1] === 'rgb' || parts[1] === 'rgb1') {
           if (parts[2] === 'r') {
-            r = chan.value  
+            console.log(chan)
+            r = chan.value
           }
           if (parts[2] === 'g') {
-            g = chan.value  
+            g = chan.value
           }
           if (parts[2] === 'b') {
-            b = chan.value  
+            b = chan.value
           }
         }
       }
     }
     const color = `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`
-    console.log("color " + color)
     return color
   })
 </script>
@@ -49,6 +49,6 @@
     border-radius: 20px;
   }
   .light.selected {
-    box-shadow: 0 0 5px #000,0 0 0 1px #fff inset;
+    box-shadow: 0 0 4px 2px #000, 0 0 0 2px #fff inset;
   }
 </style>

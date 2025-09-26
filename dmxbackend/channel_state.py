@@ -28,7 +28,7 @@ def initialize_state(mapping):
     global _mapping
     global _enabled
     _enabeld = False
-    _dmx = bytearray(512)
+    _dmx = bytearray([0, ] * 512)
     _state = OrderedDict()
     _mapping = mapping
     for light in mapping:
@@ -42,10 +42,10 @@ def update_channels(new_data):
     global _dmx
     global _state
 
-    ##log.debug("Before update: {}".format(_state))
+    log.debug("Before update: {}".format(_state))
     for el in new_data:
         _state[el['channel_id']] = el['value']
-    ##log.debug("After update:  {}".format(_state))
+    log.debug("After update:  {}".format(_state))
 
     # convert channels to DMX
     for light in _mapping:
@@ -69,7 +69,7 @@ def update_dmx(new_dmx):
     global _dmx
     global _last_update
     global _mapping
-
+    print("update dmx %s" % new_dmx)
     # convert DMX to channel mapping
     for light in _mapping:
         try:

@@ -1,0 +1,2098 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Workspace>
+<Workspace xmlns="http://www.qlcplus.org/Workspace" CurrentWindow="SimpleDesk">
+ <Creator>
+  <Name>Q Light Controller Plus</Name>
+  <Version>4.13.1</Version>
+  <Author>cven</Author>
+ </Creator>
+ <Engine>
+  <InputOutputMap>
+   <BeatGenerator BeatType="Disabled" BPM="0"/>
+   <Universe Name="Universe 1" ID="0">
+    <Input Plugin="ArtNet" UID="127.0.0.1" Line="0"/>
+    <Output Plugin="ArtNet" UID="127.0.0.1" Line="0"/>
+   </Universe>
+   <Universe Name="Universe 2" ID="1">
+    <Input Plugin="DMX USB" UID="None" Line="0"/>
+    <Output Plugin="DMX USB" UID="None" Line="0"/>
+   </Universe>
+   <Universe Name="Universe 3" ID="2"/>
+   <Universe Name="Universe 4" ID="3"/>
+  </InputOutputMap>
+  <Fixture>
+   <Manufacturer>Showtec</Manufacturer>
+   <Model>Compact Par 7 Q4</Model>
+   <Mode>6 Channel</Mode>
+   <ID>0</ID>
+   <Name>Compact Par 7 Q4 #1</Name>
+   <Universe>1</Universe>
+   <Address>0</Address>
+   <Channels>6</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Showtec</Manufacturer>
+   <Model>Compact Par 7 Q4</Model>
+   <Mode>6 Channel</Mode>
+   <ID>1</ID>
+   <Name>Compact Par 7 Q4 #2</Name>
+   <Universe>1</Universe>
+   <Address>6</Address>
+   <Channels>6</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Showtec</Manufacturer>
+   <Model>Compact Par 7 Q4</Model>
+   <Mode>6 Channel</Mode>
+   <ID>2</ID>
+   <Name>Compact Par 7 Q4 #3</Name>
+   <Universe>1</Universe>
+   <Address>12</Address>
+   <Channels>6</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Showtec</Manufacturer>
+   <Model>Compact Par 7 Q4</Model>
+   <Mode>6 Channel</Mode>
+   <ID>3</ID>
+   <Name>Compact Par 7 Q4 #4</Name>
+   <Universe>1</Universe>
+   <Address>18</Address>
+   <Channels>6</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Showtec</Manufacturer>
+   <Model>Compact Par 18 MKII</Model>
+   <Mode>6 Channel</Mode>
+   <ID>4</ID>
+   <Name>Compact Par 18 MKII #1</Name>
+   <Universe>1</Universe>
+   <Address>24</Address>
+   <Channels>6</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Showtec</Manufacturer>
+   <Model>Compact Par 18 MKII</Model>
+   <Mode>6 Channel</Mode>
+   <ID>5</ID>
+   <Name>Compact Par 18 MKII #2</Name>
+   <Universe>1</Universe>
+   <Address>30</Address>
+   <Channels>6</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Showtec</Manufacturer>
+   <Model>Compact Par 18 MKII</Model>
+   <Mode>6 Channel</Mode>
+   <ID>6</ID>
+   <Name>Compact Par 18 MKII #3</Name>
+   <Universe>1</Universe>
+   <Address>36</Address>
+   <Channels>6</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Showtec</Manufacturer>
+   <Model>Compact Par 18 MKII</Model>
+   <Mode>6 Channel</Mode>
+   <ID>7</ID>
+   <Name>Compact Par 18 MKII #4</Name>
+   <Universe>1</Universe>
+   <Address>42</Address>
+   <Channels>6</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Stairville</Manufacturer>
+   <Model>LED Flood Panel 7x3W</Model>
+   <Mode>4-channel</Mode>
+   <ID>8</ID>
+   <Name>LED Flood Panel 7x3W #1</Name>
+   <Universe>1</Universe>
+   <Address>48</Address>
+   <Channels>4</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Stairville</Manufacturer>
+   <Model>LED Flood Panel 7x3W</Model>
+   <Mode>4-channel</Mode>
+   <ID>9</ID>
+   <Name>LED Flood Panel 7x3W #2</Name>
+   <Universe>1</Universe>
+   <Address>52</Address>
+   <Channels>4</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Eurolite</Manufacturer>
+   <Model>LED PAR56</Model>
+   <Mode>Mode 1</Mode>
+   <ID>10</ID>
+   <Name>LED PAR56 #1</Name>
+   <Universe>0</Universe>
+   <Address>0</Address>
+   <Channels>6</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Eurolite</Manufacturer>
+   <Model>LED PAR56</Model>
+   <Mode>Mode 1</Mode>
+   <ID>11</ID>
+   <Name>LED PAR56 #2</Name>
+   <Universe>0</Universe>
+   <Address>6</Address>
+   <Channels>6</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Eurolite</Manufacturer>
+   <Model>LED PAR56</Model>
+   <Mode>Mode 1</Mode>
+   <ID>12</ID>
+   <Name>LED PAR56 #3</Name>
+   <Universe>0</Universe>
+   <Address>12</Address>
+   <Channels>6</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Eurolite</Manufacturer>
+   <Model>LED PAR56</Model>
+   <Mode>Mode 1</Mode>
+   <ID>13</ID>
+   <Name>LED PAR56 #4</Name>
+   <Universe>0</Universe>
+   <Address>18</Address>
+   <Channels>6</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Eurolite</Manufacturer>
+   <Model>LED PAR56</Model>
+   <Mode>Mode 1</Mode>
+   <ID>14</ID>
+   <Name>LED PAR56 #5</Name>
+   <Universe>0</Universe>
+   <Address>24</Address>
+   <Channels>6</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Eurolite</Manufacturer>
+   <Model>LED PAR56</Model>
+   <Mode>Mode 1</Mode>
+   <ID>15</ID>
+   <Name>LED PAR56 #6</Name>
+   <Universe>0</Universe>
+   <Address>30</Address>
+   <Channels>6</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Cameo</Manufacturer>
+   <Model>Root PAR 6</Model>
+   <Mode>8 Channel</Mode>
+   <ID>16</ID>
+   <Name>Root PAR 6 #01</Name>
+   <Universe>0</Universe>
+   <Address>40</Address>
+   <Channels>8</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Cameo</Manufacturer>
+   <Model>Root PAR 6</Model>
+   <Mode>8 Channel</Mode>
+   <ID>17</ID>
+   <Name>Root PAR 6 #02</Name>
+   <Universe>0</Universe>
+   <Address>48</Address>
+   <Channels>8</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Cameo</Manufacturer>
+   <Model>Root PAR 6</Model>
+   <Mode>8 Channel</Mode>
+   <ID>18</ID>
+   <Name>Root PAR 6 #03</Name>
+   <Universe>0</Universe>
+   <Address>56</Address>
+   <Channels>8</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Cameo</Manufacturer>
+   <Model>Root PAR 6</Model>
+   <Mode>8 Channel</Mode>
+   <ID>19</ID>
+   <Name>Root PAR 6 #04</Name>
+   <Universe>0</Universe>
+   <Address>64</Address>
+   <Channels>8</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Cameo</Manufacturer>
+   <Model>Root PAR 6</Model>
+   <Mode>8 Channel</Mode>
+   <ID>20</ID>
+   <Name>Root PAR 6 #05</Name>
+   <Universe>0</Universe>
+   <Address>72</Address>
+   <Channels>8</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Botex</Manufacturer>
+   <Model>SP-1500</Model>
+   <Mode>Default</Mode>
+   <ID>21</ID>
+   <Name>SP-1500</Name>
+   <Universe>1</Universe>
+   <Address>76</Address>
+   <Channels>2</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Cameo</Manufacturer>
+   <Model>Root PAR 6</Model>
+   <Mode>8 Channel</Mode>
+   <ID>23</ID>
+   <Name>Root PAR 6 #06</Name>
+   <Universe>0</Universe>
+   <Address>80</Address>
+   <Channels>8</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Cameo</Manufacturer>
+   <Model>Root PAR 6</Model>
+   <Mode>8 Channel</Mode>
+   <ID>24</ID>
+   <Name>Root PAR 6 #07</Name>
+   <Universe>0</Universe>
+   <Address>88</Address>
+   <Channels>8</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Cameo</Manufacturer>
+   <Model>Root PAR 6</Model>
+   <Mode>8 Channel</Mode>
+   <ID>25</ID>
+   <Name>Root PAR 6 #08</Name>
+   <Universe>0</Universe>
+   <Address>96</Address>
+   <Channels>8</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Cameo</Manufacturer>
+   <Model>Root PAR 6</Model>
+   <Mode>8 Channel</Mode>
+   <ID>26</ID>
+   <Name>Root PAR 6 #09</Name>
+   <Universe>0</Universe>
+   <Address>104</Address>
+   <Channels>8</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Cameo</Manufacturer>
+   <Model>Root PAR 6</Model>
+   <Mode>8 Channel</Mode>
+   <ID>27</ID>
+   <Name>Root PAR 6 #10</Name>
+   <Universe>0</Universe>
+   <Address>112</Address>
+   <Channels>8</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Eurolite</Manufacturer>
+   <Model>LED TSL-250 Scan COB</Model>
+   <Mode>Modus 10</Mode>
+   <ID>28</ID>
+   <Name>LED TSL-250 Scan COB #1</Name>
+   <Universe>1</Universe>
+   <Address>56</Address>
+   <Channels>10</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Stairville</Manufacturer>
+   <Model>RevueLED 120 COB </Model>
+   <Mode>7 Channel mode</Mode>
+   <ID>29</ID>
+   <Name>RevueLED 120 COB  #1</Name>
+   <Universe>0</Universe>
+   <Address>124</Address>
+   <Channels>7</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Stairville</Manufacturer>
+   <Model>RevueLED 120 COB </Model>
+   <Mode>7 Channel mode</Mode>
+   <ID>30</ID>
+   <Name>RevueLED 120 COB  #2</Name>
+   <Universe>0</Universe>
+   <Address>131</Address>
+   <Channels>7</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Eurolite</Manufacturer>
+   <Model>LED TSL-250 Scan COB</Model>
+   <Mode>Modus 10</Mode>
+   <ID>31</ID>
+   <Name>LED TSL-250 Scan COB #2</Name>
+   <Universe>1</Universe>
+   <Address>66</Address>
+   <Channels>10</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Generic</Manufacturer>
+   <Model>Generic</Model>
+   <Mode>4 Channel</Mode>
+   <ID>32</ID>
+   <Name>Dimmer/Switch Pack</Name>
+   <Universe>0</Universe>
+   <Address>120</Address>
+   <Channels>4</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Stairville</Manufacturer>
+   <Model>LED PAR 36 COB RGBW 12W</Model>
+   <Mode>4 channel</Mode>
+   <ID>33</ID>
+   <Name>LED PAR 36 COB RGBW 12W</Name>
+   <Universe>0</Universe>
+   <Address>36</Address>
+   <Channels>4</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Stairville</Manufacturer>
+   <Model>Octagon Theater 20x6W CW/WW/A</Model>
+   <Mode>4-channel DMX mode</Mode>
+   <ID>36</ID>
+   <Name>Octacon #1</Name>
+   <Universe>0</Universe>
+   <Address>140</Address>
+   <Channels>4</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Stairville</Manufacturer>
+   <Model>Octagon Theater 20x6W CW/WW/A</Model>
+   <Mode>4-channel DMX mode</Mode>
+   <ID>37</ID>
+   <Name>Octacon #2</Name>
+   <Universe>0</Universe>
+   <Address>144</Address>
+   <Channels>4</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Stairville</Manufacturer>
+   <Model>Octagon Theater 20x6W CW/WW/A</Model>
+   <Mode>4-channel DMX mode</Mode>
+   <ID>38</ID>
+   <Name>Octacon #3</Name>
+   <Universe>0</Universe>
+   <Address>148</Address>
+   <Channels>4</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Stairville</Manufacturer>
+   <Model>Octagon Theater 20x6W CW/WW/A</Model>
+   <Mode>4-channel DMX mode</Mode>
+   <ID>39</ID>
+   <Name>Octacon #4</Name>
+   <Universe>0</Universe>
+   <Address>152</Address>
+   <Channels>4</Channels>
+  </Fixture>
+  <Fixture>
+   <Manufacturer>Stairville</Manufacturer>
+   <Model>Octagon Theater 20x6W CW/WW/A</Model>
+   <Mode>4-channel DMX mode</Mode>
+   <ID>40</ID>
+   <Name>Octacon #5</Name>
+   <Universe>0</Universe>
+   <Address>156</Address>
+   <Channels>4</Channels>
+  </Fixture>
+  <FixtureGroup ID="0">
+   <Name>Säulen</Name>
+   <Size X="8" Y="20"/>
+   <Head X="0" Y="0" Fixture="21">0</Head>
+   <Head X="0" Y="4" Fixture="15">0</Head>
+   <Head X="7" Y="4" Fixture="10">0</Head>
+   <Head X="0" Y="9" Fixture="14">0</Head>
+   <Head X="7" Y="9" Fixture="11">0</Head>
+   <Head X="0" Y="14" Fixture="13">0</Head>
+   <Head X="7" Y="14" Fixture="12">0</Head>
+  </FixtureGroup>
+  <FixtureGroup ID="1">
+   <Name>Scanner</Name>
+   <Size X="15" Y="12"/>
+   <Head X="6" Y="0" Fixture="28">0</Head>
+   <Head X="8" Y="0" Fixture="31">0</Head>
+  </FixtureGroup>
+  <FixtureGroup ID="2">
+   <Name>Par 7 Q4</Name>
+   <Size X="10" Y="8"/>
+   <Head X="0" Y="0" Fixture="0">0</Head>
+   <Head X="4" Y="0" Fixture="1">0</Head>
+   <Head X="5" Y="0" Fixture="2">0</Head>
+   <Head X="9" Y="0" Fixture="3">0</Head>
+  </FixtureGroup>
+  <FixtureGroup ID="3">
+   <Name>Par 18 MKII</Name>
+   <Size X="10" Y="8"/>
+   <Head X="1" Y="0" Fixture="4">0</Head>
+   <Head X="3" Y="0" Fixture="5">0</Head>
+   <Head X="6" Y="0" Fixture="6">0</Head>
+   <Head X="8" Y="0" Fixture="7">0</Head>
+  </FixtureGroup>
+  <FixtureGroup ID="4">
+   <Name>Front Flood Panel</Name>
+   <Size X="2" Y="2"/>
+   <Head X="0" Y="0" Fixture="8">0</Head>
+   <Head X="1" Y="0" Fixture="9">0</Head>
+  </FixtureGroup>
+  <FixtureGroup ID="5">
+   <Name>Root Par 6</Name>
+   <Size X="16" Y="40"/>
+   <Head X="0" Y="0" Fixture="16">0</Head>
+   <Head X="1" Y="0" Fixture="17">0</Head>
+   <Head X="2" Y="0" Fixture="18">0</Head>
+   <Head X="3" Y="0" Fixture="19">0</Head>
+   <Head X="4" Y="0" Fixture="20">0</Head>
+   <Head X="5" Y="0" Fixture="23">0</Head>
+   <Head X="6" Y="0" Fixture="24">0</Head>
+   <Head X="7" Y="0" Fixture="25">0</Head>
+   <Head X="8" Y="0" Fixture="26">0</Head>
+   <Head X="9" Y="0" Fixture="27">0</Head>
+  </FixtureGroup>
+  <ChannelsGroup ID="0" Name="white all" Value="0">0,5,1,5,2,5,3,5,16,5,17,5,18,5,19,5,20,5,23,5,24,5,25,5,26,5,27,5</ChannelsGroup>
+  <ChannelsGroup ID="1" Name="Red  all" Value="0">0,2,1,2,2,2,3,2,4,1,5,1,6,1,7,1,8,1,9,1,10,0,11,0,12,0,13,0,14,0,15,0,16,2,17,2,18,2,19,2,20,2,23,2,24,2,25,2,26,2,27,2</ChannelsGroup>
+  <ChannelsGroup ID="2" Name="Green all" Value="0">0,3,1,3,2,3,3,3,4,2,5,2,6,2,7,2,8,2,9,2,10,1,11,1,12,1,13,1,14,1,15,1,16,3,17,3,18,3,19,3,20,3,23,3,24,3,25,3,26,3,27,3</ChannelsGroup>
+  <ChannelsGroup ID="3" Name="Blue all" Value="0">0,4,1,4,2,4,3,4,4,3,5,3,6,3,7,3,8,3,9,3,10,2,11,2,12,2,13,2,14,2,15,2,16,4,17,4,18,4,19,4,20,4,23,4,24,4,25,4,26,4,27,4</ChannelsGroup>
+  <ChannelsGroup ID="4" Name="Intensity all" Value="0">0,0,1,0,2,0,3,0,4,0,5,0,6,0,7,0,8,0,9,0,16,0,17,0,18,0,19,0,20,0,23,0,24,0,25,0,26,0,27,0</ChannelsGroup>
+  <ChannelsGroup ID="5" Name="Pan" Value="0">28,0,31,0</ChannelsGroup>
+  <ChannelsGroup ID="6" Name="Tilt" Value="0">28,1,31,1</ChannelsGroup>
+  <ChannelsGroup ID="7" Name="Pan/Tilt Speed" Value="0">28,2,31,2</ChannelsGroup>
+  <ChannelsGroup ID="8" Name="Color Wheel" Value="0">28,3,31,3</ChannelsGroup>
+  <ChannelsGroup ID="9" Name="Gobo Wheel" Value="0">28,4,31,4</ChannelsGroup>
+  <ChannelsGroup ID="10" Name="Gobo rotation" Value="0">28,5,31,5</ChannelsGroup>
+  <ChannelsGroup ID="11" Name="Strobe" Value="0">28,6,31,6</ChannelsGroup>
+  <ChannelsGroup ID="12" Name="Dimmer Intensity" Value="0">28,7,31,7</ChannelsGroup>
+  <ChannelsGroup ID="13" Name="Internal programs" Value="0">28,8,31,8</ChannelsGroup>
+  <ChannelsGroup ID="14" Name="Pan/Tilt macros Reset" Value="0">28,9,31,9</ChannelsGroup>
+  <ChannelsGroup ID="15" Name="Par 7 Q4 Dimmer" Value="0">0,0,1,0,2,0,3,0</ChannelsGroup>
+  <ChannelsGroup ID="16" Name="Par7 Q4 Strobe" Value="0">0,1,1,1,2,1,3,1</ChannelsGroup>
+  <ChannelsGroup ID="17" Name="Par 7 Q4 Red" Value="0">0,2,1,2,2,2,3,2</ChannelsGroup>
+  <ChannelsGroup ID="18" Name="Par 7 Q4 Green" Value="0">0,3,1,3,2,3,3,3</ChannelsGroup>
+  <ChannelsGroup ID="19" Name="Par 7 Q4 Blue" Value="0">0,4,1,4,2,4,3,4</ChannelsGroup>
+  <ChannelsGroup ID="20" Name="Par 7 Q4 White" Value="0">0,5,1,5,2,5,3,5</ChannelsGroup>
+  <ChannelsGroup ID="21" Name="Par 18 MKII Dimmer" Value="0">4,0,5,0,6,0,7,0</ChannelsGroup>
+  <ChannelsGroup ID="22" Name="Par 18 MKII Red" Value="0">4,1,5,1,6,1,7,1</ChannelsGroup>
+  <ChannelsGroup ID="23" Name="Par 18 MKII Green" Value="0">4,2,5,2,6,2,7,2</ChannelsGroup>
+  <ChannelsGroup ID="24" Name="Par 18 MKII Blue" Value="0">4,3,5,3,6,3,7,3</ChannelsGroup>
+  <ChannelsGroup ID="25" Name="Par 18 MKII Strobe" Value="0">4,4,5,4,6,4,7,4</ChannelsGroup>
+  <ChannelsGroup ID="26" Name="Par 18 MKII Color program" Value="0">4,5,5,5,6,5,7,5</ChannelsGroup>
+  <Function ID="0" Type="Scene" Name="white all 100" Path="ALL RGB">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>0,255,4,255</ChannelGroupsVal>
+   <FixtureVal ID="0">0,255,5,255</FixtureVal>
+   <FixtureVal ID="1">0,255,5,255</FixtureVal>
+   <FixtureVal ID="2">0,255,5,255</FixtureVal>
+   <FixtureVal ID="3">0,255,5,255</FixtureVal>
+   <FixtureVal ID="16">0,255,5,255</FixtureVal>
+   <FixtureVal ID="17">0,255,5,255</FixtureVal>
+   <FixtureVal ID="18">0,255,5,255</FixtureVal>
+   <FixtureVal ID="19">0,255,5,255</FixtureVal>
+   <FixtureVal ID="20">0,255,5,255</FixtureVal>
+   <FixtureVal ID="23">0,255,5,255</FixtureVal>
+   <FixtureVal ID="24">0,255,5,255</FixtureVal>
+   <FixtureVal ID="25">0,255,5,255</FixtureVal>
+   <FixtureVal ID="26">0,255,5,255</FixtureVal>
+   <FixtureVal ID="27">0,255,5,255</FixtureVal>
+   <FixtureVal ID="4">0,255</FixtureVal>
+   <FixtureVal ID="5">0,255</FixtureVal>
+   <FixtureVal ID="6">0,255</FixtureVal>
+   <FixtureVal ID="7">0,255</FixtureVal>
+   <FixtureVal ID="8">0,255</FixtureVal>
+   <FixtureVal ID="9">0,255</FixtureVal>
+  </Function>
+  <Function ID="1" Type="Scene" Name="red all 100" Path="ALL RGB">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>1,255,4,255</ChannelGroupsVal>
+   <FixtureVal ID="0">0,255,2,255</FixtureVal>
+   <FixtureVal ID="1">0,255,2,255</FixtureVal>
+   <FixtureVal ID="2">0,255,2,255</FixtureVal>
+   <FixtureVal ID="3">0,255,2,255</FixtureVal>
+   <FixtureVal ID="4">0,255,1,255</FixtureVal>
+   <FixtureVal ID="5">0,255,1,255</FixtureVal>
+   <FixtureVal ID="6">0,255,1,255</FixtureVal>
+   <FixtureVal ID="7">0,255,1,255</FixtureVal>
+   <FixtureVal ID="8">0,255,1,255</FixtureVal>
+   <FixtureVal ID="9">0,255,1,255</FixtureVal>
+   <FixtureVal ID="10">0,255</FixtureVal>
+   <FixtureVal ID="11">0,255</FixtureVal>
+   <FixtureVal ID="12">0,255</FixtureVal>
+   <FixtureVal ID="13">0,255</FixtureVal>
+   <FixtureVal ID="14">0,255</FixtureVal>
+   <FixtureVal ID="15">0,255</FixtureVal>
+   <FixtureVal ID="16">0,255,2,255</FixtureVal>
+   <FixtureVal ID="17">0,255,2,255</FixtureVal>
+   <FixtureVal ID="18">0,255,2,255</FixtureVal>
+   <FixtureVal ID="19">0,255,2,255</FixtureVal>
+   <FixtureVal ID="20">0,255,2,255</FixtureVal>
+   <FixtureVal ID="23">0,255,2,255</FixtureVal>
+   <FixtureVal ID="24">0,255,2,255</FixtureVal>
+   <FixtureVal ID="25">0,255,2,255</FixtureVal>
+   <FixtureVal ID="26">0,255,2,255</FixtureVal>
+   <FixtureVal ID="27">0,255,2,255</FixtureVal>
+  </Function>
+  <Function ID="2" Type="Scene" Name="green all 100" Path="ALL RGB">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>2,255,4,255</ChannelGroupsVal>
+   <FixtureVal ID="0">0,255,3,255</FixtureVal>
+   <FixtureVal ID="1">0,255,3,255</FixtureVal>
+   <FixtureVal ID="2">0,255,3,255</FixtureVal>
+   <FixtureVal ID="3">0,255,3,255</FixtureVal>
+   <FixtureVal ID="4">0,255,2,255</FixtureVal>
+   <FixtureVal ID="5">0,255,2,255</FixtureVal>
+   <FixtureVal ID="6">0,255,2,255</FixtureVal>
+   <FixtureVal ID="7">0,255,2,255</FixtureVal>
+   <FixtureVal ID="8">0,255,2,255</FixtureVal>
+   <FixtureVal ID="9">0,255,2,255</FixtureVal>
+   <FixtureVal ID="10">1,255</FixtureVal>
+   <FixtureVal ID="11">1,255</FixtureVal>
+   <FixtureVal ID="12">1,255</FixtureVal>
+   <FixtureVal ID="13">1,255</FixtureVal>
+   <FixtureVal ID="14">1,255</FixtureVal>
+   <FixtureVal ID="15">1,255</FixtureVal>
+   <FixtureVal ID="16">0,255,3,255</FixtureVal>
+   <FixtureVal ID="17">0,255,3,255</FixtureVal>
+   <FixtureVal ID="18">0,255,3,255</FixtureVal>
+   <FixtureVal ID="19">0,255,3,255</FixtureVal>
+   <FixtureVal ID="20">0,255,3,255</FixtureVal>
+   <FixtureVal ID="23">0,255,3,255</FixtureVal>
+   <FixtureVal ID="24">0,255,3,255</FixtureVal>
+   <FixtureVal ID="25">0,255,3,255</FixtureVal>
+   <FixtureVal ID="26">0,255,3,255</FixtureVal>
+   <FixtureVal ID="27">0,255,3,255</FixtureVal>
+  </Function>
+  <Function ID="3" Type="Scene" Name="blue all 100" Path="ALL RGB">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>3,255,4,255</ChannelGroupsVal>
+   <FixtureVal ID="0">0,255,4,255</FixtureVal>
+   <FixtureVal ID="1">0,255,4,255</FixtureVal>
+   <FixtureVal ID="2">0,255,4,255</FixtureVal>
+   <FixtureVal ID="3">0,255,4,255</FixtureVal>
+   <FixtureVal ID="4">0,255,3,255</FixtureVal>
+   <FixtureVal ID="5">0,255,3,255</FixtureVal>
+   <FixtureVal ID="6">0,255,3,255</FixtureVal>
+   <FixtureVal ID="7">0,255,3,255</FixtureVal>
+   <FixtureVal ID="8">0,255,3,255</FixtureVal>
+   <FixtureVal ID="9">0,255,3,255</FixtureVal>
+   <FixtureVal ID="10">2,255</FixtureVal>
+   <FixtureVal ID="11">2,255</FixtureVal>
+   <FixtureVal ID="12">2,255</FixtureVal>
+   <FixtureVal ID="13">2,255</FixtureVal>
+   <FixtureVal ID="14">2,255</FixtureVal>
+   <FixtureVal ID="15">2,255</FixtureVal>
+   <FixtureVal ID="16">0,255,4,255</FixtureVal>
+   <FixtureVal ID="17">0,255,4,255</FixtureVal>
+   <FixtureVal ID="18">0,255,4,255</FixtureVal>
+   <FixtureVal ID="19">0,255,4,255</FixtureVal>
+   <FixtureVal ID="20">0,255,4,255</FixtureVal>
+   <FixtureVal ID="23">0,255,4,255</FixtureVal>
+   <FixtureVal ID="24">0,255,4,255</FixtureVal>
+   <FixtureVal ID="25">0,255,4,255</FixtureVal>
+   <FixtureVal ID="26">0,255,4,255</FixtureVal>
+   <FixtureVal ID="27">0,255,4,255</FixtureVal>
+  </Function>
+  <Function ID="4" Type="Scene" Name="Intensity all 100" Path="ALL RGB">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>4,255</ChannelGroupsVal>
+   <FixtureVal ID="0">0,255</FixtureVal>
+   <FixtureVal ID="1">0,255</FixtureVal>
+   <FixtureVal ID="2">0,255</FixtureVal>
+   <FixtureVal ID="3">0,255</FixtureVal>
+   <FixtureVal ID="4">0,255</FixtureVal>
+   <FixtureVal ID="5">0,255</FixtureVal>
+   <FixtureVal ID="6">0,255</FixtureVal>
+   <FixtureVal ID="7">0,255</FixtureVal>
+   <FixtureVal ID="8">0,255</FixtureVal>
+   <FixtureVal ID="9">0,255</FixtureVal>
+   <FixtureVal ID="16">0,255</FixtureVal>
+   <FixtureVal ID="17">0,255</FixtureVal>
+   <FixtureVal ID="18">0,255</FixtureVal>
+   <FixtureVal ID="19">0,255</FixtureVal>
+   <FixtureVal ID="20">0,255</FixtureVal>
+   <FixtureVal ID="23">0,255</FixtureVal>
+   <FixtureVal ID="24">0,255</FixtureVal>
+   <FixtureVal ID="25">0,255</FixtureVal>
+   <FixtureVal ID="26">0,255</FixtureVal>
+   <FixtureVal ID="27">0,255</FixtureVal>
+  </Function>
+  <Function ID="5" Type="Collection" Name="mainhall all RGB + I">
+   <Step Number="0">4</Step>
+   <Step Number="1">0</Step>
+   <Step Number="2">1</Step>
+   <Step Number="3">2</Step>
+   <Step Number="4">3</Step>
+  </Function>
+  <Function ID="6" Type="RGBMatrix" Name="Neue RGB Matrix 6">
+   <Speed FadeIn="208" FadeOut="217" Duration="439"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <Algorithm Type="Script">Fill</Algorithm>
+   <MonoColor>4294901760</MonoColor>
+   <ControlMode>RGB</ControlMode>
+   <FixtureGroup>0</FixtureGroup>
+   <Property Name="orientation" Value="Vertical"/>
+  </Function>
+  <Function ID="7" Type="RGBMatrix" Name="Neue RGB Matrix 7">
+   <Speed FadeIn="250" FadeOut="250" Duration="500"/>
+   <Direction>Forward</Direction>
+   <RunOrder>PingPong</RunOrder>
+   <Algorithm Type="Script">Random Single</Algorithm>
+   <MonoColor>4283826175</MonoColor>
+   <ControlMode>RGB</ControlMode>
+   <FixtureGroup>3</FixtureGroup>
+  </Function>
+  <Function ID="8" Type="Scene" Name="blue all 100 (Kopie)" Path="ALL RGB">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>3,255,4,255</ChannelGroupsVal>
+   <FixtureVal ID="0">0,255,4,255</FixtureVal>
+   <FixtureVal ID="1">0,255,4,255</FixtureVal>
+   <FixtureVal ID="2">0,255,4,255</FixtureVal>
+   <FixtureVal ID="3">0,255,4,255</FixtureVal>
+   <FixtureVal ID="4">0,255,3,255</FixtureVal>
+   <FixtureVal ID="5">0,255,3,255</FixtureVal>
+   <FixtureVal ID="6">0,255,3,255</FixtureVal>
+   <FixtureVal ID="7">0,255,3,255</FixtureVal>
+   <FixtureVal ID="8">0,255,3,255</FixtureVal>
+   <FixtureVal ID="9">0,255,3,255</FixtureVal>
+   <FixtureVal ID="10">2,255</FixtureVal>
+   <FixtureVal ID="11">2,255</FixtureVal>
+   <FixtureVal ID="12">2,255</FixtureVal>
+   <FixtureVal ID="13">2,255</FixtureVal>
+   <FixtureVal ID="14">2,255</FixtureVal>
+   <FixtureVal ID="15">2,255</FixtureVal>
+   <FixtureVal ID="16">0,255,4,255</FixtureVal>
+   <FixtureVal ID="17">0,255,4,255</FixtureVal>
+   <FixtureVal ID="18">0,255,4,255</FixtureVal>
+   <FixtureVal ID="19">0,255,4,255</FixtureVal>
+   <FixtureVal ID="20">0,255,4,255</FixtureVal>
+   <FixtureVal ID="23">0,255,4,255</FixtureVal>
+   <FixtureVal ID="24">0,255,4,255</FixtureVal>
+   <FixtureVal ID="25">0,255,4,255</FixtureVal>
+   <FixtureVal ID="26">0,255,4,255</FixtureVal>
+   <FixtureVal ID="27">0,255,4,255</FixtureVal>
+  </Function>
+  <Function ID="9" Type="Scene" Name="green all 100 (Kopie)" Path="ALL RGB">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>2,255,4,255</ChannelGroupsVal>
+   <FixtureVal ID="0">0,255,3,255</FixtureVal>
+   <FixtureVal ID="1">0,255,3,255</FixtureVal>
+   <FixtureVal ID="2">0,255,3,255</FixtureVal>
+   <FixtureVal ID="3">0,255,3,255</FixtureVal>
+   <FixtureVal ID="4">0,255,2,255</FixtureVal>
+   <FixtureVal ID="5">0,255,2,255</FixtureVal>
+   <FixtureVal ID="6">0,255,2,255</FixtureVal>
+   <FixtureVal ID="7">0,255,2,255</FixtureVal>
+   <FixtureVal ID="8">0,255,2,255</FixtureVal>
+   <FixtureVal ID="9">0,255,2,255</FixtureVal>
+   <FixtureVal ID="10">1,255</FixtureVal>
+   <FixtureVal ID="11">1,255</FixtureVal>
+   <FixtureVal ID="12">1,255</FixtureVal>
+   <FixtureVal ID="13">1,255</FixtureVal>
+   <FixtureVal ID="14">1,255</FixtureVal>
+   <FixtureVal ID="15">1,255</FixtureVal>
+   <FixtureVal ID="16">0,255,3,255</FixtureVal>
+   <FixtureVal ID="17">0,255,3,255</FixtureVal>
+   <FixtureVal ID="18">0,255,3,255</FixtureVal>
+   <FixtureVal ID="19">0,255,3,255</FixtureVal>
+   <FixtureVal ID="20">0,255,3,255</FixtureVal>
+   <FixtureVal ID="23">0,255,3,255</FixtureVal>
+   <FixtureVal ID="24">0,255,3,255</FixtureVal>
+   <FixtureVal ID="25">0,255,3,255</FixtureVal>
+   <FixtureVal ID="26">0,255,3,255</FixtureVal>
+   <FixtureVal ID="27">0,255,3,255</FixtureVal>
+  </Function>
+  <Function ID="10" Type="Scene" Name="Intensity all 100 (Kopie)" Path="ALL RGB">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>4,255</ChannelGroupsVal>
+   <FixtureVal ID="0">0,255</FixtureVal>
+   <FixtureVal ID="1">0,255</FixtureVal>
+   <FixtureVal ID="2">0,255</FixtureVal>
+   <FixtureVal ID="3">0,255</FixtureVal>
+   <FixtureVal ID="4">0,255</FixtureVal>
+   <FixtureVal ID="5">0,255</FixtureVal>
+   <FixtureVal ID="6">0,255</FixtureVal>
+   <FixtureVal ID="7">0,255</FixtureVal>
+   <FixtureVal ID="8">0,255</FixtureVal>
+   <FixtureVal ID="9">0,255</FixtureVal>
+   <FixtureVal ID="16">0,255</FixtureVal>
+   <FixtureVal ID="17">0,255</FixtureVal>
+   <FixtureVal ID="18">0,255</FixtureVal>
+   <FixtureVal ID="19">0,255</FixtureVal>
+   <FixtureVal ID="20">0,255</FixtureVal>
+   <FixtureVal ID="23">0,255</FixtureVal>
+   <FixtureVal ID="24">0,255</FixtureVal>
+   <FixtureVal ID="25">0,255</FixtureVal>
+   <FixtureVal ID="26">0,255</FixtureVal>
+   <FixtureVal ID="27">0,255</FixtureVal>
+  </Function>
+  <Function ID="11" Type="Scene" Name="red all 100 (Kopie)" Path="ALL RGB">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>1,255,4,255</ChannelGroupsVal>
+   <FixtureVal ID="0">0,255,2,255</FixtureVal>
+   <FixtureVal ID="1">0,255,2,255</FixtureVal>
+   <FixtureVal ID="2">0,255,2,255</FixtureVal>
+   <FixtureVal ID="3">0,255,2,255</FixtureVal>
+   <FixtureVal ID="4">0,255,1,255</FixtureVal>
+   <FixtureVal ID="5">0,255,1,255</FixtureVal>
+   <FixtureVal ID="6">0,255,1,255</FixtureVal>
+   <FixtureVal ID="7">0,255,1,255</FixtureVal>
+   <FixtureVal ID="8">0,255,1,255</FixtureVal>
+   <FixtureVal ID="9">0,255,1,255</FixtureVal>
+   <FixtureVal ID="10">0,255</FixtureVal>
+   <FixtureVal ID="11">0,255</FixtureVal>
+   <FixtureVal ID="12">0,255</FixtureVal>
+   <FixtureVal ID="13">0,255</FixtureVal>
+   <FixtureVal ID="14">0,255</FixtureVal>
+   <FixtureVal ID="15">0,255</FixtureVal>
+   <FixtureVal ID="16">0,255,2,255</FixtureVal>
+   <FixtureVal ID="17">0,255,2,255</FixtureVal>
+   <FixtureVal ID="18">0,255,2,255</FixtureVal>
+   <FixtureVal ID="19">0,255,2,255</FixtureVal>
+   <FixtureVal ID="20">0,255,2,255</FixtureVal>
+   <FixtureVal ID="23">0,255,2,255</FixtureVal>
+   <FixtureVal ID="24">0,255,2,255</FixtureVal>
+   <FixtureVal ID="25">0,255,2,255</FixtureVal>
+   <FixtureVal ID="26">0,255,2,255</FixtureVal>
+   <FixtureVal ID="27">0,255,2,255</FixtureVal>
+  </Function>
+  <Function ID="12" Type="Scene" Name="white all 100 (Kopie)" Path="ALL RGB">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>0,255,4,255</ChannelGroupsVal>
+   <FixtureVal ID="0">0,255,5,255</FixtureVal>
+   <FixtureVal ID="1">0,255,5,255</FixtureVal>
+   <FixtureVal ID="2">0,255,5,255</FixtureVal>
+   <FixtureVal ID="3">0,255,5,255</FixtureVal>
+   <FixtureVal ID="16">0,255,5,255</FixtureVal>
+   <FixtureVal ID="17">0,255,5,255</FixtureVal>
+   <FixtureVal ID="18">0,255,5,255</FixtureVal>
+   <FixtureVal ID="19">0,255,5,255</FixtureVal>
+   <FixtureVal ID="20">0,255,5,255</FixtureVal>
+   <FixtureVal ID="23">0,255,5,255</FixtureVal>
+   <FixtureVal ID="24">0,255,5,255</FixtureVal>
+   <FixtureVal ID="25">0,255,5,255</FixtureVal>
+   <FixtureVal ID="26">0,255,5,255</FixtureVal>
+   <FixtureVal ID="27">0,255,5,255</FixtureVal>
+   <FixtureVal ID="4">0,255</FixtureVal>
+   <FixtureVal ID="5">0,255</FixtureVal>
+   <FixtureVal ID="6">0,255</FixtureVal>
+   <FixtureVal ID="7">0,255</FixtureVal>
+   <FixtureVal ID="8">0,255</FixtureVal>
+   <FixtureVal ID="9">0,255</FixtureVal>
+  </Function>
+  <Function ID="13" Type="Scene" Name="DJ 01" Path="DJ">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>5,126,6,4</ChannelGroupsVal>
+   <FixtureVal ID="28">0,126,1,4,8,0,9,0</FixtureVal>
+   <FixtureVal ID="31">0,126,1,4,8,0,9,0</FixtureVal>
+  </Function>
+  <Function ID="14" Type="Scene" Name="DJ 02" Path="DJ">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>5,128,6,71</ChannelGroupsVal>
+   <FixtureVal ID="28">0,128,1,71</FixtureVal>
+   <FixtureVal ID="31">0,128,1,71</FixtureVal>
+  </Function>
+  <Function ID="15" Type="Scene" Name="DJ 03" Path="DJ">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>6,126,5,128</ChannelGroupsVal>
+   <FixtureVal ID="28">0,128,1,126</FixtureVal>
+   <FixtureVal ID="31">0,128,1,126</FixtureVal>
+  </Function>
+  <Function ID="16" Type="Scene" Name="DJ 04" Path="DJ">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>5,128,6,161,7,0</ChannelGroupsVal>
+   <FixtureVal ID="28">0,128,1,161,2,0</FixtureVal>
+   <FixtureVal ID="31">0,128,1,161,2,0</FixtureVal>
+  </Function>
+  <Function ID="17" Type="Scene" Name="Dj 05" Path="DJ">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>5,128,6,203</ChannelGroupsVal>
+   <FixtureVal ID="28">0,128,1,203</FixtureVal>
+   <FixtureVal ID="31">0,128,1,203</FixtureVal>
+  </Function>
+  <Function ID="18" Type="Scene" Name="DJ 06" Path="DJ">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>5,128,6,228</ChannelGroupsVal>
+   <FixtureVal ID="28">0,128,1,228</FixtureVal>
+   <FixtureVal ID="31">0,128,1,228</FixtureVal>
+  </Function>
+  <Function ID="19" Type="Scene" Name="DJ 07" Path="DJ">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>5,128,6,255</ChannelGroupsVal>
+   <FixtureVal ID="28">0,128,1,255</FixtureVal>
+   <FixtureVal ID="31">0,128,1,255</FixtureVal>
+  </Function>
+  <Function ID="20" Type="Chaser" Name="DJc 01">
+   <Speed FadeIn="50" FadeOut="50" Duration="150"/>
+   <Direction>Forward</Direction>
+   <RunOrder>PingPong</RunOrder>
+   <SpeedModes FadeIn="Common" FadeOut="Common" Duration="Common"/>
+   <Step Number="0" FadeIn="0" Hold="0" FadeOut="0">13</Step>
+   <Step Number="1" FadeIn="0" Hold="0" FadeOut="0">14</Step>
+   <Step Number="2" FadeIn="0" Hold="0" FadeOut="0">15</Step>
+   <Step Number="3" FadeIn="0" Hold="0" FadeOut="0">16</Step>
+   <Step Number="4" FadeIn="0" Hold="0" FadeOut="0">17</Step>
+   <Step Number="5" FadeIn="0" Hold="0" FadeOut="0">18</Step>
+   <Step Number="6" FadeIn="0" Hold="0" FadeOut="0">19</Step>
+  </Function>
+  <Function ID="21" Type="Scene" Name="Q4 Test">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <ChannelGroupsVal>15,0,16,0,17,0,18,0,20,0,19,0</ChannelGroupsVal>
+   <FixtureVal ID="0">0,255,1,0,2,255,3,0,4,0,5,0</FixtureVal>
+   <FixtureVal ID="1">0,0,1,0,2,0,3,0,4,0,5,0</FixtureVal>
+   <FixtureVal ID="2">0,0,1,0,2,0,3,0,4,0,5,0</FixtureVal>
+   <FixtureVal ID="3">0,255,1,0,2,255,3,0,4,0,5,0</FixtureVal>
+  </Function>
+  <Function ID="22" Type="RGBMatrix" Name="Neue RGB Matrix 22">
+   <Speed FadeIn="253" FadeOut="247" Duration="517"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <Algorithm Type="Script">Marquee</Algorithm>
+   <MonoColor>4294901760</MonoColor>
+   <ControlMode>RGB</ControlMode>
+   <FixtureGroup>2</FixtureGroup>
+   <Property Name="marqueeCount" Value="3"/>
+   <Property Name="depth" Value="2"/>
+  </Function>
+  <Function ID="23" Type="Scene" Name="Par 7 Q4" Hidden="True">
+   <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+   <FixtureVal ID="0">2,0,3,0,4,0</FixtureVal>
+   <FixtureVal ID="1">2,0,3,0,4,0</FixtureVal>
+   <FixtureVal ID="2">2,0,3,0,4,0</FixtureVal>
+   <FixtureVal ID="3">2,0,3,0,4,0</FixtureVal>
+  </Function>
+  <Function ID="24" Type="Sequence" Name="Neue RGB Matrix 22 Sequenz" BoundScene="23">
+   <Speed FadeIn="0" FadeOut="0" Duration="500"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <SpeedModes FadeIn="Default" FadeOut="Default" Duration="PerStep"/>
+   <Step Number="0" FadeIn="0" Hold="500" FadeOut="0" Values="12">1:2,255</Step>
+   <Step Number="1" FadeIn="0" Hold="500" FadeOut="0" Values="12">1:2,255:2:2,255</Step>
+   <Step Number="2" FadeIn="0" Hold="500" FadeOut="0" Values="12">0:2,255:1:2,255:2:2,255</Step>
+   <Step Number="3" FadeIn="0" Hold="500" FadeOut="0" Values="12">0:2,255:1:2,255:2:2,255:3:2,255</Step>
+  </Function>
+  <Function ID="25" Type="RGBMatrix" Name="Neue RGB Matrix 25">
+   <Speed FadeIn="0" FadeOut="0" Duration="500"/>
+   <Direction>Forward</Direction>
+   <RunOrder>Loop</RunOrder>
+   <Algorithm Type="Script">Fill Unfill From Center</Algorithm>
+   <MonoColor>4294901760</MonoColor>
+   <ControlMode>RGB</ControlMode>
+   <FixtureGroup>3</FixtureGroup>
+  </Function>
+  <Monitor DisplayMode="0" ShowLabels="0">
+   <Font>Arial,12,-1,5,50,0,0,0,0,0</Font>
+   <ChannelStyle>0</ChannelStyle>
+   <ValueStyle>0</ValueStyle>
+   <Grid Width="5" Height="3" Depth="5" Units="0"/>
+  </Monitor>
+ </Engine>
+ <VirtualConsole>
+  <Frame Caption="">
+   <Appearance>
+    <FrameStyle>None</FrameStyle>
+    <ForegroundColor>Default</ForegroundColor>
+    <BackgroundColor>4283782400</BackgroundColor>
+    <BackgroundImage>None</BackgroundImage>
+    <Font>Default</Font>
+   </Appearance>
+   <Clock Type="Clock" Caption="" ID="10">
+    <WindowState Visible="False" X="875" Y="0" Width="150" Height="50"/>
+    <Appearance>
+     <FrameStyle>None</FrameStyle>
+     <ForegroundColor>Default</ForegroundColor>
+     <BackgroundColor>Default</BackgroundColor>
+     <BackgroundImage>None</BackgroundImage>
+     <Font>MS Shell Dlg 2,-1,28,5,75,0,0,0,0,0</Font>
+    </Appearance>
+   </Clock>
+   <Frame Caption="Scanner" ID="0">
+    <Appearance>
+     <FrameStyle>Sunken</FrameStyle>
+     <ForegroundColor>Default</ForegroundColor>
+     <BackgroundColor>Default</BackgroundColor>
+     <BackgroundImage>None</BackgroundImage>
+     <Font>Default</Font>
+    </Appearance>
+    <WindowState Visible="False" X="0" Y="0" Width="615" Height="260"/>
+    <AllowChildren>False</AllowChildren>
+    <AllowResize>True</AllowResize>
+    <ShowHeader>True</ShowHeader>
+    <ShowEnableButton>False</ShowEnableButton>
+    <Collapsed>False</Collapsed>
+    <Disabled>False</Disabled>
+    <Slider Caption="Pan" ID="1" WidgetStyle="Slider" InvertedAppearance="false">
+     <WindowState Visible="False" X="10" Y="50" Width="60" Height="200"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="Preset" Monitor="false">Level</SliderMode>
+     <Level LowLimit="0" HighLimit="255" Value="82">
+      <Channel Fixture="28">0</Channel>
+      <Channel Fixture="31">0</Channel>
+     </Level>
+     <Playback>
+      <Function>4294967295</Function>
+     </Playback>
+    </Slider>
+    <Slider Caption="Tilt" ID="2" WidgetStyle="Slider" InvertedAppearance="false">
+     <WindowState Visible="False" X="70" Y="50" Width="60" Height="200"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="Preset" Monitor="false">Level</SliderMode>
+     <Level LowLimit="0" HighLimit="255" Value="97">
+      <Channel Fixture="28">1</Channel>
+      <Channel Fixture="31">1</Channel>
+     </Level>
+     <Playback>
+      <Function>4294967295</Function>
+     </Playback>
+    </Slider>
+    <Slider Caption="Speed" ID="3" WidgetStyle="Slider" InvertedAppearance="false">
+     <WindowState Visible="False" X="130" Y="50" Width="60" Height="200"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="Preset" Monitor="false">Level</SliderMode>
+     <Level LowLimit="0" HighLimit="255" Value="255">
+      <Channel Fixture="10">4</Channel>
+      <Channel Fixture="11">4</Channel>
+      <Channel Fixture="12">4</Channel>
+      <Channel Fixture="13">4</Channel>
+      <Channel Fixture="14">4</Channel>
+      <Channel Fixture="15">4</Channel>
+      <Channel Fixture="28">2</Channel>
+      <Channel Fixture="31">2</Channel>
+     </Level>
+     <Playback>
+      <Function>4294967295</Function>
+     </Playback>
+    </Slider>
+    <Slider Caption="Color" ID="4" WidgetStyle="Slider" InvertedAppearance="false">
+     <WindowState Visible="False" X="190" Y="50" Width="60" Height="200"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="Preset" Monitor="false">Level</SliderMode>
+     <Level LowLimit="0" HighLimit="255" Value="62">
+      <Channel Fixture="28">3</Channel>
+      <Channel Fixture="31">3</Channel>
+      <Channel Fixture="33">0</Channel>
+      <Channel Fixture="33">1</Channel>
+      <Channel Fixture="33">2</Channel>
+      <Channel Fixture="33">3</Channel>
+     </Level>
+     <Playback>
+      <Function>4294967295</Function>
+     </Playback>
+    </Slider>
+    <Slider Caption="Gobo/Shake" ID="5" WidgetStyle="Slider" InvertedAppearance="false">
+     <WindowState Visible="False" X="250" Y="50" Width="60" Height="200"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="Preset" Monitor="false">Level</SliderMode>
+     <Level LowLimit="0" HighLimit="255" Value="28">
+      <Channel Fixture="28">4</Channel>
+      <Channel Fixture="31">4</Channel>
+     </Level>
+     <Playback>
+      <Function>4294967295</Function>
+     </Playback>
+    </Slider>
+    <Slider Caption="Rotation" ID="6" WidgetStyle="Slider" InvertedAppearance="false">
+     <WindowState Visible="False" X="310" Y="50" Width="60" Height="200"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="Preset" Monitor="false">Level</SliderMode>
+     <Level LowLimit="0" HighLimit="255" Value="161">
+      <Channel Fixture="28">5</Channel>
+      <Channel Fixture="31">5</Channel>
+     </Level>
+     <Playback>
+      <Function>4294967295</Function>
+     </Playback>
+    </Slider>
+    <Slider Caption="Strobe" ID="7" WidgetStyle="Slider" InvertedAppearance="false">
+     <WindowState Visible="False" X="370" Y="50" Width="60" Height="200"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
+     <Level LowLimit="0" HighLimit="255" Value="63">
+      <Channel Fixture="28">6</Channel>
+      <Channel Fixture="31">6</Channel>
+     </Level>
+     <Playback>
+      <Function>4294967295</Function>
+     </Playback>
+    </Slider>
+    <Slider Caption="Dimmer" ID="8" WidgetStyle="Slider" InvertedAppearance="false">
+     <WindowState Visible="False" X="430" Y="50" Width="60" Height="200"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="true">Level</SliderMode>
+     <Reset/>
+     <Level LowLimit="0" HighLimit="255" Value="255">
+      <Channel Fixture="28">7</Channel>
+      <Channel Fixture="31">7</Channel>
+     </Level>
+     <Playback>
+      <Function>4294967295</Function>
+     </Playback>
+    </Slider>
+    <Slider Caption="Schieberegler 9" ID="9" WidgetStyle="Slider" InvertedAppearance="false">
+     <WindowState Visible="False" X="490" Y="50" Width="60" Height="200"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None">Playback</SliderMode>
+     <Level LowLimit="0" HighLimit="255" Value="0"/>
+     <Playback>
+      <Function>4294967295</Function>
+     </Playback>
+    </Slider>
+    <Slider Caption="Schieberegler 11" ID="11" WidgetStyle="Slider" InvertedAppearance="false">
+     <WindowState Visible="False" X="550" Y="50" Width="60" Height="200"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None">Playback</SliderMode>
+     <Level LowLimit="0" HighLimit="255" Value="0"/>
+     <Playback>
+      <Function>4294967295</Function>
+     </Playback>
+    </Slider>
+   </Frame>
+   <Slider Caption="DJc 01" ID="12" WidgetStyle="Slider" InvertedAppearance="false">
+    <WindowState Visible="False" X="685" Y="25" Width="60" Height="200"/>
+    <Appearance>
+     <FrameStyle>Sunken</FrameStyle>
+     <ForegroundColor>Default</ForegroundColor>
+     <BackgroundColor>Default</BackgroundColor>
+     <BackgroundImage>None</BackgroundImage>
+     <Font>Default</Font>
+    </Appearance>
+    <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None">Playback</SliderMode>
+    <Level LowLimit="0" HighLimit="255" Value="0"/>
+    <Playback>
+     <Function>20</Function>
+     <Flash/>
+    </Playback>
+   </Slider>
+   <Frame Caption="" ID="13">
+    <Appearance>
+     <FrameStyle>Sunken</FrameStyle>
+     <ForegroundColor>Default</ForegroundColor>
+     <BackgroundColor>Default</BackgroundColor>
+     <BackgroundImage>None</BackgroundImage>
+     <Font>Default</Font>
+    </Appearance>
+    <WindowState Visible="False" X="0" Y="255" Width="220" Height="120"/>
+    <AllowChildren>False</AllowChildren>
+    <AllowResize>False</AllowResize>
+    <ShowHeader>False</ShowHeader>
+    <ShowEnableButton>True</ShowEnableButton>
+    <Collapsed>False</Collapsed>
+    <Disabled>False</Disabled>
+    <Button Caption="M1" ID="14" Icon="">
+     <WindowState Visible="False" X="10" Y="10" Width="50" Height="50"/>
+     <Appearance>
+      <FrameStyle>None</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Function ID="22"/>
+     <Action>Toggle</Action>
+     <Key>A</Key>
+     <Intensity Adjust="False">100</Intensity>
+    </Button>
+    <Button Caption="Schalter 15" ID="15" Icon="">
+     <WindowState Visible="False" X="60" Y="10" Width="50" Height="50"/>
+     <Appearance>
+      <FrameStyle>None</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Function ID="4294967295"/>
+     <Action>Toggle</Action>
+     <Intensity Adjust="False">100</Intensity>
+    </Button>
+    <Button Caption="Schalter 16" ID="16" Icon="">
+     <WindowState Visible="False" X="110" Y="10" Width="50" Height="50"/>
+     <Appearance>
+      <FrameStyle>None</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Function ID="4294967295"/>
+     <Action>Toggle</Action>
+     <Intensity Adjust="False">100</Intensity>
+    </Button>
+    <Button Caption="Schalter 17" ID="17" Icon="">
+     <WindowState Visible="False" X="160" Y="10" Width="50" Height="50"/>
+     <Appearance>
+      <FrameStyle>None</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Function ID="4294967295"/>
+     <Action>Toggle</Action>
+     <Intensity Adjust="False">100</Intensity>
+    </Button>
+    <Button Caption="Schalter 18" ID="18" Icon="">
+     <WindowState Visible="False" X="10" Y="60" Width="50" Height="50"/>
+     <Appearance>
+      <FrameStyle>None</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Function ID="4294967295"/>
+     <Action>Toggle</Action>
+     <Intensity Adjust="False">100</Intensity>
+    </Button>
+    <Button Caption="Schalter 19" ID="19" Icon="">
+     <WindowState Visible="False" X="60" Y="60" Width="50" Height="50"/>
+     <Appearance>
+      <FrameStyle>None</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Function ID="4294967295"/>
+     <Action>Toggle</Action>
+     <Intensity Adjust="False">100</Intensity>
+    </Button>
+    <Button Caption="Schalter 20" ID="20" Icon="">
+     <WindowState Visible="False" X="110" Y="60" Width="50" Height="50"/>
+     <Appearance>
+      <FrameStyle>None</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Function ID="4294967295"/>
+     <Action>Toggle</Action>
+     <Intensity Adjust="False">100</Intensity>
+    </Button>
+    <Button Caption="Schalter 21" ID="21" Icon="">
+     <WindowState Visible="False" X="160" Y="60" Width="50" Height="50"/>
+     <Appearance>
+      <FrameStyle>None</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <Function ID="4294967295"/>
+     <Action>Toggle</Action>
+     <Intensity Adjust="False">100</Intensity>
+    </Button>
+   </Frame>
+   <Frame Caption="Par Q7" ID="22">
+    <Appearance>
+     <FrameStyle>Sunken</FrameStyle>
+     <ForegroundColor>Default</ForegroundColor>
+     <BackgroundColor>Default</BackgroundColor>
+     <BackgroundImage>None</BackgroundImage>
+     <Font>Default</Font>
+    </Appearance>
+    <WindowState Visible="False" X="0" Y="405" Width="380" Height="220"/>
+    <AllowChildren>False</AllowChildren>
+    <AllowResize>False</AllowResize>
+    <ShowHeader>False</ShowHeader>
+    <ShowEnableButton>True</ShowEnableButton>
+    <Collapsed>False</Collapsed>
+    <Disabled>False</Disabled>
+    <Slider Caption="Dimmer" ID="23" WidgetStyle="Slider" InvertedAppearance="false">
+     <WindowState Visible="False" X="10" Y="10" Width="60" Height="200"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="true">Level</SliderMode>
+     <Reset>
+      <Key>Y</Key>
+     </Reset>
+     <Level LowLimit="0" HighLimit="255" Value="255">
+      <Channel Fixture="0">0</Channel>
+      <Channel Fixture="1">0</Channel>
+      <Channel Fixture="2">0</Channel>
+      <Channel Fixture="3">0</Channel>
+     </Level>
+     <Playback>
+      <Function>4294967295</Function>
+     </Playback>
+    </Slider>
+    <Slider Caption="strobe" ID="24" WidgetStyle="Slider" InvertedAppearance="false">
+     <WindowState Visible="False" X="70" Y="10" Width="60" Height="200"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="true">Level</SliderMode>
+     <Reset>
+      <Key>X</Key>
+     </Reset>
+     <Level LowLimit="0" HighLimit="255" Value="179">
+      <Channel Fixture="0">1</Channel>
+      <Channel Fixture="1">1</Channel>
+      <Channel Fixture="2">1</Channel>
+      <Channel Fixture="3">1</Channel>
+     </Level>
+     <Playback>
+      <Function>4294967295</Function>
+     </Playback>
+    </Slider>
+    <Slider Caption="red" ID="25" WidgetStyle="Slider" InvertedAppearance="false">
+     <WindowState Visible="False" X="130" Y="10" Width="60" Height="200"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="true">Level</SliderMode>
+     <Reset>
+      <Key>C</Key>
+     </Reset>
+     <Level LowLimit="0" HighLimit="255" Value="0">
+      <Channel Fixture="0">2</Channel>
+      <Channel Fixture="1">2</Channel>
+      <Channel Fixture="2">2</Channel>
+      <Channel Fixture="3">2</Channel>
+     </Level>
+     <Playback>
+      <Function>4294967295</Function>
+     </Playback>
+    </Slider>
+    <Slider Caption="green" ID="26" WidgetStyle="Slider" InvertedAppearance="false">
+     <WindowState Visible="False" X="190" Y="10" Width="60" Height="200"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="true">Level</SliderMode>
+     <Reset>
+      <Key>V</Key>
+     </Reset>
+     <Level LowLimit="0" HighLimit="255" Value="0">
+      <Channel Fixture="0">3</Channel>
+      <Channel Fixture="1">3</Channel>
+      <Channel Fixture="2">3</Channel>
+      <Channel Fixture="3">3</Channel>
+     </Level>
+     <Playback>
+      <Function>4294967295</Function>
+     </Playback>
+    </Slider>
+    <Slider Caption="blue" ID="27" WidgetStyle="Slider" InvertedAppearance="false">
+     <WindowState Visible="False" X="250" Y="10" Width="60" Height="200"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="true">Level</SliderMode>
+     <Reset>
+      <Key>B</Key>
+     </Reset>
+     <Level LowLimit="0" HighLimit="255" Value="235">
+      <Channel Fixture="0">4</Channel>
+      <Channel Fixture="1">4</Channel>
+      <Channel Fixture="2">4</Channel>
+      <Channel Fixture="3">4</Channel>
+     </Level>
+     <Playback>
+      <Function>4294967295</Function>
+     </Playback>
+    </Slider>
+    <Slider Caption="white" ID="28" WidgetStyle="Slider" InvertedAppearance="false">
+     <WindowState Visible="False" X="310" Y="10" Width="60" Height="200"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="true">Level</SliderMode>
+     <Reset>
+      <Key>N</Key>
+     </Reset>
+     <Level LowLimit="0" HighLimit="255" Value="0">
+      <Channel Fixture="0">5</Channel>
+      <Channel Fixture="1">5</Channel>
+      <Channel Fixture="2">5</Channel>
+      <Channel Fixture="3">5</Channel>
+     </Level>
+     <Playback>
+      <Function>4294967295</Function>
+     </Playback>
+    </Slider>
+   </Frame>
+   <Frame Caption="" ID="29">
+    <Appearance>
+     <FrameStyle>Sunken</FrameStyle>
+     <ForegroundColor>Default</ForegroundColor>
+     <BackgroundColor>Default</BackgroundColor>
+     <BackgroundImage>None</BackgroundImage>
+     <Font>Default</Font>
+    </Appearance>
+    <WindowState Visible="False" X="515" Y="390" Width="380" Height="220"/>
+    <AllowChildren>False</AllowChildren>
+    <AllowResize>False</AllowResize>
+    <ShowHeader>False</ShowHeader>
+    <ShowEnableButton>True</ShowEnableButton>
+    <Collapsed>False</Collapsed>
+    <Disabled>False</Disabled>
+    <Slider Caption="Dimmer" ID="30" WidgetStyle="Slider" InvertedAppearance="false">
+     <WindowState Visible="False" X="10" Y="10" Width="60" Height="200"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
+     <Level LowLimit="0" HighLimit="255" Value="255">
+      <Channel Fixture="4">0</Channel>
+      <Channel Fixture="5">0</Channel>
+      <Channel Fixture="6">0</Channel>
+      <Channel Fixture="7">0</Channel>
+     </Level>
+     <Playback>
+      <Function>4294967295</Function>
+     </Playback>
+    </Slider>
+    <Slider Caption="red" ID="31" WidgetStyle="Slider" InvertedAppearance="false">
+     <WindowState Visible="False" X="70" Y="10" Width="60" Height="200"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
+     <Level LowLimit="0" HighLimit="255" Value="255">
+      <Channel Fixture="4">1</Channel>
+      <Channel Fixture="5">1</Channel>
+      <Channel Fixture="6">1</Channel>
+      <Channel Fixture="7">1</Channel>
+     </Level>
+     <Playback>
+      <Function>4294967295</Function>
+     </Playback>
+    </Slider>
+    <Slider Caption="green" ID="32" WidgetStyle="Slider" InvertedAppearance="false">
+     <WindowState Visible="False" X="130" Y="10" Width="60" Height="200"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
+     <Level LowLimit="0" HighLimit="255" Value="0">
+      <Channel Fixture="4">2</Channel>
+      <Channel Fixture="5">2</Channel>
+      <Channel Fixture="6">2</Channel>
+      <Channel Fixture="7">2</Channel>
+     </Level>
+     <Playback>
+      <Function>4294967295</Function>
+     </Playback>
+    </Slider>
+    <Slider Caption="blue" ID="33" WidgetStyle="Slider" InvertedAppearance="false">
+     <WindowState Visible="False" X="190" Y="10" Width="60" Height="200"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
+     <Level LowLimit="0" HighLimit="255" Value="61">
+      <Channel Fixture="4">3</Channel>
+      <Channel Fixture="5">3</Channel>
+      <Channel Fixture="6">3</Channel>
+      <Channel Fixture="7">3</Channel>
+     </Level>
+     <Playback>
+      <Function>4294967295</Function>
+     </Playback>
+    </Slider>
+    <Slider Caption="Strobe" ID="34" WidgetStyle="Slider" InvertedAppearance="false">
+     <WindowState Visible="False" X="250" Y="10" Width="60" Height="200"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="None" Monitor="false">Level</SliderMode>
+     <Level LowLimit="0" HighLimit="255" Value="180">
+      <Channel Fixture="4">4</Channel>
+      <Channel Fixture="5">4</Channel>
+      <Channel Fixture="6">4</Channel>
+      <Channel Fixture="7">4</Channel>
+     </Level>
+     <Playback>
+      <Function>4294967295</Function>
+     </Playback>
+    </Slider>
+    <Slider Caption="Schieberegler 35" ID="35" WidgetStyle="Slider" InvertedAppearance="false">
+     <WindowState Visible="False" X="310" Y="10" Width="60" Height="200"/>
+     <Appearance>
+      <FrameStyle>Sunken</FrameStyle>
+      <ForegroundColor>Default</ForegroundColor>
+      <BackgroundColor>Default</BackgroundColor>
+      <BackgroundImage>None</BackgroundImage>
+      <Font>Default</Font>
+     </Appearance>
+     <SliderMode ValueDisplayStyle="Exact" ClickAndGoType="Preset" Monitor="false">Level</SliderMode>
+     <Level LowLimit="0" HighLimit="255" Value="0">
+      <Channel Fixture="4">5</Channel>
+      <Channel Fixture="5">5</Channel>
+      <Channel Fixture="6">5</Channel>
+      <Channel Fixture="7">5</Channel>
+     </Level>
+     <Playback>
+      <Function>4294967295</Function>
+     </Playback>
+    </Slider>
+   </Frame>
+  </Frame>
+  <Properties>
+   <Size Width="1920" Height="1080"/>
+   <GrandMaster ChannelMode="Intensity" ValueMode="Reduce" SliderMode="Normal"/>
+  </Properties>
+ </VirtualConsole>
+ <SimpleDesk>
+  <Engine>
+   <CueStack ID="5">
+    <Speed FadeIn="0" FadeOut="0" Duration="4294967295"/>
+    <Cue Name="Cue 1">
+     <Value Channel="77">0</Value>
+     <Value Channel="128">244</Value>
+     <Value Channel="64">254</Value>
+     <Value Channel="66">255</Value>
+     <Value Channel="68">46</Value>
+     <Value Channel="69">0</Value>
+     <Value Channel="88">112</Value>
+     <Value Channel="90">249</Value>
+     <Value Channel="92">87</Value>
+     <Value Channel="93">114</Value>
+     <Value Channel="80">255</Value>
+     <Value Channel="148">137</Value>
+     <Value Channel="82">255</Value>
+     <Value Channel="151">135</Value>
+     <Value Channel="84">86</Value>
+     <Value Channel="104">254</Value>
+     <Value Channel="106">254</Value>
+     <Value Channel="40">255</Value>
+     <Value Channel="108">45</Value>
+     <Value Channel="109">123</Value>
+     <Value Channel="42">255</Value>
+     <Value Channel="44">48</Value>
+     <Value Channel="96">255</Value>
+     <Value Channel="45">0</Value>
+     <Value Channel="98">255</Value>
+     <Value Channel="100">49</Value>
+     <Value Channel="101">122</Value>
+     <Value Channel="36">212</Value>
+     <Value Channel="37">0</Value>
+     <Value Channel="38">96</Value>
+     <Value Channel="56">247</Value>
+     <Value Channel="124">255</Value>
+     <Value Channel="58">255</Value>
+     <Value Channel="126">77</Value>
+     <Value Channel="127">79</Value>
+     <Value Channel="60">44</Value>
+     <Value Channel="61">0</Value>
+     <Value Channel="112">253</Value>
+     <Value Channel="114">255</Value>
+     <Value Channel="48">255</Value>
+     <Value Channel="116">44</Value>
+     <Value Channel="50">255</Value>
+     <Value Channel="117">0</Value>
+     <Value Channel="52">44</Value>
+     <Value Channel="53">0</Value>
+     <Value Channel="72">251</Value>
+     <Value Channel="74">254</Value>
+     <Value Channel="76">44</Value>
+     <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+    </Cue>
+   </CueStack>
+   <CueStack ID="6">
+    <Speed FadeIn="0" FadeOut="0" Duration="4294967295"/>
+    <Cue Name="Cue 1">
+     <Value Channel="77">0</Value>
+     <Value Channel="128">255</Value>
+     <Value Channel="64">254</Value>
+     <Value Channel="66">255</Value>
+     <Value Channel="68">46</Value>
+     <Value Channel="69">0</Value>
+     <Value Channel="88">112</Value>
+     <Value Channel="90">249</Value>
+     <Value Channel="92">87</Value>
+     <Value Channel="93">0</Value>
+     <Value Channel="80">255</Value>
+     <Value Channel="148">137</Value>
+     <Value Channel="82">255</Value>
+     <Value Channel="151">135</Value>
+     <Value Channel="84">86</Value>
+     <Value Channel="85">0</Value>
+     <Value Channel="104">254</Value>
+     <Value Channel="106">254</Value>
+     <Value Channel="40">255</Value>
+     <Value Channel="108">45</Value>
+     <Value Channel="109">0</Value>
+     <Value Channel="42">255</Value>
+     <Value Channel="44">48</Value>
+     <Value Channel="96">255</Value>
+     <Value Channel="45">0</Value>
+     <Value Channel="98">255</Value>
+     <Value Channel="100">49</Value>
+     <Value Channel="101">0</Value>
+     <Value Channel="36">212</Value>
+     <Value Channel="37">0</Value>
+     <Value Channel="38">96</Value>
+     <Value Channel="56">247</Value>
+     <Value Channel="124">255</Value>
+     <Value Channel="58">255</Value>
+     <Value Channel="126">77</Value>
+     <Value Channel="127">79</Value>
+     <Value Channel="60">44</Value>
+     <Value Channel="61">0</Value>
+     <Value Channel="112">253</Value>
+     <Value Channel="114">255</Value>
+     <Value Channel="48">255</Value>
+     <Value Channel="116">44</Value>
+     <Value Channel="50">255</Value>
+     <Value Channel="117">0</Value>
+     <Value Channel="52">44</Value>
+     <Value Channel="53">0</Value>
+     <Value Channel="72">251</Value>
+     <Value Channel="74">254</Value>
+     <Value Channel="76">44</Value>
+     <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+    </Cue>
+   </CueStack>
+   <CueStack ID="7">
+    <Speed FadeIn="0" FadeOut="0" Duration="4294967295"/>
+    <Cue Name="Cue 1">
+     <Value Channel="88">248</Value>
+     <Value Channel="36">159</Value>
+     <Value Channel="0">249</Value>
+     <Value Channel="37">89</Value>
+     <Value Channel="127">115</Value>
+     <Value Channel="56">248</Value>
+     <Value Channel="94">246</Value>
+     <Value Channel="6">252</Value>
+     <Value Channel="80">249</Value>
+     <Value Channel="24">246</Value>
+     <Value Channel="62">252</Value>
+     <Value Channel="48">251</Value>
+     <Value Channel="86">252</Value>
+     <Value Channel="30">251</Value>
+     <Value Channel="104">253</Value>
+     <Value Channel="54">252</Value>
+     <Value Channel="128">118</Value>
+     <Value Channel="18">252</Value>
+     <Value Channel="72">252</Value>
+     <Value Channel="110">250</Value>
+     <Value Channel="96">249</Value>
+     <Value Channel="40">252</Value>
+     <Value Channel="78">250</Value>
+     <Value Channel="64">249</Value>
+     <Value Channel="102">250</Value>
+     <Value Channel="46">255</Value>
+     <Value Channel="70">246</Value>
+     <Value Channel="12">251</Value>
+     <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+    </Cue>
+    <Cue Name="Cue 2">
+     <Value Channel="88">248</Value>
+     <Value Channel="14">253</Value>
+     <Value Channel="36">159</Value>
+     <Value Channel="37">89</Value>
+     <Value Channel="127">115</Value>
+     <Value Channel="2">255</Value>
+     <Value Channel="56">248</Value>
+     <Value Channel="80">249</Value>
+     <Value Channel="26">255</Value>
+     <Value Channel="48">251</Value>
+     <Value Channel="104">253</Value>
+     <Value Channel="560">255</Value>
+     <Value Channel="128">118</Value>
+     <Value Channel="561">125</Value>
+     <Value Channel="72">252</Value>
+     <Value Channel="562">0</Value>
+     <Value Channel="563">0</Value>
+     <Value Channel="20">255</Value>
+     <Value Channel="564">255</Value>
+     <Value Channel="565">0</Value>
+     <Value Channel="96">249</Value>
+     <Value Channel="40">252</Value>
+     <Value Channel="567">132</Value>
+     <Value Channel="64">249</Value>
+     <Value Channel="8">249</Value>
+     <Value Channel="32">254</Value>
+     <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+    </Cue>
+    <Cue Name="Cue 3">
+     <Value Channel="88">248</Value>
+     <Value Channel="14">253</Value>
+     <Value Channel="36">159</Value>
+     <Value Channel="37">89</Value>
+     <Value Channel="127">115</Value>
+     <Value Channel="2">255</Value>
+     <Value Channel="56">248</Value>
+     <Value Channel="80">249</Value>
+     <Value Channel="26">255</Value>
+     <Value Channel="48">251</Value>
+     <Value Channel="104">253</Value>
+     <Value Channel="560">255</Value>
+     <Value Channel="128">118</Value>
+     <Value Channel="561">125</Value>
+     <Value Channel="72">252</Value>
+     <Value Channel="562">127</Value>
+     <Value Channel="563">0</Value>
+     <Value Channel="20">255</Value>
+     <Value Channel="564">255</Value>
+     <Value Channel="565">0</Value>
+     <Value Channel="96">249</Value>
+     <Value Channel="566">130</Value>
+     <Value Channel="40">252</Value>
+     <Value Channel="567">132</Value>
+     <Value Channel="64">249</Value>
+     <Value Channel="8">249</Value>
+     <Value Channel="32">254</Value>
+     <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+    </Cue>
+   </CueStack>
+   <CueStack ID="0">
+    <Speed FadeIn="0" FadeOut="0" Duration="4294967295"/>
+    <Cue Name="white all 100">
+     <Value Channel="88">255</Value>
+     <Value Channel="0">0</Value>
+     <Value Channel="112">255</Value>
+     <Value Channel="523">255</Value>
+     <Value Channel="524">255</Value>
+     <Value Channel="56">255</Value>
+     <Value Channel="93">255</Value>
+     <Value Channel="548">255</Value>
+     <Value Channel="512">255</Value>
+     <Value Channel="80">255</Value>
+     <Value Channel="117">255</Value>
+     <Value Channel="61">255</Value>
+     <Value Channel="48">255</Value>
+     <Value Channel="85">255</Value>
+     <Value Channel="517">255</Value>
+     <Value Channel="518">255</Value>
+     <Value Channel="536">255</Value>
+     <Value Channel="104">255</Value>
+     <Value Channel="53">255</Value>
+     <Value Channel="560">255</Value>
+     <Value Channel="72">255</Value>
+     <Value Channel="109">255</Value>
+     <Value Channel="542">255</Value>
+     <Value Channel="564">255</Value>
+     <Value Channel="96">255</Value>
+     <Value Channel="529">255</Value>
+     <Value Channel="40">255</Value>
+     <Value Channel="77">255</Value>
+     <Value Channel="530">255</Value>
+     <Value Channel="101">255</Value>
+     <Value Channel="64">255</Value>
+     <Value Channel="535">255</Value>
+     <Value Channel="45">255</Value>
+     <Value Channel="69">255</Value>
+     <Value Channel="554">255</Value>
+     <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+    </Cue>
+    <Cue Name="red all 100">
+     <Value Channel="549">255</Value>
+     <Value Channel="12">255</Value>
+     <Value Channel="64">255</Value>
+     <Value Channel="66">255</Value>
+     <Value Channel="0">255</Value>
+     <Value Channel="88">255</Value>
+     <Value Channel="560">255</Value>
+     <Value Channel="561">255</Value>
+     <Value Channel="6">255</Value>
+     <Value Channel="90">255</Value>
+     <Value Channel="24">255</Value>
+     <Value Channel="564">255</Value>
+     <Value Channel="565">255</Value>
+     <Value Channel="80">255</Value>
+     <Value Channel="30">255</Value>
+     <Value Channel="82">255</Value>
+     <Value Channel="520">255</Value>
+     <Value Channel="18">255</Value>
+     <Value Channel="523">0</Value>
+     <Value Channel="524">255</Value>
+     <Value Channel="104">255</Value>
+     <Value Channel="526">255</Value>
+     <Value Channel="106">255</Value>
+     <Value Channel="512">255</Value>
+     <Value Channel="40">255</Value>
+     <Value Channel="514">255</Value>
+     <Value Channel="42">255</Value>
+     <Value Channel="517">0</Value>
+     <Value Channel="96">255</Value>
+     <Value Channel="518">255</Value>
+     <Value Channel="98">255</Value>
+     <Value Channel="536">255</Value>
+     <Value Channel="537">255</Value>
+     <Value Channel="542">255</Value>
+     <Value Channel="543">255</Value>
+     <Value Channel="56">255</Value>
+     <Value Channel="529">0</Value>
+     <Value Channel="58">255</Value>
+     <Value Channel="530">255</Value>
+     <Value Channel="532">255</Value>
+     <Value Channel="112">255</Value>
+     <Value Channel="535">0</Value>
+     <Value Channel="114">255</Value>
+     <Value Channel="48">255</Value>
+     <Value Channel="50">255</Value>
+     <Value Channel="554">255</Value>
+     <Value Channel="555">255</Value>
+     <Value Channel="72">255</Value>
+     <Value Channel="74">255</Value>
+     <Value Channel="548">255</Value>
+     <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+    </Cue>
+    <Cue Name="green all 100">
+     <Value Channel="550">255</Value>
+     <Value Channel="64">255</Value>
+     <Value Channel="13">255</Value>
+     <Value Channel="67">255</Value>
+     <Value Channel="1">255</Value>
+     <Value Channel="88">255</Value>
+     <Value Channel="560">255</Value>
+     <Value Channel="562">255</Value>
+     <Value Channel="7">255</Value>
+     <Value Channel="91">255</Value>
+     <Value Channel="25">255</Value>
+     <Value Channel="564">255</Value>
+     <Value Channel="566">255</Value>
+     <Value Channel="80">255</Value>
+     <Value Channel="31">255</Value>
+     <Value Channel="83">255</Value>
+     <Value Channel="521">255</Value>
+     <Value Channel="19">255</Value>
+     <Value Channel="524">255</Value>
+     <Value Channel="104">255</Value>
+     <Value Channel="527">255</Value>
+     <Value Channel="512">255</Value>
+     <Value Channel="107">255</Value>
+     <Value Channel="40">255</Value>
+     <Value Channel="515">255</Value>
+     <Value Channel="43">255</Value>
+     <Value Channel="96">255</Value>
+     <Value Channel="518">255</Value>
+     <Value Channel="536">255</Value>
+     <Value Channel="99">255</Value>
+     <Value Channel="538">255</Value>
+     <Value Channel="542">255</Value>
+     <Value Channel="56">255</Value>
+     <Value Channel="530">255</Value>
+     <Value Channel="59">255</Value>
+     <Value Channel="112">255</Value>
+     <Value Channel="533">255</Value>
+     <Value Channel="48">255</Value>
+     <Value Channel="115">255</Value>
+     <Value Channel="554">255</Value>
+     <Value Channel="51">255</Value>
+     <Value Channel="556">255</Value>
+     <Value Channel="544">255</Value>
+     <Value Channel="72">255</Value>
+     <Value Channel="75">255</Value>
+     <Value Channel="548">255</Value>
+     <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+    </Cue>
+    <Cue Name="blue all 100">
+     <Value Channel="551">255</Value>
+     <Value Channel="64">255</Value>
+     <Value Channel="14">255</Value>
+     <Value Channel="68">255</Value>
+     <Value Channel="2">255</Value>
+     <Value Channel="88">255</Value>
+     <Value Channel="560">255</Value>
+     <Value Channel="563">255</Value>
+     <Value Channel="92">255</Value>
+     <Value Channel="564">255</Value>
+     <Value Channel="26">255</Value>
+     <Value Channel="567">255</Value>
+     <Value Channel="80">255</Value>
+     <Value Channel="84">255</Value>
+     <Value Channel="522">255</Value>
+     <Value Channel="524">255</Value>
+     <Value Channel="20">255</Value>
+     <Value Channel="104">255</Value>
+     <Value Channel="512">255</Value>
+     <Value Channel="40">255</Value>
+     <Value Channel="108">255</Value>
+     <Value Channel="516">255</Value>
+     <Value Channel="44">255</Value>
+     <Value Channel="96">255</Value>
+     <Value Channel="518">255</Value>
+     <Value Channel="536">255</Value>
+     <Value Channel="32">255</Value>
+     <Value Channel="100">255</Value>
+     <Value Channel="539">255</Value>
+     <Value Channel="542">255</Value>
+     <Value Channel="56">255</Value>
+     <Value Channel="528">255</Value>
+     <Value Channel="530">255</Value>
+     <Value Channel="60">255</Value>
+     <Value Channel="112">255</Value>
+     <Value Channel="534">255</Value>
+     <Value Channel="48">255</Value>
+     <Value Channel="116">255</Value>
+     <Value Channel="554">255</Value>
+     <Value Channel="52">255</Value>
+     <Value Channel="557">255</Value>
+     <Value Channel="72">255</Value>
+     <Value Channel="545">255</Value>
+     <Value Channel="8">255</Value>
+     <Value Channel="548">255</Value>
+     <Value Channel="76">255</Value>
+     <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+    </Cue>
+   </CueStack>
+   <CueStack ID="1">
+    <Speed FadeIn="0" FadeOut="0" Duration="4294967295"/>
+    <Cue Name="Cue 1">
+     <Value Channel="560">255</Value>
+     <Value Channel="561">255</Value>
+     <Value Channel="564">255</Value>
+     <Value Channel="565">255</Value>
+     <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+    </Cue>
+    <Cue Name="Cue 2">
+     <Value Channel="560">255</Value>
+     <Value Channel="562">255</Value>
+     <Value Channel="564">255</Value>
+     <Value Channel="566">255</Value>
+     <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+    </Cue>
+    <Cue Name="Cue 3">
+     <Value Channel="560">255</Value>
+     <Value Channel="563">255</Value>
+     <Value Channel="564">255</Value>
+     <Value Channel="567">255</Value>
+     <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+    </Cue>
+    <Cue Name="Cue 4">
+     <Value Channel="560">255</Value>
+     <Value Channel="561">255</Value>
+     <Value Channel="562">255</Value>
+     <Value Channel="563">255</Value>
+     <Value Channel="564">255</Value>
+     <Value Channel="565">255</Value>
+     <Value Channel="566">255</Value>
+     <Value Channel="567">255</Value>
+     <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+    </Cue>
+   </CueStack>
+   <CueStack ID="3">
+    <Speed FadeIn="0" FadeOut="0" Duration="4294967295"/>
+    <Cue Name="Cue 1">
+     <Value Channel="6">255</Value>
+     <Value Channel="24">255</Value>
+     <Value Channel="12">255</Value>
+     <Value Channel="30">255</Value>
+     <Value Channel="0">255</Value>
+     <Value Channel="18">255</Value>
+     <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+    </Cue>
+    <Cue Name="Cue 2">
+     <Value Channel="7">255</Value>
+     <Value Channel="25">255</Value>
+     <Value Channel="13">255</Value>
+     <Value Channel="31">255</Value>
+     <Value Channel="1">255</Value>
+     <Value Channel="19">255</Value>
+     <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+    </Cue>
+    <Cue Name="Cue 3">
+     <Value Channel="8">255</Value>
+     <Value Channel="26">255</Value>
+     <Value Channel="32">255</Value>
+     <Value Channel="14">255</Value>
+     <Value Channel="2">255</Value>
+     <Value Channel="20">255</Value>
+     <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+    </Cue>
+   </CueStack>
+   <CueStack ID="4">
+    <Speed FadeIn="0" FadeOut="0" Duration="4294967295"/>
+    <Cue Name="Cue 1">
+     <Value Channel="88">255</Value>
+     <Value Channel="90">255</Value>
+     <Value Channel="112">255</Value>
+     <Value Channel="523">0</Value>
+     <Value Channel="524">0</Value>
+     <Value Channel="56">253</Value>
+     <Value Channel="114">255</Value>
+     <Value Channel="58">255</Value>
+     <Value Channel="548">0</Value>
+     <Value Channel="512">0</Value>
+     <Value Channel="517">0</Value>
+     <Value Channel="518">0</Value>
+     <Value Channel="536">0</Value>
+     <Value Channel="560">0</Value>
+     <Value Channel="72">255</Value>
+     <Value Channel="542">0</Value>
+     <Value Channel="74">255</Value>
+     <Value Channel="564">0</Value>
+     <Value Channel="96">255</Value>
+     <Value Channel="529">0</Value>
+     <Value Channel="40">255</Value>
+     <Value Channel="98">255</Value>
+     <Value Channel="530">0</Value>
+     <Value Channel="42">255</Value>
+     <Value Channel="535">0</Value>
+     <Value Channel="554">0</Value>
+     <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+    </Cue>
+    <Cue Name="Cue 2">
+     <Value Channel="88">255</Value>
+     <Value Channel="112">255</Value>
+     <Value Channel="91">255</Value>
+     <Value Channel="523">0</Value>
+     <Value Channel="524">0</Value>
+     <Value Channel="56">253</Value>
+     <Value Channel="115">255</Value>
+     <Value Channel="548">0</Value>
+     <Value Channel="59">255</Value>
+     <Value Channel="512">0</Value>
+     <Value Channel="517">0</Value>
+     <Value Channel="518">0</Value>
+     <Value Channel="536">0</Value>
+     <Value Channel="560">0</Value>
+     <Value Channel="72">255</Value>
+     <Value Channel="542">0</Value>
+     <Value Channel="564">0</Value>
+     <Value Channel="75">255</Value>
+     <Value Channel="96">255</Value>
+     <Value Channel="529">0</Value>
+     <Value Channel="40">255</Value>
+     <Value Channel="530">0</Value>
+     <Value Channel="99">255</Value>
+     <Value Channel="43">255</Value>
+     <Value Channel="535">0</Value>
+     <Value Channel="554">0</Value>
+     <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+    </Cue>
+    <Cue Name="Cue 3">
+     <Value Channel="88">255</Value>
+     <Value Channel="112">255</Value>
+     <Value Channel="523">0</Value>
+     <Value Channel="92">255</Value>
+     <Value Channel="524">0</Value>
+     <Value Channel="56">253</Value>
+     <Value Channel="548">0</Value>
+     <Value Channel="116">255</Value>
+     <Value Channel="512">0</Value>
+     <Value Channel="60">255</Value>
+     <Value Channel="517">0</Value>
+     <Value Channel="518">0</Value>
+     <Value Channel="536">0</Value>
+     <Value Channel="560">0</Value>
+     <Value Channel="72">255</Value>
+     <Value Channel="542">0</Value>
+     <Value Channel="564">0</Value>
+     <Value Channel="96">255</Value>
+     <Value Channel="76">255</Value>
+     <Value Channel="529">0</Value>
+     <Value Channel="40">255</Value>
+     <Value Channel="530">0</Value>
+     <Value Channel="100">255</Value>
+     <Value Channel="44">255</Value>
+     <Value Channel="535">0</Value>
+     <Value Channel="554">0</Value>
+     <Speed FadeIn="0" FadeOut="0" Duration="0"/>
+    </Cue>
+   </CueStack>
+  </Engine>
+ </SimpleDesk>
+</Workspace>

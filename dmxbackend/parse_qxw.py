@@ -42,9 +42,13 @@ def map_fixture(fixture, first_pixel):
     name = retrieve(fixture, 'Name')[0].text
     manufacturer = retrieve(fixture, 'Manufacturer')[0].text
     model = retrieve(fixture, 'Model')[0].text
+    universe = retrieve(fixture, 'Universe')[0].text
     address = retrieve(fixture, 'Address')[0].text
     channels = retrieve(fixture, 'Channels')[0].text
 
+    # TODO: Other universes are ignored at the moment.
+    if universe != '0':
+        return []
     if model == 'LED PAR56':
         if manufacturer == 'Stairville':
             return [StairVilleMapping(model, name, address, first_pixel)]
@@ -61,6 +65,9 @@ def map_fixture(fixture, first_pixel):
     elif model == 'Generic' and int(channels) == 4 and 'dimmer' in name.lower():
         my_model = 'Dimmer 4 CH'
         return [DimmerMapping(my_model, name, address, first_pixel)]
+    elif model == 'Generic RGB' and int(channels) == 3:
+        my_model = 'RGB 3 CH'
+        return [RGBMapping(my_model, name, address, first_pixel)]
     else:
         return []
 

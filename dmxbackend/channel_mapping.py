@@ -3,6 +3,7 @@
 import logging
 log = logging.getLogger(__name__)
 
+
 class DMXMapping(object):
     def __init__(self, model, name, address):
         self.model = model

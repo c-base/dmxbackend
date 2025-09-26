@@ -104,7 +104,8 @@ async def websocket_handler(request):
 
     async def on_update():
         if not ws.closed:
-            ws.send_json(channel_state.as_list())
+            print(f'#### {channel_state.as_list()}')    
+            await ws.send_json(channel_state.as_list())
     channel_state.subscribe(on_update)
 
     async for msg in ws:

@@ -1,8 +1,12 @@
 <script lang="ts">
+  import iro from '@jaames/iro'
+  import { onMount } from 'svelte'
 
-  let {channels, onUpdate, onFinished, channelState} = $props();
+  let {channels, onUpdate, onFinished, channelState} = $props()
+  let pickerElement: HTMLElement
+  let iroPicker: iro.ColorPicker
 
-  const initialValue = $derived.by(() => {
+  const initialValue = () => {
     const r_channel: string = channels['r'][0]
     const g_channel: string = channels['g'][0]
     const b_channel: string = channels['b'][0]
@@ -21,35 +25,35 @@
         b = channel.value
       }
     }
-    
-    const color: string = `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`
+    const color = {"r": r, "g": g, "b": b}
     return color
-  })
+  }
 
-  const colorChanged = (ev: Event) => {
-    let val = ev.target.value
-    console.log(val)
-    const r = Number(`0x${val.substr(1,2)}`)
-    const g = Number(`0x${val.substr(3,2)}`)
-    const b = Number(`0x${val.substr(5,2)}`)
+  const colorChanged = (val: object) => {
     for (const channel_id of channels['r']) {
-      onUpdate(channel_id, r)
+      onUpdate(channel_id, val.rgb.r)
     }
     for (const channel_id of channels['g']) {
-      onUpdate(channel_id, g)
+      onUpdate(channel_id, val.rgb.g)
     }
     for (const channel_id of channels['b']) {
-      onUpdate(channel_id, b)
+      onUpdate(channel_id, val.rgb.b)
     }
     onFinished()
   }
+
+  onMount(() => {
+    iroPicker = new iro.ColorPicker(pickerElement)
+    iroPicker.color.rgb = initialValue()
+    //  = initialValue()
+    iroPicker.on('color:change', colorChanged)
+  })
 
 </script>
 
 
 <div>
-  <!--{JSON.stringify(channels)} -->
-  <input type="color" value={initialValue} oninput={(ev) => colorChanged(ev)}/>
+  <div bind:this={pickerElement}></div>
 </div>
 
 <style>

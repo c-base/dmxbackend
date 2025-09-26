@@ -1,7 +1,8 @@
 <script lang="ts">
   import { onMount } from "svelte"
   import Light from './lib/Light.svelte'
-    import RGBControl from "./lib/RGBControl.svelte";
+  import RGBControl from "./lib/RGBControl.svelte"
+  import DimmerControl from "./lib/DimmerControl.svelte"
 
   let fixtures = $state<object[]>([])
   let selectedFixtures = $state<string[]>([])
@@ -56,6 +57,7 @@
   }
 
   const updateChannel = (channel_id: string, value: number) => {
+    console.log(`updating channel ${channel_id} to value ${value}`)
     let state = $state.snapshot(channelState)
     for (let channel of state) {
       if (channel.channel_id === channel_id) {
@@ -147,6 +149,8 @@
         <div class="control-element">
           {#if element == 'rgb'}
           <RGBControl channelState={channelState} channels={channels} onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></RGBControl>
+          {:else if element == 'dimmer'}
+          <DimmerControl channelState={channelState} channels={channels} onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></DimmerControl>
           {/if}
         </div>
       </div>
