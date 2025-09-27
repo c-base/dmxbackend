@@ -8,6 +8,7 @@ from .channel_mapping import (
     OctagonMapping,
     DimmerPackMapping,
     CameoRootPAR6Mapping,
+    SonicPulseLEDBarMapping,
 )
 
 FIXTURE_XPATH = './' \
@@ -55,11 +56,13 @@ def map_fixture(fixture, first_pixel):
             return [StairVilleMapping(model, name, address, first_pixel)]
         elif manufacturer == 'Eurolite':
             return [RGBMapping(model, name, address, first_pixel)]
+    elif model == 'LED PAR 36 COB RGBW 12W':
+        return [SonicPulseLEDBarMapping(model, name, address, first_pixel)]
     elif model == 'LED Flood Panel 150':
         return [RGBMapping(model, name, address, first_pixel)]
     elif model == 'Gigabar II':
         return [GigabarMapping(model, name, address, first_pixel)]
-    elif model == 'Generic' and int(channels) == 4 and 'octacon' in name.lower():
+    elif model == 'Octagon Theater 20x6W CW/WW/A' and int(channels) == 4 and 'octacon' in name.lower():
         # Model is called "Octacon" in the QXW file
         my_model = 'Octagon'
         return [OctagonMapping(my_model, name, address, first_pixel)]

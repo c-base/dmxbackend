@@ -123,6 +123,7 @@ def fixtures():
             'model': light.model,
             'pos_x': light.pos_x,
             'pos_y': light.pos_y,
+            'rot': light.rot,
             'elements': light.elements
         }
         ret.append(one_light)

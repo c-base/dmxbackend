@@ -39,9 +39,11 @@
   const onMessage = (event: any) => {
     const channel_data = JSON.parse(event.data)
     channelState = channel_data
+    let stateByID = {}
     for(let chan of channel_data) {
-      channelStateByID[chan.channel_id] = chan.value
+      stateByID[chan.channel_id] = chan.value
     }
+    channelStateByID = stateByID
   }
 
   const onToggle = (id: string) => {
@@ -64,16 +66,23 @@
   const updateChannel = (channel_id: string, value: number) => {
     console.log(`updating channel ${channel_id} to value ${value}`)
     let state = $state.snapshot(channelState)
+    let stateByID = $state.snapshot(channelStateByID)
+    // update the values
     for (let channel of state) {
       if (channel.channel_id === channel_id) {
         channel.value = value
       }
     }
+    // update the by-ID-storage, too
+    stateByID[channel_id] = value
+    // overwrite the $state variables
     channelState = state
-    channelStateByID[chan.channel_id] = chan.value
+    channelStateByID = stateByID
   }
 
   const finnishUpdate = () => {
+    // This function is called when the update of the channels is done. This will send the
+    // current state to the backend.
     const state = $state.snapshot(channelState)
     console.log("finnish")
     socket.send(JSON.stringify(state))
@@ -182,6 +191,19 @@
             channelStateByID={channelStateByID} 
             channels={channels} 
             onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
+          {:else if element == 'coldwhite'}
+          <GenericControl
+            channelName="cw"
+            channelStateByID={channelStateByID} 
+            channels={channels} 
+            onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
+          {:else if element == 'warmwhite'}
+          <GenericControl
+            channelName="ww"
+            channelStateByID={channelStateByID} 
+            channels={channels} 
+            onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
+
           {:else if element == 'amber'}
           <GenericControl
             channelName="amb"

@@ -13,6 +13,7 @@ class DMXMapping(object):
         self.universe = 0
         self.pos_x = 0
         self.pos_y = 0
+        self.rot = 0
 
     def map_pixel_to_channels(self, line):
         """
@@ -169,6 +170,52 @@ class GigabarMapping(RGBMapping):
         return self.map_consecutive_dmx(dmx_data, self.address, channel_ids)
 
 
+class SonicPulseLEDBarMapping(RGBMapping):
+    def __init__(self, model, name, address, pixel):
+        # the first 2 addresses in 26-channel mode are reserved for functions
+        super().__init__(model, name, int(address)+2, pixel)
+        self.num_pixels = 8
+
+    @property
+    def channel_ids(self):
+        channels = [
+            self.light_id + '/rgb/r',
+            self.light_id + '/rgb/g',
+            self.light_id + '/rgb/b',
+            self.light_id + '/white/whi',
+        ]
+        return channels
+
+    @property
+    def elements(self):
+        return [
+            {
+                'name': 'rgb',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'r', 'channel_id': self.light_id + '/rgb/r'},
+                    {'name': 'g', 'channel_id': self.light_id + '/rgb/g'},
+                    {'name': 'b', 'channel_id': self.light_id + '/rgb/b'},
+                ]
+            },
+            {
+                'name': 'white',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'whi', 'channel_id': self.light_id + '/white/whi'},
+                ],
+            }
+        ]
+
+    def state_to_dmx(self, data_dict):
+        channel_ids = self.channel_ids
+        return self.map_consecutive_channels(data_dict, channel_ids)
+
+    def dmx_to_state(self, dmx_data):
+        channel_ids = self.channel_ids
+        return self.map_consecutive_dmx(dmx_data, self.address, channel_ids)
+
+
 class OctagonMapping(DMXMapping):
     def __init__(self, model, name, address, pixel):
         # the first 2 addresses in 26-channel mode are reserved for functions
@@ -179,25 +226,45 @@ class OctagonMapping(DMXMapping):
     @property
     def channel_ids(self):
         return [
-            self.light_id + '/white/cw',
-            self.light_id + '/white/ww',
-            self.light_id + '/white/a',
-            self.light_id + '/white/dim',
+            self.light_id + '/coldwhite/cw',
+            self.light_id + '/warmwhite/ww',
+            self.light_id + '/amber/amb',
+            self.light_id + '/dimmer/dim',
         ]
 
     @property
     def elements(self):
         ch = self.pixel * 3
-        return [{
-            'name': 'white',
-            'pixel': self.pixel,
-            'channels': [
-                {'name': 'cw',  'channel_id': self.light_id + '/white/cw'},
-                {'name': 'ww',  'channel_id': self.light_id + '/white/ww'},
-                {'name': 'a',   'channel_id': self.light_id + '/white/a'},
-                {'name': 'dim', 'channel_id': self.light_id + '/white/dim'}
-            ],
-        }]
+        return [
+            {
+                'name': 'dimmer',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'dim', 'channel_id': self.light_id + '/dimmer/dim'},
+                ],
+            },
+            {
+                'name': 'coldwhite',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'str', 'channel_id': self.light_id + '/coldwhite/cw'},
+                ],
+            },
+            {
+                'name': 'warmwhite',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'ww', 'channel_id': self.light_id + '/warmwhite/ww'},
+                ],
+            },
+            {
+                'name': 'amber',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'amb', 'channel_id': self.light_id + '/amber/amb'},
+                ],
+            },
+        ]
 
     def state_to_dmx(self, data_dict):
         channel_ids = [

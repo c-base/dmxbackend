@@ -35,6 +35,7 @@ def prepare_mapping(qxw_filename, positions):
         try:
             light.pos_x = int(positions[light.name]['pos_x']) 
             light.pos_y = int(positions[light.name]['pos_y'])
+            light.rot = int(positions[light.name].get('rot', 0))
         except KeyError:
             pass
         except NameError:
