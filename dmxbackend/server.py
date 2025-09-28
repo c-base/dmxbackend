@@ -5,9 +5,12 @@ import json
 import asyncio
 import logging
 import aiohttp
+from pathlib import Path
 from aiohttp import web
 # from PIL import Image
 from io import BytesIO
+from sanitize_filename import sanitize
+
 from dmxbackend import channel_state
 from dmxbackend import presets
 
@@ -62,6 +65,40 @@ async def fixtures(request):
     return web.json_response(ret, dumps=dump)
 
 
+async def store_preset(request):
+    post_data = await request.post()
+    filename = post_data['filename']
+    preset = channel_state.as_list()
+    filepath = Path(__file__).parent.parent / 'presets' / filename
+    with open(filepath, mode='w') as outfh:
+        json.dump(preset, outfh)
+    return web.json_response(data={'success': True, 'message': 'stored'})
+
+
+async def load_preset(request):
+    post_data = await request.post()
+    filename = post_data['filename']
+    preset = channel_state.as_list()
+    filepath = Path(__file__).parent.parent / 'presets' / filename
+    with open(filepath, mode='r') as infh:
+        new_data = json.load(infh)
+        channel_state.update_channels(new_data)
+    return web.json_response(data={'success': True, 'message': 'loaded'})
+
+
+async def list_presets(request):
+    preset_dir = Path(__file__).parent.parent / 'presets'
+    file_list = []
+    for x in preset_dir.iterdir():
+        if x.is_file():
+           if x.name.startswith('.'):
+               continue
+           if x.name.lower() == 'readme.md':
+               continue
+           file_list.append(x.name)
+    return web.json_response(data={'presets': file_list})
+
+
 async def automode_post(request):
     post_data = await request.post()
     param = post_data.get('automode', None)
@@ -104,7 +141,6 @@ async def websocket_handler(request):
 
     async def on_update():
         if not ws.closed:
-            print(f'#### {channel_state.as_list()}')    
             await ws.send_json(channel_state.as_list())
     channel_state.subscribe(on_update)
 
@@ -146,10 +182,9 @@ def setup_web_app(queue, mapping, dev_mode):
     app.router.add_post('/automode/', automode_post)
     app.router.add_get('/api/v1/websocket_state/', websocket_handler)
     app.router.add_get('/api/v1/state/', get_state)
-
-    async def get_presets(request):
-        return await json_respond(request, presets.get_presets, arguments=['bla'])
-    app.router.add_get('/api/v1/presets/', get_presets)
+    app.router.add_post('/api/v1/store_preset/', store_preset)
+    app.router.add_get('/api/v1/presets/', list_presets)
+    app.router.add_post('/api/v1/load_preset/', load_preset)
 
     app.router.add_static('/static',
                           path=os.path.join(PROJECT_ROOT, 'static/'),

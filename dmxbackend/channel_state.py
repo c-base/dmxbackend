@@ -69,7 +69,6 @@ def update_dmx(new_dmx):
     global _dmx
     global _last_update
     global _mapping
-    print("update dmx %s" % new_dmx)
     # convert DMX to channel mapping
     for light in _mapping:
         try:

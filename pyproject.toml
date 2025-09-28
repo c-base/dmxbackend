@@ -15,4 +15,5 @@ dependencies = [
     "pyserial-asyncio==0.6",
     "pytest==3.0.7",
     "pyyaml>=6.0.2",
+    "sanitize-filename>=1.2.0",
 ]

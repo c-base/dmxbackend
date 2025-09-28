@@ -11,10 +11,19 @@
   let channelStateByID = $state({})
   let socket: Websocket = null;
 
+  let presets = $state<string[]>([])
+
   onMount(async function () {
     const response = await fetch('/api/v1/fixtures/')
     fixtures = await response.json()
     console.log($state.snapshot(fixtures))
+
+    socket = new WebSocket('/api/v1/websocket_state/')
+
+    const presets_response = await fetch('/api/v1/presets/')
+    const presets_json = await presets_response.json()
+    presets = presets_json.presets
+    console.log($state.snapshot(presets))
 
     socket = new WebSocket('/api/v1/websocket_state/')
 
@@ -89,6 +98,43 @@
   }
 
 
+  const storePreset = (e) => {
+		// getting the action url
+		const ACTION_URL = e.target.action
+
+		// get the form fields data and convert it to URLSearchParams
+		const formData = new FormData(e.target)
+		const data = new URLSearchParams()
+		for (let field of formData) {
+			const [key, value] = field
+			data.append(key, value)
+		}
+
+		// check the form's method and send the fetch accordingly
+		if (e.target.method.toLowerCase() == 'get') fetch(`${ACTION_URL}?${data}`)
+		else {
+			fetch(ACTION_URL, {
+				method: 'POST',
+				body: data
+			})			
+		}
+	}
+
+
+  const loadPreset = async (filename: string) => {
+		// getting the action url
+		const ACTION_URL = '/api/v1/load_preset/'
+
+		// get the form fields data and convert it to URLSearchParams
+		const data = new URLSearchParams()
+		data.append("filename", filename)
+
+		// check the form's method and send the fetch accordingly
+		await fetch(ACTION_URL, {
+      method: 'POST',
+      body: data
+		})
+	}
   /* Example fixture:
   {
     "fixture_id": "dmx-1-1",
@@ -146,6 +192,19 @@
 
 <main>
   <div class="main-row">
+    <div class="presets-view">
+      <form action="/api/v1/store_preset/" method="POST" onsubmit={(ev) => {ev.preventDefault(); storePreset(ev)}}>
+        <input name="filename" placeholder="Preset filename" />
+        <input type="submit" value="save" />
+      </form>
+      <div>
+        {#each presets as preset}
+        <div>
+          <a href="#{preset}" onclick={(ev) => { ev.preventDefault(); loadPreset(preset) }}>{preset}</a>
+        </div>
+        {/each}
+      </div>
+    </div>
     <div class="mainhall-view">
       {#each fixtures as fixture}
         <Light fixture={fixture}

@@ -173,6 +173,7 @@ dependencies = [
     { name = "pyserial-asyncio" },
     { name = "pytest" },
     { name = "pyyaml" },
+    { name = "sanitize-filename" },
 ]
 
 [package.metadata]
@@ -187,6 +188,7 @@ requires-dist = [
     { name = "pyserial-asyncio", specifier = "==0.6" },
     { name = "pytest", specifier = "==3.0.7" },
     { name = "pyyaml", specifier = ">=6.0.2" },
+    { name = "sanitize-filename", specifier = ">=1.2.0" },
 ]
 
 [[package]]
@@ -714,6 +716,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/fe/75/af448d8e52bf1d8fa6a9d089ca6c07ff4453d86c65c145d0a300bb073b9b/rich-14.1.0.tar.gz", hash = "sha256:e497a48b844b0320d45007cdebfeaeed8db2a4f4bcf49f15e455cfc4af11eaa8", size = 224441 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/e3/30/3c4d035596d3cf444529e0b2953ad0466f6049528a879d27534700580395/rich-14.1.0-py3-none-any.whl", hash = "sha256:536f5f1785986d6dbdea3c75205c473f970777b4a0d6c6dd1b696aa05a3fa04f", size = 243368 },
+]
+
+[[package]]
+name = "sanitize-filename"
+version = "1.2.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/a3/1c/2757fe1d119304407c501236de0fa7482975f4fbef3d955abc3f7d88c986/sanitize_filename-1.2.0.tar.gz", hash = "sha256:e75933e96d426e306eef8c270cc24c3e1971d8715288c9776d801d3d8e7b941a", size = 3770 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1e/f3/fd41487943812aedce909d5630c2bcac1b72a8e9e68308195c758f895269/sanitize_filename-1.2.0-py3-none-any.whl", hash = "sha256:a5be41a4371c84cb4a666a9c3baa70e1b2086a3e50b86c7ba5dd579f5ad2f330", size = 3934 },
 ]
 
 [[package]]
