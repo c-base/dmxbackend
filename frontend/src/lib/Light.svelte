@@ -35,7 +35,7 @@
 <div role="checkbox" tabindex="0" aria-checked={selected}
      onclick={() => onToggle(fixture.fixture_id)}
      onkeydown={() => onToggle(fixture.fixture_id)}
-     title="{fixture.model} ({fixture.fixture_id})" 
+     title="{fixture.name} ({fixture.model}, {fixture.fixture_id})" 
      class="octagon" 
      class:selected={selected} 
      style:transform={myRotation}
@@ -76,7 +76,7 @@
 <div role="checkbox" tabindex="0" aria-checked={selected}
      onclick={() => onToggle(fixture.fixture_id)}
      onkeydown={() => onToggle(fixture.fixture_id)}
-     title="{fixture.model} ({fixture.fixture_id})" 
+     title="{fixture.name} ({fixture.model}, {fixture.fixture_id})" 
      class="bar"
      class:selected={selected}
      style:transform={myRotation}
@@ -87,7 +87,7 @@
 <div role="checkbox" tabindex="0" aria-checked={selected}
      onclick={() => onToggle(fixture.fixture_id)}
      onkeydown={() => onToggle(fixture.fixture_id)}
-     title="{fixture.model} ({fixture.fixture_id})" 
+     title="{fixture.name} ({fixture.model}, {fixture.fixture_id})"
      class="light" 
      class:selected={selected}
      style:background-color={myColor}
