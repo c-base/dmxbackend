@@ -203,7 +203,6 @@
             channelStateByID={channelStateByID} 
             channels={channels} 
             onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
-
           {:else if element == 'amber'}
           <GenericControl
             channelName="amb"

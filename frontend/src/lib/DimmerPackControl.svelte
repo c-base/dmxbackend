@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  let {channels, onUpdate, onFinished, channelState} = $props()
+  let {channels, onUpdate, onFinished, channelState, channelStateByID} = $props()
 
   let dim1 = $state(false)
   let dim2 = $state(false)
