@@ -173,8 +173,8 @@ class GigabarMapping(RGBMapping):
 class SonicPulseLEDBarMapping(RGBMapping):
     def __init__(self, model, name, address, pixel):
         # the first 2 addresses in 26-channel mode are reserved for functions
-        super().__init__(model, name, int(address)+2, pixel)
-        self.num_pixels = 8
+        super().__init__(model, name, address, pixel)
+        self.num_pixels = 1
 
     @property
     def channel_ids(self):
@@ -278,7 +278,7 @@ class DimmerPackMapping(DMXMapping):
         # the first 2 addresses in 26-channel mode are reserved for functions
         super().__init__(model, name, address)
         self.pixel = pixel
-        self.num_pixels = 4
+        self.num_pixels = 1
 
     @property
     def channel_ids(self):
