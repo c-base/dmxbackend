@@ -3,6 +3,19 @@
  - Python 3.6
  - USB-to-DMX-Adapter like this one: https://www.enttec.com/eu/products/controls/dmx-usb/dmx-usb-pro/
  
+## Debian 
+
+apt install vim git curl npm 
+
+cd frontend
+npm install
+npm run build
+
+install uv https://docs.astral.sh/uv/getting-started/installation/
+
+uv sync
+source .venv/bin/activate
+
 ## How to run this backend?
 
 ```

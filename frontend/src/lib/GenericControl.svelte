@@ -13,7 +13,7 @@
 
   const valueChanged = (val: object) => {
     for (const channel_id of channels[channelName]) {
-      onUpdate(channel_id, val)
+      onUpdate(channel_id, faderValue)
     }
     onFinished()
   }
