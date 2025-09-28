@@ -383,3 +383,70 @@ class CameoRootPAR6Mapping(DMXMapping):
 
     def dmx_to_state(self, dmx_data):
         return self.map_consecutive_dmx(dmx_data, self.address, self.channel_ids)
+
+
+class RevueLED120Mapping(DMXMapping):
+    def __init__(self, model, name, address, pixel):
+        super().__init__(model, name, address)
+        self.pixel = pixel
+        self.num_pixels = 1
+
+    @property
+    def channel_ids(self):
+        return [
+            self.light_id + '/rgb/r',
+            self.light_id + '/rgb/g',
+            self.light_id + '/rgb/b',
+            self.light_id + '/warmwhite/ww',
+            self.light_id + '/dimmer/dim',
+            self.light_id + '/strobe/str',
+            self.light_id + '/auto/prg',
+        ]
+
+    @property
+    def elements(self):
+        return [
+            {
+                'name': 'rgb',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'r', 'channel_id': self.light_id + '/rgb/r'},
+                    {'name': 'g', 'channel_id': self.light_id + '/rgb/g'},
+                    {'name': 'b', 'channel_id': self.light_id + '/rgb/b'}
+                ],
+            },
+            {
+                'name': 'warmwhite',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'ww', 'channel_id': self.light_id + '/warmwhite/ww'},
+                ],
+            },
+            {
+                'name': 'dimmer',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'dim', 'channel_id': self.light_id + '/dimmer/dim'},
+                ],
+            },
+            {
+                'name': 'strobe',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'str', 'channel_id': self.light_id + '/strobe/str'},
+                ],
+            },
+            {
+                'name': 'auto',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'prg', 'channel_id': self.light_id + '/auto/prg'},
+                ],
+            },
+        ]
+
+    def state_to_dmx(self, data_dict):
+        return self.map_consecutive_channels(data_dict, self.channel_ids)
+
+    def dmx_to_state(self, dmx_data):
+        return self.map_consecutive_dmx(dmx_data, self.address, self.channel_ids)

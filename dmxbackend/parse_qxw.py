@@ -9,6 +9,7 @@ from .channel_mapping import (
     DimmerPackMapping,
     CameoRootPAR6Mapping,
     SonicPulseLEDBarMapping,
+    RevueLED120Mapping,
 )
 
 FIXTURE_XPATH = './' \
@@ -75,6 +76,9 @@ def map_fixture(fixture, first_pixel):
     elif model == 'Root PAR 6' and int(channels) == 8:
         my_model = 'Root PAR 6'
         return [CameoRootPAR6Mapping(my_model, name, address, first_pixel)]
+    elif model.strip() == 'RevueLED 120 COB' and int(channels) == 7:
+        my_model = 'RevueLED 120 COB'
+        return [RevueLED120Mapping(my_model, name, address, first_pixel)]
     else:
         return []
 
