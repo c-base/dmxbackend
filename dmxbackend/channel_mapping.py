@@ -247,7 +247,7 @@ class OctagonMapping(DMXMapping):
                 'name': 'coldwhite',
                 'pixel': self.pixel,
                 'channels': [
-                    {'name': 'str', 'channel_id': self.light_id + '/coldwhite/cw'},
+                    {'name': 'cw', 'channel_id': self.light_id + '/coldwhite/cw'},
                 ],
             },
             {
