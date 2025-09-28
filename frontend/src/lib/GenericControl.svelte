@@ -11,9 +11,9 @@
     return channelStateByID[r_channel]
   }
 
-  const valueChanged = (val: object) => {
+  const valueChanged = (ev) => {
     for (const channel_id of channels[channelName]) {
-      onUpdate(channel_id, faderValue)
+      onUpdate(channel_id, parseInt(ev.target.value))
     }
     onFinished()
   }
@@ -26,7 +26,7 @@
 
 
 <div class="fader-wrapper">
-  <input type="range" min="0" max="255" bind:value={faderValue} onchange={() => valueChanged} class="fader">
+  <input type="range" min="0" max="255" bind:value={faderValue} onchange={(ev) => valueChanged(ev)} class="fader">
 </div>
 
 <style>
