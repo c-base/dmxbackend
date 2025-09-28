@@ -267,22 +267,10 @@ class OctagonMapping(DMXMapping):
         ]
 
     def state_to_dmx(self, data_dict):
-        channel_ids = [
-            self.light_id + '/white/cw',
-            self.light_id + '/white/ww',
-            self.light_id + '/white/a',
-            self.light_id + '/white/dim'
-        ]
-        return self.map_consecutive_channels(data_dict, channel_ids)
+        return self.map_consecutive_channels(data_dict, self.channel_ids)
 
     def dmx_to_state(self, dmx_data):
-        channel_ids = [
-            self.light_id + '/white/cw',
-            self.light_id + '/white/ww',
-            self.light_id + '/white/a',
-            self.light_id + '/white/dim'
-        ]
-        return self.map_consecutive_dmx(dmx_data, self.address, channel_ids)
+        return self.map_consecutive_dmx(dmx_data, self.address, self.channel_ids)
 
 
 class DimmerPackMapping(DMXMapping):
