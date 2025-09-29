@@ -31,7 +31,7 @@
   })
 </script>
 
-{#if fixture.model === 'Octagon'}
+{#if fixture.model === 'Octagon' || fixture.model === 'RevueLED 120 COB'}
 <div role="checkbox" tabindex="0" aria-checked={selected}
      onclick={() => onToggle(fixture.fixture_id)}
      onkeydown={() => onToggle(fixture.fixture_id)}

@@ -2,7 +2,7 @@
   import iro from '@jaames/iro'
   import { onMount } from 'svelte'
 
-  let {channels, onUpdate, onFinished, channelStateByID, channelName} = $props()
+  let {channels, onUpdate, onFinished, channelStateByID, channelName, disabled} = $props()
   let faderValue = $state(0)
 
   const initialValue = () => {
@@ -26,7 +26,7 @@
 
 
 <div class="fader-wrapper">
-  <input type="range" min="0" max="255" bind:value={faderValue} onchange={(ev) => valueChanged(ev)} class="fader">
+  <input type="range" min="0" max="255" disabled={disabled} bind:value={faderValue} onchange={(ev) => valueChanged(ev)} class="fader">
 </div>
 
 <style>

@@ -142,6 +142,8 @@
     "model": "LED PAR56",
     "pos_x": 607,
     "pos_y": 511,
+    "rot": 90,
+    "hidden": false,
     "elements": [
         {
             "name": "rgb",
@@ -188,6 +190,8 @@
     return elements
   })
 
+  // let visibleFixtures = $derived(fixtures.filter((light) => light.hidden === false))
+
 </script>
 
 <main>
@@ -206,12 +210,12 @@
       </div>
     </div>
     <div class="mainhall-view">
-      {#each fixtures as fixture}
-        <Light fixture={fixture}
-              channelState={channelState}
-              selected={selectedFixtures.indexOf(fixture.fixture_id) !== -1}
-              onToggle={onToggle}>
-        </Light>
+      {#each fixtures.filter((light) => light.hidden === false) as fixture}
+      <Light fixture={fixture}
+             channelState={channelState}
+             selected={selectedFixtures.indexOf(fixture.fixture_id) !== -1}
+             onToggle={onToggle}>
+      </Light>
       {/each}
     </div>
     <div class="main-controls">
@@ -231,48 +235,63 @@
             channelStateByID={channelStateByID} 
             channelState={channelState}
             channels={channels}
+            disabled={false}
             onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></DimmerPackControl>
           {:else if element == 'dimmer'}
           <GenericControl
             channelName="dim"
             channelStateByID={channelStateByID} 
-            channels={channels} 
+            channels={channels}
+            disabled={false}
             onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
           {:else if element == 'strobe'}
           <GenericControl
             channelName="str"
             channelStateByID={channelStateByID} 
-            channels={channels} 
+            channels={channels}
+            disabled={true}
             onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
           {:else if element == 'white'}
           <GenericControl
             channelName="whi"
             channelStateByID={channelStateByID} 
-            channels={channels} 
+            channels={channels}
+            disabled={false}
             onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
           {:else if element == 'coldwhite'}
           <GenericControl
             channelName="cw"
             channelStateByID={channelStateByID} 
-            channels={channels} 
+            channels={channels}
+            disabled={false}
             onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
           {:else if element == 'warmwhite'}
           <GenericControl
             channelName="ww"
             channelStateByID={channelStateByID} 
-            channels={channels} 
+            channels={channels}
+            disabled={false}
             onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
           {:else if element == 'amber'}
           <GenericControl
             channelName="amb"
             channelStateByID={channelStateByID} 
-            channels={channels} 
+            channels={channels}
+            disabled={false}
             onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
           {:else if element == 'uv'}
           <GenericControl
             channelName="uv"
             channelStateByID={channelStateByID} 
-            channels={channels} 
+            channels={channels}
+            disabled={false}
+            onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
+          {:else if element == 'auto'}
+          <GenericControl
+            channelName="prg"
+            channelStateByID={channelStateByID} 
+            channels={channels}
+            disabled={false}
             onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
           {/if}
         </div>
