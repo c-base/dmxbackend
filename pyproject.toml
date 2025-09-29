@@ -9,8 +9,11 @@ dependencies = [
     "amqtt>=0.11.3",
     "click>=8.1.8",
     "paho-mqtt==1.3.1",
+    "pydmxcontrol>=2.0.0",
+    "pyenttec>=1.4",
     "pyserial>=3.5",
     "pyserial-asyncio==0.6",
     "pytest==3.0.7",
     "pyyaml>=6.0.2",
+    "sanitize-filename>=1.2.0",
 ]

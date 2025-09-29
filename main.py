@@ -20,8 +20,7 @@ from aiohttp import web
 from dmxbackend.animation import animation_loop
 from dmxbackend.enttex_usb_dmx import EnttecProtocol
 from dmxbackend.server import setup_web_app
-from dmxbackend.parse_qxw import find_fixtures
-from dmxbackend.parse_qxw import get_mapping_from_qxw
+from dmxbackend.parse_qxw import find_fixtures, get_mapping_from_qxw
 from dmxbackend.artnet_server import ArtNetServerProtocol
 from dmxbackend import channel_state
 from dmxbackend.mqtt import AsyncMQTT
@@ -36,6 +35,8 @@ def prepare_mapping(qxw_filename, positions):
         try:
             light.pos_x = int(positions[light.name]['pos_x']) 
             light.pos_y = int(positions[light.name]['pos_y'])
+            light.rot = int(positions[light.name].get('rot', 0))
+            light.hidden = bool(positions[light.name].get('hidden', False))
         except KeyError:
             pass
         except NameError:
@@ -56,7 +57,7 @@ def run_main_loop(usb_device, qxw_filename, pos_filename, mqtt_server, port, dev
     enttec_protocol = None
     if usb_device is not None:
         # Baud rate is not needed with the Enttec device because DMX's baudrate is fixed.
-        usb_serial = serial_asyncio.create_serial_connection(loop, EnttecProtocol, usb_device)
+        usb_serial = serial_asyncio.create_serial_connection(loop, EnttecProtocol, usb_device, baudrate=250000)
         enttec_transport, enttec_protocol = loop.run_until_complete(usb_serial)
 
     ## ArtNet device UDP
@@ -71,7 +72,7 @@ def run_main_loop(usb_device, qxw_filename, pos_filename, mqtt_server, port, dev
     ## Webserver
     app = setup_web_app(image_queue, mapping, dev_mode)
     channel_state.initialize_state(mapping)
-    
+    print(f"++++{channel_state._state}")
     if mqtt_server is not None:
         async_mqtt = AsyncMQTT()
         #asyncio.ensure_future(async_mqtt.every_semisecond(loop))
