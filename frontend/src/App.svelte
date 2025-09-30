@@ -9,15 +9,26 @@
   let selectedFixtures = $state<string[]>([])
   let channelState = $state<object[]>([])
   let channelStateByID = $state({})
-  let socket: Websocket = null;
-
+  let socket: WebSocket = null;
+  let groups = $state<string[]>([])
   let presets = $state<string[]>([])
 
   onMount(async function () {
     const response = await fetch('/api/v1/fixtures/')
     fixtures = await response.json()
-    console.log($state.snapshot(fixtures))
+    
+    // pull all the groups out of the fixtures.
+    let allGroups = []
+    for (let fixture of fixtures) {
+      for (let oneGroup of fixture.groups) {
+        if (allGroups.indexOf(oneGroup) === -1) {
+          allGroups.push(oneGroup)
+        }
+      }
+    }
+    groups = allGroups.sort()
 
+    // now connect to the websocket
     socket = new WebSocket('/api/v1/websocket_state/')
 
     const presets_response = await fetch('/api/v1/presets/')
@@ -66,6 +77,18 @@
       selectedFixtures.push(id)
     }
     console.log("selected: " + JSON.stringify($state.snapshot(selectedFixtures)))
+  }
+
+  const selectGroup = (groupId: string) => {
+    for (let fixture of $state.snapshot(fixtures)) {
+      if (fixture.groups.indexOf(groupId) !== -1) {
+        const hasIndex = $state.snapshot(selectedFixtures).indexOf(fixture.fixture_id)
+        if (hasIndex === -1) {
+          console.log("push "+ fixture.fixture_id)
+          selectedFixtures.push(fixture.fixture_id)
+        }
+      }
+    }
   }
 
   const onDeselect = () => {
@@ -304,6 +327,12 @@
     <div class="button-left">
       <button onclick={() => onDeselect()} disabled={selectedFixtures.length === 0  }>Select none</button>
     </div>
+    <div class="button-middle">
+      Groups:
+      {#each groups as group}
+      <button style="margin-right: 5px;" onclick={() => selectGroup(group)}>{group}</button>
+      {/each}
+    </div>
     <div class="button-right">
       {selectedFixtures.length} selected.
     </div>
@@ -348,6 +377,9 @@
   .button-left {
     flex-basis: 50%;
     text-align: left;
+  }
+  .button-middle {
+    flex-basis: 100%;
   }
   .button-right {
     margin-top: 5px;

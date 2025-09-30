@@ -36,6 +36,7 @@ def prepare_mapping(qxw_filename, positions):
             light.pos_x = int(positions[light.name]['pos_x']) 
             light.pos_y = int(positions[light.name]['pos_y'])
             light.rot = int(positions[light.name].get('rot', 0))
+            light.groups = [x.strip() for x in positions[light.name].get('groups', '').split(',') if x.isalnum()]
             light.hidden = bool(positions[light.name].get('hidden', False))
         except KeyError:
             pass

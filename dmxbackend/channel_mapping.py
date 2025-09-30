@@ -14,6 +14,7 @@ class DMXMapping(object):
         self.pos_x = 0
         self.pos_y = 0
         self.rot = 0
+        self.groups = []
         self.hidden = False
 
     def map_pixel_to_channels(self, line):

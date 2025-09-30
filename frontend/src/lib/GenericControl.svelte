@@ -11,7 +11,7 @@
     return channelStateByID[r_channel]
   }
 
-  const valueChanged = (ev) => {
+  const valueChanged = (ev: Event) => {
     for (const channel_id of channels[channelName]) {
       onUpdate(channel_id, parseInt(ev.target.value))
     }
@@ -21,9 +21,7 @@
   onMount(() => {
     faderValue = initialValue()
   })
-
 </script>
-
 
 <div class="fader-wrapper">
   <input type="range" min="0" max="255" disabled={disabled} bind:value={faderValue} onchange={(ev) => valueChanged(ev)} class="fader">

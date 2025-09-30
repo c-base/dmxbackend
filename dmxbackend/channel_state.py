@@ -124,6 +124,7 @@ def fixtures():
             'pos_y': light.pos_y,
             'rot': light.rot,
             'hidden': light.hidden,
+            'groups': light.groups,
             'elements': light.elements,
         }
         ret.append(one_light)
