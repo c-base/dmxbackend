@@ -375,15 +375,16 @@
     padding: 0 5px;
   }
   .button-left {
-    flex-basis: 50%;
+    flex-basis: 25%;
     text-align: left;
   }
   .button-middle {
+    flex-grow: 1;
     flex-basis: 100%;
   }
   .button-right {
     margin-top: 5px;
-    flex-basis: 50%;
+    flex-basis: 25%;
     text-align: right;
   }
 </style>
