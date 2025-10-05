@@ -89,6 +89,7 @@ class ArtNetServerProtocol(asyncio.Protocol):
     def datagram_received(self, data, addr):
         try:
             artnet_packet = decode_artnet_packet(data)
+            log.debug("rcv u%s" % artnet_packet.universe)
         except ArtNetPollReceived:
             log.debug("Art-Net poll (opcode 0x2000) received.")
             return
