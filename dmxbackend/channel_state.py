@@ -60,6 +60,7 @@ def update_channels(new_data):
                     val = 255
                 if val < 0:
                     val = 0
+                log.debug("Updateing DMX %s %s to %s" % (universe, dmx_addr, val))
                 _dmx[universe][dmx_addr] = val
         except NotImplementedError:
             log.debug("state_to_dmx() not implemented in {}".format(light))
