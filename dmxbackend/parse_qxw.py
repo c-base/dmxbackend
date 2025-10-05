@@ -14,6 +14,7 @@ from .channel_mapping import (
     CB100LedColorMapping,
     LEDFloodPanel7x3WMapping,
     MirrorBallMotorMapping,
+    TSL250ScanMapping,
 )
 
 log = logging.getLogger(__name__)
@@ -95,6 +96,9 @@ def map_fixture(fixture, first_pixel):
     elif model.strip() == 'MBM40D Mirror Ball Motor DMX':
         my_model = 'MBM40D Mirror Ball Motor DMX'
         return [MirrorBallMotorMapping(my_model, name, address, first_pixel, universe=universe)]
+    elif model.strip() == 'LED TSL-250 Scan COB' and int(channels) == 10:
+        my_model = 'LED TSL-250 Scan COB'
+        return [TSL250ScanMapping(my_model, name, address, first_pixel, universe=universe)]
     else:
         return []
 

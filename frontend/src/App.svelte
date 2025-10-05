@@ -352,6 +352,34 @@
             channels={channels}
             disabled={false}
             onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
+          {:else if element == 'pan'}
+          <GenericControl
+            channelName="pan"
+            channelStateByID={channelStateByID} 
+            channels={channels}
+            disabled={false}
+            onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
+          {:else if element == 'tilt'}
+          <GenericControl
+            channelName="til"
+            channelStateByID={channelStateByID} 
+            channels={channels}
+            disabled={false}
+            onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
+          {:else if element == 'gobo'}
+          <GenericControl
+            channelName="gob"
+            channelStateByID={channelStateByID} 
+            channels={channels}
+            disabled={false}
+            onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
+          {:else if element == 'goborot'}
+          <GenericControl
+            channelName="gor"
+            channelStateByID={channelStateByID} 
+            channels={channels}
+            disabled={false}
+            onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
           {/if}
         </div>
       </div>

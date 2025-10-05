@@ -640,3 +640,106 @@ class MirrorBallMotorMapping(DMXMapping):
 
     def dmx_to_state(self, dmx_data):
         return self.map_consecutive_dmx(dmx_data, self.address, self.channel_ids)
+
+
+class TSL250ScanMapping(DMXMapping):
+    def __init__(self, model, name, address, pixel, universe=0):
+        super().__init__(model, name, address, universe=universe)
+        self.pixel = pixel
+        self.num_pixels = 1
+
+    @property
+    def channel_ids(self):
+        return [
+            self.light_id + '/pan/pan',
+            self.light_id + '/tilt/til',
+            self.light_id + '/speed/spe',
+            self.light_id + '/colorwheel/whe',
+            self.light_id + '/gobo/gob',
+            self.light_id + '/goborot/gor',
+            self.light_id + '/strobe/str',
+            self.light_id + '/dimmer/dim',
+            self.light_id + '/functions/fnc',
+            self.light_id + '/auto/aut',
+        ]
+
+    @property
+    def elements(self):
+        return [
+            {
+                'name': 'pan',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'pan', 'channel_id': self.light_id + '/pan/pan'},
+                ],
+            },
+            {
+                'name': 'tilt',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'til', 'channel_id': self.light_id + '/tilt/til'},
+                ],
+            },
+            {
+                'name': 'speed',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'spe', 'channel_id': self.light_id + '/speed/spe'},
+                ],
+            },
+            {
+                'name': 'colorwheel',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'whe', 'channel_id': self.light_id + '/colorwheel/whe'},
+                ],
+            },
+            {
+                'name': 'gobo',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'gob', 'channel_id': self.light_id + '/gobo/gob'},
+                ],
+            },
+            {
+                'name': 'goborot',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'gor', 'channel_id': self.light_id + '/goborot/gor'},
+                ],
+            },
+            {
+                'name': 'strobe',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'str', 'channel_id': self.light_id + '/strobe/str'},
+                ],
+            },
+            {
+                'name': 'dimmer',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'dim', 'channel_id': self.light_id + '/dimmer/dim'},
+                ],
+            },
+            {
+                'name': 'functions',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'fnc', 'channel_id': self.light_id + '/functions/fnc'},
+                ],
+            },
+            {
+                'name': 'auto',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'aut', 'channel_id': self.light_id + '/auto/aut'},
+                ],
+            },
+        ]
+
+    def state_to_dmx(self, data_dict):
+        return self.map_consecutive_channels(data_dict, self.channel_ids)
+
+    def dmx_to_state(self, dmx_data):
+        return self.map_consecutive_dmx(dmx_data, self.address, self.channel_ids)
