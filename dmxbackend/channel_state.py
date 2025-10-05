@@ -60,7 +60,7 @@ def update_channels(new_data):
                     val = 255
                 if val < 0:
                     val = 0
-                log.debug("Updateing DMX %s %s to %s" % (universe, dmx_addr, val))
+                # log.debug("Updateing DMX %s %s to %s" % (universe, dmx_addr, val))
                 _dmx[universe][dmx_addr] = val
         except NotImplementedError:
             log.debug("state_to_dmx() not implemented in {}".format(light))
@@ -84,7 +84,7 @@ def update_dmx(new_dmx, universe: int):
                 _state[channel_id] = val
         except NotImplementedError:
             log.debug("dmx_to_state() not implemented in {}".format(light))
-
+    # Overwrite the whole universe regardless of any mapping.
     _dmx[universe] = bytearray(new_dmx)
     _last_update = datetime.now()
     notify()

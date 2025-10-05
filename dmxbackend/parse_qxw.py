@@ -11,6 +11,7 @@ from .channel_mapping import (
     SonicPulseLEDBarMapping,
     RevueLED120Mapping,
     CompactPar7Q4Mapping,
+    CB100LedColorMapping,
 )
 
 log = logging.getLogger(__name__)
@@ -83,6 +84,9 @@ def map_fixture(fixture, first_pixel):
     elif model.strip() == 'Compact Par 7 Q4' and int(channels) == 6:
         my_model = 'Compact Par 7 Q4'
         return [CompactPar7Q4Mapping(my_model, name, address, first_pixel, universe=universe)]
+    elif model.strip() == 'CB-100 LED Color' and int(channels) == 4:
+        my_model = 'CB100 Led Color'
+        return [CB100LedColorMapping(my_model, name, address, first_pixel, universe=universe)]
     else:
         return []
 

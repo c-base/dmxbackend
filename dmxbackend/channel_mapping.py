@@ -511,3 +511,58 @@ class CompactPar7Q4Mapping(DMXMapping):
 
     def dmx_to_state(self, dmx_data):
         return self.map_consecutive_dmx(dmx_data, self.address, self.channel_ids)
+    
+
+class CB100LedColorMapping(DMXMapping):
+    def __init__(self, model, name, address, pixel, universe=0):
+        super().__init__(model, name, address, universe=universe)
+        self.pixel = pixel
+        self.num_pixels = 1
+
+    @property
+    def channel_ids(self):
+        return [
+            self.light_id + '/dimmer/dim',
+            self.light_id + '/colorwheel/whe',
+            self.light_id + '/shutter/shu',
+            self.light_id + '/functions/fnc',
+        ]
+
+    @property
+    def elements(self):
+        return [
+            {
+                'name': 'dimmer',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'dim', 'channel_id': self.light_id + '/dimmer/dim'},
+                ],
+            },
+            {
+                'name': 'colorwheel',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'whe', 'channel_id': self.light_id + '/colorwheel/whe'},
+                ],
+            },
+            {
+                'name': 'shutter',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'shu', 'channel_id': self.light_id + '/shutter/shu'},
+                ],
+            },
+            {
+                'name': 'functions',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'fnc', 'channel_id': self.light_id + '/functions/fnc'},
+                ],
+            },
+        ]
+
+    def state_to_dmx(self, data_dict):
+        return self.map_consecutive_channels(data_dict, self.channel_ids)
+
+    def dmx_to_state(self, dmx_data):
+        return self.map_consecutive_dmx(dmx_data, self.address, self.channel_ids)
