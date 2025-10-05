@@ -116,7 +116,7 @@ def notify():
             asyncio.ensure_future(call_when_updated())
         _last_dmx_notify = now
 
-        
+
 def fixtures():
     global _mapping
     ret = []

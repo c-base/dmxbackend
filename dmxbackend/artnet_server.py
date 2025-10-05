@@ -97,7 +97,7 @@ class ArtNetServerProtocol(asyncio.Protocol):
             return
 
         
-        universe = artnet_packet.universe + 1
+        universe = artnet_packet.universe
         dmx = artnet_packet.dmx
 
         channel_state.update_dmx(dmx, universe)
