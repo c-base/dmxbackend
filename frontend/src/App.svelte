@@ -310,6 +310,34 @@
             channels={channels}
             disabled={false}
             onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
+          {:else if element == 'colorwheel'}
+          <GenericControl
+            channelName="whe"
+            channelStateByID={channelStateByID} 
+            channels={channels}
+            disabled={false}
+            onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
+          {:else if element == 'colorwheel'}
+          <GenericControl
+            channelName="whe"
+            channelStateByID={channelStateByID} 
+            channels={channels}
+            disabled={false}
+            onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
+          {:else if element == 'shutter'}
+          <GenericControl
+            channelName="shu"
+            channelStateByID={channelStateByID} 
+            channels={channels}
+            disabled={false}
+            onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
+          {:else if element == 'functions'}
+          <GenericControl
+            channelName="fnc"
+            channelStateByID={channelStateByID} 
+            channels={channels}
+            disabled={false}
+            onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
           {:else if element == 'auto'}
           <GenericControl
             channelName="prg"
