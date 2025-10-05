@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FixtureDefinition>
+<FixtureDefinition xmlns="http://www.qlcplus.org/FixtureDefinition">
+ <Creator>
+  <Name>Q Light Controller Plus</Name>
+  <Version>4.13.1</Version>
+  <Author>cven</Author>
+ </Creator>
+ <Manufacturer>Stairville</Manufacturer>
+ <Model>CB-100 LED Color</Model>
+ <Type>Color Changer</Type>
+ <Channel Name="Dimmer" Preset="IntensityMasterDimmer"/>
+ <Channel Name="Color wheel">
+  <Group Byte="0">Colour</Group>
+  <Capability Min="0" Max="7" Preset="ColorMacro" Res1="#ffffff">white</Capability>
+  <Capability Min="8" Max="15" Preset="ColorMacro" Res1="#0000ff">dark blue</Capability>
+  <Capability Min="16" Max="23" Preset="ColorMacro" Res1="#ffff00">yellow</Capability>
+  <Capability Min="24" Max="31" Preset="ColorMacro" Res1="#ff00ff">pink</Capability>
+  <Capability Min="32" Max="39" Preset="ColorMacro" Res1="#00ff00">green</Capability>
+  <Capability Min="40" Max="47" Preset="ColorMacro" Res1="#ff0000">red</Capability>
+  <Capability Min="48" Max="55" Preset="ColorMacro" Res1="#00aaff">light blue</Capability>
+  <Capability Min="56" Max="63" Preset="ColorMacro" Res1="#ff710b">orange red</Capability>
+  <Capability Min="64" Max="71" Preset="ColorDoubleMacro" Res1="#ffffff" Res2="#0000ff">white + dark blue</Capability>
+  <Capability Min="72" Max="79" Preset="ColorDoubleMacro" Res1="#0000ff" Res2="#ffff00">dark blue + yellow</Capability>
+  <Capability Min="80" Max="87" Preset="ColorDoubleMacro" Res1="#ffff00" Res2="#ff00ff">yellow + pink</Capability>
+  <Capability Min="88" Max="95" Preset="ColorDoubleMacro" Res1="#ff00ff" Res2="#00ff00">pink + green</Capability>
+  <Capability Min="96" Max="103" Preset="ColorDoubleMacro" Res1="#00ff00" Res2="#ff0000">green + red</Capability>
+  <Capability Min="104" Max="111" Preset="ColorDoubleMacro" Res1="#ff0000" Res2="#00aaff">red l+ light blue</Capability>
+  <Capability Min="112" Max="119" Preset="ColorDoubleMacro" Res1="#00aaff" Res2="#ff710b">light blue + orange red</Capability>
+  <Capability Min="120" Max="127" Preset="ColorDoubleMacro" Res1="#ff710b" Res2="#ffffff">orangered + white</Capability>
+  <Capability Min="128" Max="191" Preset="ColorWheelIndex">Regenbogeneffekt gegen den Uhrzeigersinn, Geschwindigkeit ansteigend</Capability>
+  <Capability Min="192" Max="255" Preset="ColorWheelIndex">Regenbogeneffekt im Uhrzeigersinn, Geschwindigkeit ansteigend</Capability>
+ </Channel>
+ <Channel Name="Shutter">
+  <Group Byte="0">Shutter</Group>
+  <Capability Min="0" Max="3" Preset="ShutterClose">closed</Capability>
+  <Capability Min="4" Max="7" Preset="ShutterOpen">open</Capability>
+  <Capability Min="8" Max="215" Preset="StrobeSlowToFast">Strobe-Effekt, Geschwindigkeit ansteigend</Capability>
+  <Capability Min="216" Max="255" Preset="ShutterOpen">open</Capability>
+ </Channel>
+ <Channel Name="Functions">
+  <Group Byte="0">Effect</Group>
+  <Capability Min="0" Max="10">no function</Capability>
+  <Capability Min="11" Max="60">Blackout with rotating color wheel</Capability>
+  <Capability Min="61" Max="110">Sound to light</Capability>
+  <Capability Min="111" Max="160">Blackout with rotating color wheel and sound to light</Capability>
+  <Capability Min="161" Max="210">Reset color color wheel</Capability>
+  <Capability Min="211" Max="255">Reset all channels</Capability>
+ </Channel>
+ <Mode Name="4 Channel mode">
+  <Channel Number="0">Dimmer</Channel>
+  <Channel Number="1">Color wheel</Channel>
+  <Channel Number="2">Shutter</Channel>
+  <Channel Number="3">Functions</Channel>
+ </Mode>
+ <Physical>
+  <Bulb Type="LED " Lumens="0" ColourTemperature="0"/>
+  <Dimensions Weight="3" Width="350" Height="280" Depth="280"/>
+  <Lens Name="Other" DegreesMin="2" DegreesMax="2"/>
+  <Focus Type="Fixed" PanMax="0" TiltMax="0"/>
+  <Technical PowerConsumption="35" DmxConnector="3-pin"/>
+ </Physical>
+</FixtureDefinition>

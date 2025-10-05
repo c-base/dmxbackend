@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FixtureDefinition>
+<FixtureDefinition xmlns="http://www.qlcplus.org/FixtureDefinition">
+ <Creator>
+  <Name>Q Light Controller Plus</Name>
+  <Version>4.13.1</Version>
+  <Author>cven</Author>
+ </Creator>
+ <Manufacturer>Stairville</Manufacturer>
+ <Model>RevueLED 120 COB </Model>
+ <Type>Color Changer</Type>
+ <Channel Name="Rot">
+  <Group Byte="0">Intensity</Group>
+  <Colour>Red</Colour>
+  <Capability Min="0" Max="255">Intensität Rot</Capability>
+ </Channel>
+ <Channel Name="Grün">
+  <Group Byte="0">Intensity</Group>
+  <Colour>Green</Colour>
+  <Capability Min="0" Max="255"></Capability>
+ </Channel>
+ <Channel Name="Blau">
+  <Group Byte="0">Intensity</Group>
+  <Colour>Blue</Colour>
+  <Capability Min="0" Max="255"></Capability>
+ </Channel>
+ <Channel Name="Weiß">
+  <Group Byte="0">Intensity</Group>
+  <Colour>White</Colour>
+  <Capability Min="0" Max="255"></Capability>
+ </Channel>
+ <Channel Name="Master" Preset="IntensityMasterDimmer"/>
+ <Channel Name="Strobe-Effekt">
+  <Group Byte="0">Shutter</Group>
+  <Capability Min="0" Max="255">Strobe-Effekt</Capability>
+ </Channel>
+ <Channel Name="Auto Shows">
+  <Group Byte="0">Effect</Group>
+  <Capability Min="0" Max="255">Vorprogrammierte automatische Shows</Capability>
+ </Channel>
+ <Mode Name="4 Channel mode">
+  <Channel Number="0">Rot</Channel>
+  <Channel Number="1">Grün</Channel>
+  <Channel Number="2">Blau</Channel>
+  <Channel Number="3">Weiß</Channel>
+ </Mode>
+ <Mode Name="7 Channel mode">
+  <Channel Number="0">Rot</Channel>
+  <Channel Number="1">Grün</Channel>
+  <Channel Number="2">Blau</Channel>
+  <Channel Number="3">Weiß</Channel>
+  <Channel Number="4">Master</Channel>
+  <Channel Number="5">Strobe-Effekt</Channel>
+  <Channel Number="6">Auto Shows</Channel>
+ </Mode>
+ <Physical>
+  <Bulb Type="LED" Lumens="0" ColourTemperature="3200"/>
+  <Dimensions Weight="5.5" Width="0" Height="0" Depth="0"/>
+  <Lens Name="Other" DegreesMin="50" DegreesMax="50"/>
+  <Focus Type="Fixed" PanMax="0" TiltMax="0"/>
+  <Technical PowerConsumption="150" DmxConnector="3-pin"/>
+ </Physical>
+</FixtureDefinition>

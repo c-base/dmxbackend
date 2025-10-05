@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FixtureList>
+<FixtureList xmlns="http://www.qlcplus.org/FixtureList">
+ <Creator>
+  <Name>Q Light Controller Plus</Name>
+  <Version>4.13.1</Version>
+  <Author>cven</Author>
+ </Creator>
+ <Fixture>
+  <Manufacturer>Showtec</Manufacturer>
+  <Model>Compact Par 7 Q4</Model>
+  <Mode>6 Channel</Mode>
+  <ID>0</ID>
+  <Name>Compact Par 7 Q4 #1</Name>
+  <Universe>1</Universe>
+  <Address>0</Address>
+  <Channels>6</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Showtec</Manufacturer>
+  <Model>Compact Par 7 Q4</Model>
+  <Mode>6 Channel</Mode>
+  <ID>1</ID>
+  <Name>Compact Par 7 Q4 #2</Name>
+  <Universe>1</Universe>
+  <Address>6</Address>
+  <Channels>6</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Showtec</Manufacturer>
+  <Model>Compact Par 7 Q4</Model>
+  <Mode>6 Channel</Mode>
+  <ID>2</ID>
+  <Name>Compact Par 7 Q4 #3</Name>
+  <Universe>1</Universe>
+  <Address>12</Address>
+  <Channels>6</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Showtec</Manufacturer>
+  <Model>Compact Par 7 Q4</Model>
+  <Mode>6 Channel</Mode>
+  <ID>3</ID>
+  <Name>Compact Par 7 Q4 #4</Name>
+  <Universe>1</Universe>
+  <Address>18</Address>
+  <Channels>6</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Showtec</Manufacturer>
+  <Model>Compact Par 18 MKII</Model>
+  <Mode>6 Channel</Mode>
+  <ID>4</ID>
+  <Name>Compact Par 18 MKII #1</Name>
+  <Universe>1</Universe>
+  <Address>24</Address>
+  <Channels>6</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Showtec</Manufacturer>
+  <Model>Compact Par 18 MKII</Model>
+  <Mode>6 Channel</Mode>
+  <ID>5</ID>
+  <Name>Compact Par 18 MKII #2</Name>
+  <Universe>1</Universe>
+  <Address>30</Address>
+  <Channels>6</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Showtec</Manufacturer>
+  <Model>Compact Par 18 MKII</Model>
+  <Mode>6 Channel</Mode>
+  <ID>6</ID>
+  <Name>Compact Par 18 MKII #3</Name>
+  <Universe>1</Universe>
+  <Address>36</Address>
+  <Channels>6</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Showtec</Manufacturer>
+  <Model>Compact Par 18 MKII</Model>
+  <Mode>6 Channel</Mode>
+  <ID>7</ID>
+  <Name>Compact Par 18 MKII #4</Name>
+  <Universe>1</Universe>
+  <Address>42</Address>
+  <Channels>6</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Stairville</Manufacturer>
+  <Model>LED Flood Panel 7x3W</Model>
+  <Mode>4-channel</Mode>
+  <ID>8</ID>
+  <Name>LED Flood Panel 7x3W #1</Name>
+  <Universe>1</Universe>
+  <Address>48</Address>
+  <Channels>4</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Stairville</Manufacturer>
+  <Model>LED Flood Panel 7x3W</Model>
+  <Mode>4-channel</Mode>
+  <ID>9</ID>
+  <Name>LED Flood Panel 7x3W #2</Name>
+  <Universe>1</Universe>
+  <Address>52</Address>
+  <Channels>4</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Eurolite</Manufacturer>
+  <Model>LED PAR56</Model>
+  <Mode>Mode 1</Mode>
+  <ID>10</ID>
+  <Name>LED PAR56 #1</Name>
+  <Universe>0</Universe>
+  <Address>0</Address>
+  <Channels>6</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Eurolite</Manufacturer>
+  <Model>LED PAR56</Model>
+  <Mode>Mode 1</Mode>
+  <ID>11</ID>
+  <Name>LED PAR56 #2</Name>
+  <Universe>0</Universe>
+  <Address>6</Address>
+  <Channels>6</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Eurolite</Manufacturer>
+  <Model>LED PAR56</Model>
+  <Mode>Mode 1</Mode>
+  <ID>12</ID>
+  <Name>LED PAR56 #3</Name>
+  <Universe>0</Universe>
+  <Address>12</Address>
+  <Channels>6</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Eurolite</Manufacturer>
+  <Model>LED PAR56</Model>
+  <Mode>Mode 1</Mode>
+  <ID>13</ID>
+  <Name>LED PAR56 #4</Name>
+  <Universe>0</Universe>
+  <Address>18</Address>
+  <Channels>6</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Eurolite</Manufacturer>
+  <Model>LED PAR56</Model>
+  <Mode>Mode 1</Mode>
+  <ID>14</ID>
+  <Name>LED PAR56 #5</Name>
+  <Universe>0</Universe>
+  <Address>24</Address>
+  <Channels>6</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Eurolite</Manufacturer>
+  <Model>LED PAR56</Model>
+  <Mode>Mode 1</Mode>
+  <ID>15</ID>
+  <Name>LED PAR56 #6</Name>
+  <Universe>0</Universe>
+  <Address>30</Address>
+  <Channels>6</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Cameo</Manufacturer>
+  <Model>Root PAR 6</Model>
+  <Mode>8 Channel</Mode>
+  <ID>16</ID>
+  <Name>Root PAR 6 #01</Name>
+  <Universe>0</Universe>
+  <Address>40</Address>
+  <Channels>8</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Cameo</Manufacturer>
+  <Model>Root PAR 6</Model>
+  <Mode>8 Channel</Mode>
+  <ID>17</ID>
+  <Name>Root PAR 6 #02</Name>
+  <Universe>0</Universe>
+  <Address>48</Address>
+  <Channels>8</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Cameo</Manufacturer>
+  <Model>Root PAR 6</Model>
+  <Mode>8 Channel</Mode>
+  <ID>18</ID>
+  <Name>Root PAR 6 #03</Name>
+  <Universe>0</Universe>
+  <Address>56</Address>
+  <Channels>8</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Cameo</Manufacturer>
+  <Model>Root PAR 6</Model>
+  <Mode>8 Channel</Mode>
+  <ID>19</ID>
+  <Name>Root PAR 6 #04</Name>
+  <Universe>0</Universe>
+  <Address>64</Address>
+  <Channels>8</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Cameo</Manufacturer>
+  <Model>Root PAR 6</Model>
+  <Mode>8 Channel</Mode>
+  <ID>20</ID>
+  <Name>Root PAR 6 #05</Name>
+  <Universe>0</Universe>
+  <Address>72</Address>
+  <Channels>8</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Botex</Manufacturer>
+  <Model>SP-1500</Model>
+  <Mode>Default</Mode>
+  <ID>21</ID>
+  <Name>SP-1500</Name>
+  <Universe>1</Universe>
+  <Address>76</Address>
+  <Channels>2</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Cameo</Manufacturer>
+  <Model>Root PAR 6</Model>
+  <Mode>8 Channel</Mode>
+  <ID>23</ID>
+  <Name>Root PAR 6 #06</Name>
+  <Universe>0</Universe>
+  <Address>80</Address>
+  <Channels>8</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Cameo</Manufacturer>
+  <Model>Root PAR 6</Model>
+  <Mode>8 Channel</Mode>
+  <ID>24</ID>
+  <Name>Root PAR 6 #07</Name>
+  <Universe>0</Universe>
+  <Address>88</Address>
+  <Channels>8</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Cameo</Manufacturer>
+  <Model>Root PAR 6</Model>
+  <Mode>8 Channel</Mode>
+  <ID>25</ID>
+  <Name>Root PAR 6 #08</Name>
+  <Universe>0</Universe>
+  <Address>96</Address>
+  <Channels>8</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Cameo</Manufacturer>
+  <Model>Root PAR 6</Model>
+  <Mode>8 Channel</Mode>
+  <ID>26</ID>
+  <Name>Root PAR 6 #09</Name>
+  <Universe>0</Universe>
+  <Address>104</Address>
+  <Channels>8</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Cameo</Manufacturer>
+  <Model>Root PAR 6</Model>
+  <Mode>8 Channel</Mode>
+  <ID>27</ID>
+  <Name>Root PAR 6 #10</Name>
+  <Universe>0</Universe>
+  <Address>112</Address>
+  <Channels>8</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Eurolite</Manufacturer>
+  <Model>LED TSL-250 Scan COB</Model>
+  <Mode>Modus 10</Mode>
+  <ID>28</ID>
+  <Name>LED TSL-250 Scan COB #1</Name>
+  <Universe>1</Universe>
+  <Address>56</Address>
+  <Channels>10</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Stairville</Manufacturer>
+  <Model>RevueLED 120 COB </Model>
+  <Mode>7 Channel mode</Mode>
+  <ID>29</ID>
+  <Name>RevueLED 120 COB  #1</Name>
+  <Universe>0</Universe>
+  <Address>124</Address>
+  <Channels>7</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Stairville</Manufacturer>
+  <Model>RevueLED 120 COB </Model>
+  <Mode>7 Channel mode</Mode>
+  <ID>30</ID>
+  <Name>RevueLED 120 COB  #2</Name>
+  <Universe>0</Universe>
+  <Address>131</Address>
+  <Channels>7</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Eurolite</Manufacturer>
+  <Model>LED TSL-250 Scan COB</Model>
+  <Mode>Modus 10</Mode>
+  <ID>31</ID>
+  <Name>LED TSL-250 Scan COB #2</Name>
+  <Universe>1</Universe>
+  <Address>66</Address>
+  <Channels>10</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Generic</Manufacturer>
+  <Model>Generic</Model>
+  <Mode>4 Channel</Mode>
+  <ID>32</ID>
+  <Name>Dimmer/Switch Pack</Name>
+  <Universe>0</Universe>
+  <Address>120</Address>
+  <Channels>4</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Stairville</Manufacturer>
+  <Model>LED PAR 36 COB RGBW 12W</Model>
+  <Mode>4 channel</Mode>
+  <ID>33</ID>
+  <Name>LED PAR 36 COB RGBW 12W</Name>
+  <Universe>0</Universe>
+  <Address>36</Address>
+  <Channels>4</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Stairville</Manufacturer>
+  <Model>Octagon Theater 20x6W CW/WW/A</Model>
+  <Mode>4-channel DMX mode</Mode>
+  <ID>36</ID>
+  <Name>Octacon #1</Name>
+  <Universe>0</Universe>
+  <Address>140</Address>
+  <Channels>4</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Stairville</Manufacturer>
+  <Model>Octagon Theater 20x6W CW/WW/A</Model>
+  <Mode>4-channel DMX mode</Mode>
+  <ID>37</ID>
+  <Name>Octacon #2</Name>
+  <Universe>0</Universe>
+  <Address>144</Address>
+  <Channels>4</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Stairville</Manufacturer>
+  <Model>Octagon Theater 20x6W CW/WW/A</Model>
+  <Mode>4-channel DMX mode</Mode>
+  <ID>38</ID>
+  <Name>Octacon #3</Name>
+  <Universe>0</Universe>
+  <Address>148</Address>
+  <Channels>4</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Stairville</Manufacturer>
+  <Model>Octagon Theater 20x6W CW/WW/A</Model>
+  <Mode>4-channel DMX mode</Mode>
+  <ID>39</ID>
+  <Name>Octacon #4</Name>
+  <Universe>0</Universe>
+  <Address>152</Address>
+  <Channels>4</Channels>
+ </Fixture>
+ <Fixture>
+  <Manufacturer>Stairville</Manufacturer>
+  <Model>Octagon Theater 20x6W CW/WW/A</Model>
+  <Mode>4-channel DMX mode</Mode>
+  <ID>40</ID>
+  <Name>Octacon #5</Name>
+  <Universe>0</Universe>
+  <Address>156</Address>
+  <Channels>4</Channels>
+ </Fixture>
+ <FixtureGroup ID="0">
+  <Name>Säulen</Name>
+  <Size X="8" Y="20"/>
+  <Head X="0" Y="4" Fixture="15">0</Head>
+  <Head X="7" Y="4" Fixture="10">0</Head>
+  <Head X="0" Y="9" Fixture="14">0</Head>
+  <Head X="7" Y="9" Fixture="11">0</Head>
+  <Head X="0" Y="14" Fixture="13">0</Head>
+  <Head X="7" Y="14" Fixture="12">0</Head>
+ </FixtureGroup>
+ <FixtureGroup ID="1">
+  <Name>Scanner</Name>
+  <Size X="15" Y="12"/>
+  <Head X="6" Y="0" Fixture="28">0</Head>
+  <Head X="8" Y="0" Fixture="31">0</Head>
+ </FixtureGroup>
+ <FixtureGroup ID="2">
+  <Name>Par 7 Q4</Name>
+  <Size X="10" Y="8"/>
+  <Head X="0" Y="0" Fixture="0">0</Head>
+  <Head X="4" Y="0" Fixture="1">0</Head>
+  <Head X="5" Y="0" Fixture="2">0</Head>
+  <Head X="9" Y="0" Fixture="3">0</Head>
+ </FixtureGroup>
+ <FixtureGroup ID="3">
+  <Name>Par 18 MKII</Name>
+  <Size X="10" Y="8"/>
+  <Head X="1" Y="0" Fixture="4">0</Head>
+  <Head X="3" Y="0" Fixture="5">0</Head>
+  <Head X="6" Y="0" Fixture="6">0</Head>
+  <Head X="8" Y="0" Fixture="7">0</Head>
+ </FixtureGroup>
+ <FixtureGroup ID="4">
+  <Name>Front Flood Panel</Name>
+  <Size X="2" Y="2"/>
+  <Head X="0" Y="0" Fixture="8">0</Head>
+  <Head X="1" Y="0" Fixture="9">0</Head>
+ </FixtureGroup>
+ <FixtureGroup ID="5">
+  <Name>Root Par 6</Name>
+  <Size X="16" Y="40"/>
+  <Head X="0" Y="0" Fixture="16">0</Head>
+  <Head X="2" Y="0" Fixture="18">0</Head>
+  <Head X="4" Y="0" Fixture="20">0</Head>
+  <Head X="5" Y="0" Fixture="23">0</Head>
+  <Head X="6" Y="0" Fixture="24">0</Head>
+  <Head X="7" Y="0" Fixture="25">0</Head>
+  <Head X="7" Y="18" Fixture="17">0</Head>
+  <Head X="7" Y="28" Fixture="19">0</Head>
+  <Head X="9" Y="33" Fixture="27">0</Head>
+  <Head X="7" Y="35" Fixture="26">0</Head>
+ </FixtureGroup>
+</FixtureList>
