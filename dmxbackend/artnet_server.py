@@ -65,9 +65,6 @@ def decode_artnet_packet(data:bytearray):
     if len(raw_dmx) != length:
         raise ArtNetLengthMismatchError()
 
-
-    #header.append(512 & 0xFF)
-
     packet = ArtNetPacket(
         sequence=sequence,
         physical=physical,
