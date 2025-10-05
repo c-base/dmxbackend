@@ -12,6 +12,7 @@ from .channel_mapping import (
     RevueLED120Mapping,
     CompactPar7Q4Mapping,
     CB100LedColorMapping,
+    LEDFloodPanel7x3WMapping,
 )
 
 log = logging.getLogger(__name__)
@@ -87,6 +88,9 @@ def map_fixture(fixture, first_pixel):
     elif model.strip() == 'CB-100 LED Color' and int(channels) == 4:
         my_model = 'CB100 Led Color'
         return [CB100LedColorMapping(my_model, name, address, first_pixel, universe=universe)]
+    elif model.strip() == 'LED Flood Panel 7x3W' and int(channels) == 4:
+        my_model = 'LED Flood Panel 7x3W'
+        return [LEDFloodPanel7x3WMapping(my_model, name, address, first_pixel, universe=universe)]
     else:
         return []
 
