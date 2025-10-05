@@ -609,3 +609,34 @@ class LEDFloodPanel7x3WMapping(DMXMapping):
 
     def dmx_to_state(self, dmx_data):
         return self.map_consecutive_dmx(dmx_data, self.address, self.channel_ids)
+
+
+class MirrorBallMotorMapping(DMXMapping):
+    def __init__(self, model, name, address, pixel, universe=0):
+        super().__init__(model, name, address, universe=universe)
+        self.pixel = pixel
+        self.num_pixels = 1
+
+    @property
+    def channel_ids(self):
+        return [
+            self.light_id + '/speed/spe',
+        ]
+
+    @property
+    def elements(self):
+        return [
+            {
+                'name': 'speed',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'spe', 'channel_id': self.light_id + '/speed/spe'},
+                ],
+            },
+        ]
+
+    def state_to_dmx(self, data_dict):
+        return self.map_consecutive_channels(data_dict, self.channel_ids)
+
+    def dmx_to_state(self, dmx_data):
+        return self.map_consecutive_dmx(dmx_data, self.address, self.channel_ids)

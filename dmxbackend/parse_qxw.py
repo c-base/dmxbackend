@@ -13,6 +13,7 @@ from .channel_mapping import (
     CompactPar7Q4Mapping,
     CB100LedColorMapping,
     LEDFloodPanel7x3WMapping,
+    MirrorBallMotorMapping,
 )
 
 log = logging.getLogger(__name__)
@@ -91,6 +92,9 @@ def map_fixture(fixture, first_pixel):
     elif model.strip() == 'LED Flood Panel 7x3W' and int(channels) == 4:
         my_model = 'LED Flood Panel 7x3W'
         return [LEDFloodPanel7x3WMapping(my_model, name, address, first_pixel, universe=universe)]
+    elif model.strip() == 'MBM40D Mirror Ball Motor DMX':
+        my_model = 'MBM40D Mirror Ball Motor DMX'
+        return [MirrorBallMotorMapping(my_model, name, address, first_pixel, universe=universe)]
     else:
         return []
 

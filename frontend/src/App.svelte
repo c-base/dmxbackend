@@ -338,6 +338,13 @@
             channels={channels}
             disabled={false}
             onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
+          {:else if element == 'speed'}
+          <GenericControl
+            channelName="spe"
+            channelStateByID={channelStateByID} 
+            channels={channels}
+            disabled={false}
+            onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
           {:else if element == 'auto'}
           <GenericControl
             channelName="prg"
