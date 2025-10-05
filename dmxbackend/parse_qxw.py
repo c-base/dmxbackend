@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import logging
 import xml.etree.ElementTree as ET
 from .channel_mapping import (
     RGBMapping,
@@ -12,6 +12,8 @@ from .channel_mapping import (
     RevueLED120Mapping,
     CompactPar7Q4Mapping,
 )
+
+log = logging.getLogger(__name__)
 
 FIXTURE_XPATH = './' \
                 '{http://www.qlcplus.org/Workspace}Engine/' \
@@ -50,6 +52,7 @@ def map_fixture(fixture, first_pixel):
     address = retrieve(fixture, 'Address')[0].text
     channels = retrieve(fixture, 'Channels')[0].text
 
+    log.debug("Parsed univ %s, addr %s, name: %s" % (universe, address, name))
     if model == 'LED PAR56':
         if manufacturer == 'Stairville':
             return [StairVilleMapping(model, name, address, first_pixel, universe=universe)]

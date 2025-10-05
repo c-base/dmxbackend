@@ -122,7 +122,7 @@ def fixtures():
     ret = []
     for id, light in enumerate(_mapping):
         one_light = {
-            'fixture_id': "dmx-%d-%d" % (1, light.address + 1),
+            'fixture_id': "dmx-%d-%d" % (light.universe, light.address + 1),
             'name': light.name,
             'model': light.model,
             'pos_x': light.pos_x,
