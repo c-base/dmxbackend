@@ -31,6 +31,7 @@ def create_enttec_dmx_message(dmx_bytes:bytearray):
 class EnttecProtocol(asyncio.Protocol):
     def __init__(self, universe: int=0):
         super().__init__()
+        log.debug("Creating protocol for EntTec, universe: %s" % universe)
         self.universe = universe
 
     def connection_made(self, transport):
