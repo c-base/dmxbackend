@@ -76,6 +76,9 @@ def update_dmx(new_dmx, universe: int):
     global _mapping
     # convert DMX to channel mapping
     for light in _mapping:
+        # If the DMX update is not for the universe the light is in, ignore the DMX update.
+        if light.universe != universe:
+            continue
         try:
             for universe, channel_id, val in light.dmx_to_state(new_dmx):
                 _state[channel_id] = val
