@@ -29,10 +29,14 @@ def create_enttec_dmx_message(dmx_bytes:bytearray):
     return b
 
 class EnttecProtocol(asyncio.Protocol):
+    def __init__(self, universe: int=0):
+        super().__init__()
+        self.universe = universe
+
     def connection_made(self, transport):
         self.transport = transport
         channel_state.subscribe_dmx(self.notify_dmx)
-        log.info('Serial port opened: %s' % transport)
+        log.info('Serial port for universe %s opened: %s' % (self.universe, transport))
         transport.serial.rts = False
 
     def data_received(self, data):
@@ -40,12 +44,12 @@ class EnttecProtocol(asyncio.Protocol):
         # self.transport.close()
 
     async def notify_dmx(self):
-        dmx = channel_state.as_dmx()
+        dmx = channel_state.as_dmx(self.universe)
         self.send_dmx(dmx)
 
     def send_dmx(self, dmx):
         message = create_enttec_dmx_message(dmx)
-        print(''.join('{:02x}'.format(x) for x in message))
+        # print(''.join('{:02x}'.format(x) for x in message))
         # print("+++ {:02x} +++".format(message))
         self.transport.write(message)
 

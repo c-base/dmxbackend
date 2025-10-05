@@ -22,12 +22,13 @@ class OpenDMXProtocol(asyncio.Protocol):
 
         # Store the device
         self.__ftdi = None
-
+        self.universe = kwargs.pop('universe')
         super().__init__()
 
     def connection_made(self, transport):
         self.transport = transport
-        channel_state.subscribe_dmx(self.notify_dmx)
+        
+        channel_state.subscribe_dmx()
         log.info('Serial port opened: %s' % transport)
         transport.serial.rts = False
 
@@ -36,7 +37,7 @@ class OpenDMXProtocol(asyncio.Protocol):
         # self.transport.close()
 
     async def notify_dmx(self):
-        dmx = channel_state.as_dmx()
+        dmx = channel_state.as_dmx(self.universe)
         self.send_dmx(dmx)
 
     def send_dmx(self, dmx):

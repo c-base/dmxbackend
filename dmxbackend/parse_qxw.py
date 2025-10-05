@@ -10,6 +10,7 @@ from .channel_mapping import (
     CameoRootPAR6Mapping,
     SonicPulseLEDBarMapping,
     RevueLED120Mapping,
+    CompactPar7Q4Mapping,
 )
 
 FIXTURE_XPATH = './' \
@@ -45,40 +46,40 @@ def map_fixture(fixture, first_pixel):
     name = retrieve(fixture, 'Name')[0].text
     manufacturer = retrieve(fixture, 'Manufacturer')[0].text
     model = retrieve(fixture, 'Model')[0].text
-    universe = retrieve(fixture, 'Universe')[0].text
+    universe = int(retrieve(fixture, 'Universe')[0].text)
     address = retrieve(fixture, 'Address')[0].text
     channels = retrieve(fixture, 'Channels')[0].text
 
-    # TODO: Other universes are ignored at the moment.
-    if universe != '0':
-        return []
     if model == 'LED PAR56':
         if manufacturer == 'Stairville':
-            return [StairVilleMapping(model, name, address, first_pixel)]
+            return [StairVilleMapping(model, name, address, first_pixel, universe=universe)]
         elif manufacturer == 'Eurolite':
-            return [RGBMapping(model, name, address, first_pixel)]
+            return [RGBMapping(model, name, address, first_pixel, universe=universe)]
     elif model == 'LED PAR 36 COB RGBW 12W':
-        return [SonicPulseLEDBarMapping(model, name, address, first_pixel)]
+        return [SonicPulseLEDBarMapping(model, name, address, first_pixel, universe=universe)]
     elif model == 'LED Flood Panel 150':
-        return [RGBMapping(model, name, address, first_pixel)]
+        return [RGBMapping(model, name, address, first_pixel, universe=universe)]
     elif model == 'Gigabar II':
-        return [GigabarMapping(model, name, address, first_pixel)]
+        return [GigabarMapping(model, name, address, first_pixel, univers=universe)]
     elif model == 'Octagon Theater 20x6W CW/WW/A' and int(channels) == 4 and 'octacon' in name.lower():
         # Model is called "Octacon" in the QXW file
         my_model = 'Octagon'
-        return [OctagonMapping(my_model, name, address, first_pixel)]
+        return [OctagonMapping(my_model, name, address, first_pixel, universe=universe)]
     elif model == 'Generic' and int(channels) == 4 and 'dimmer' in name.lower():
         my_model = 'Dimmer 4 CH'
-        return [DimmerPackMapping(my_model, name, address, first_pixel)]
+        return [DimmerPackMapping(my_model, name, address, first_pixel, universe=universe)]
     elif model == 'Generic RGB' and int(channels) == 3:
         my_model = 'RGB 3 CH'
-        return [RGBMapping(my_model, name, address, first_pixel)]
+        return [RGBMapping(my_model, name, address, first_pixel, universe=universe)]
     elif model == 'Root PAR 6' and int(channels) == 8:
         my_model = 'Root PAR 6'
-        return [CameoRootPAR6Mapping(my_model, name, address, first_pixel)]
+        return [CameoRootPAR6Mapping(my_model, name, address, first_pixel, universe=universe)]
     elif model.strip() == 'RevueLED 120 COB' and int(channels) == 7:
         my_model = 'RevueLED 120 COB'
-        return [RevueLED120Mapping(my_model, name, address, first_pixel)]
+        return [RevueLED120Mapping(my_model, name, address, first_pixel, universe=universe)]
+    elif model.strip() == 'Compact Par 7 Q4' and int(channels) == 6:
+        my_model = 'Compact Par 7 Q4'
+        return [CompactPar7Q4Mapping(my_model, name, address, first_pixel, universe=universe)]
     else:
         return []
 

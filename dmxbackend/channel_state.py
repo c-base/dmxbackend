@@ -13,13 +13,16 @@ _subscribers = []
 _dmx_subscribers = []
 _last_notify = datetime.now()
 _last_dmx_notify = datetime.now()
-_dmx = None
+# A single DMX channel will be accessed like this: _dmx[<universe>][index]
+_dmx = {}
+
 _mapping = None
 _enabled = False
 
 
 log = logging.getLogger(__name__)
 
+UNIVERSES = [0, 1]
 
 def initialize_state(mapping):
     global _state
@@ -28,7 +31,9 @@ def initialize_state(mapping):
     global _mapping
     global _enabled
     _enabeld = False
-    _dmx = bytearray([0, ] * 512)
+    dmx = {}
+    for i in UNIVERSES:
+        dmx[i] = bytearray([0, ] * 512)
     _state = OrderedDict()
     _mapping = mapping
     for light in mapping:
@@ -50,13 +55,13 @@ def update_channels(new_data):
     # convert channels to DMX
     for light in _mapping:
         try:
-            for dmx_addr, val in light.state_to_dmx(_state):
+            for universe, dmx_addr, val in light.state_to_dmx(_state):
                 # Values for bytes must be in range [0, 256]
                 if val > 255:
                     val = 255
                 if val < 0:
                     val = 0
-                _dmx[dmx_addr] = val
+                _dmx[universe][dmx_addr] = val
         except NotImplementedError:
             log.debug("state_to_dmx() not implemented in {}".format(light))
 
@@ -64,7 +69,7 @@ def update_channels(new_data):
     notify()
 
 
-def update_dmx(new_dmx):
+def update_dmx(new_dmx, universe: int):
     global _state
     global _dmx
     global _last_update
@@ -72,12 +77,12 @@ def update_dmx(new_dmx):
     # convert DMX to channel mapping
     for light in _mapping:
         try:
-            for channel_id, val in light.dmx_to_state(new_dmx):
+            for universe, channel_id, val in light.dmx_to_state(new_dmx):
                 _state[channel_id] = val
         except NotImplementedError:
             log.debug("dmx_to_state() not implemented in {}".format(light))
 
-    _dmx = bytearray(new_dmx)
+    _dmx[universe] = bytearray(new_dmx)
     _last_update = datetime.now()
     notify()
 
@@ -139,9 +144,9 @@ def as_list():
     return ret
 
 
-def as_dmx():
+def as_dmx(universe: int):
     global _dmx
-    return _dmx
+    return _dmx[universe]
 
 
 def as_dict():

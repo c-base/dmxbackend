@@ -42,12 +42,12 @@ def prepare_mapping(qxw_filename, positions):
             pass
         except NameError:
             pass
-        log.info(u'{}: (DMX: {}) -> x={}, y={}'.format(light.name, light.address,
+        log.info(u'{}: (U: {}, DMX: {}) -> x={}, y={}'.format(light.name, light.universe, light.address,
                                                        light.pos_x, light.pos_y))
     return mapping
 
 
-def run_main_loop(usb_device, qxw_filename, pos_filename, mqtt_server, port, dev_mode):
+def run_main_loop(usb_device, second_usb_device, qxw_filename, pos_filename, mqtt_server, port, dev_mode):
     loop = asyncio.get_event_loop()
     positions = configparser.ConfigParser()
     positions.read(pos_filename)
@@ -58,7 +58,16 @@ def run_main_loop(usb_device, qxw_filename, pos_filename, mqtt_server, port, dev
     enttec_protocol = None
     if usb_device is not None:
         # Baud rate is not needed with the Enttec device because DMX's baudrate is fixed.
-        usb_serial = serial_asyncio.create_serial_connection(loop, EnttecProtocol, usb_device, baudrate=250000)
+        def enttec_protocal_factory():
+            return EnttecProtocol(universe=0)
+        usb_serial = serial_asyncio.create_serial_connection(loop, enttec_protocal_factory, usb_device, baudrate=250000)
+        enttec_transport, enttec_protocol = loop.run_until_complete(usb_serial)
+
+    if second_usb_device is not None:
+        # Baud rate is not needed with the Enttec device because DMX's baudrate is fixed.
+        def second_enttec_protocal_factory():
+            return EnttecProtocol(universe=1)
+        usb_serial = serial_asyncio.create_serial_connection(loop, second_enttec_protocal_factory, usb_device, baudrate=250000)
         enttec_transport, enttec_protocol = loop.run_until_complete(usb_serial)
 
     ## ArtNet device UDP
@@ -93,10 +102,11 @@ def run_main_loop(usb_device, qxw_filename, pos_filename, mqtt_server, port, dev
 @click.argument('qxw_file')
 @click.argument('pos_file')
 @click.option('--usb', default=None, help='USB device')
+@click.option('--second-usb', default=None, help='second universe USB device')
 @click.option('--mqtt', default=None, help='MQTT server')
 @click.option('--port', default=80, help='Web server port')
 @click.option('--devmode', default=False)
-def main(qxw_file, pos_file, usb, mqtt, port, devmode):
+def main(qxw_file, pos_file, usb, second_usb, mqtt, port, devmode):
     root = logging.getLogger()
     root.setLevel(logging.DEBUG)
 
@@ -110,7 +120,7 @@ def main(qxw_file, pos_file, usb, mqtt, port, devmode):
     if devmode is False:
         dev_mode_on = False
 
-    run_main_loop(usb, qxw_file, pos_file, mqtt, port, dev_mode_on)
+    run_main_loop(usb, second_usb, qxw_file, pos_file, mqtt, port, dev_mode_on)
 
 
 if __name__ == '__main__':

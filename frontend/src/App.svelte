@@ -5,13 +5,15 @@
   import DimmerPackControl from "./lib/DimmerPackControl.svelte"
   import GenericControl from "./lib/GenericControl.svelte"
 
+  // state variables
   let fixtures = $state<object[]>([])
   let selectedFixtures = $state<string[]>([])
   let channelState = $state<object[]>([])
   let channelStateByID = $state({})
-  let socket: WebSocket = null;
   let groups = $state<string[]>([])
   let presets = $state<string[]>([])
+  // connection
+  let socket: WebSocket = null;
 
   onMount(async function () {
     const response = await fetch('/api/v1/fixtures/')
@@ -119,7 +121,6 @@
     console.log("finnish")
     socket.send(JSON.stringify(state))
   }
-
 
   const storePreset = (e) => {
 		// getting the action url

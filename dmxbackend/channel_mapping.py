@@ -5,12 +5,12 @@ log = logging.getLogger(__name__)
 
 
 class DMXMapping(object):
-    def __init__(self, model, name, address):
+    def __init__(self, model: str, name: str, address: int, universe: int=0):
         self.model = model
         self.name = name
         self.address = int(address)
         self.num_pixels = 1
-        self.universe = 0
+        self.universe = int(universe)
         self.pos_x = 0
         self.pos_y = 0
         self.rot = 0
@@ -45,13 +45,13 @@ class DMXMapping(object):
     def map_consecutive_channels(self, data_dict, channel_ids):
         ret = []
         for i, id in enumerate(channel_ids):
-            ret.append((self.address + i, data_dict[id]))
+            ret.append((self.universe, self.address + i, data_dict[id]))
         return ret
 
     def map_consecutive_dmx(self, dmx_data, first_address, channel_ids):
         ret = []
         for i, id in enumerate(channel_ids):
-            ret.append((id, dmx_data[first_address + i]))
+            ret.append((self.universe, id, dmx_data[first_address + i]))
         return ret
 
     def __str__(self):
@@ -59,12 +59,12 @@ class DMXMapping(object):
 
 
 class RGBMapping(DMXMapping):
-    def __init__(self, model:str, name:str, address:int, pixel:int):
+    def __init__(self, model:str, name:str, address:int, pixel:int, universe:int=0):
         """
         :param pixel: The pixel in the RGB
         :param channel: The DMX address of the first channel (red) - zero indexed
         """
-        super().__init__(model, name, address)
+        super().__init__(model, name, address, universe=universe)
         self.pixel = pixel
 
     def map_pixel_to_channels(self, line):
@@ -123,13 +123,13 @@ class StairVilleMapping(RGBMapping):
     The older StairVille models have a different channel layout.
     Channel 1 is mode, Channels 2-4 are RGB.
     """
-    def __init__(self, model, name, address, pixel):
+    def __init__(self, model, name, address, pixel, universe=0):
         # the first 2 addresses in 26-channel mode are reserved for functions
         super().__init__(model, name, int(address)+1, pixel)
 
 
 class GigabarMapping(RGBMapping):
-    def __init__(self, model, name, address, pixel):
+    def __init__(self, model, name, address, pixel, universe=0):
         # the first 2 addresses in 26-channel mode are reserved for functions
         super().__init__(model, name, int(address)+2, pixel)
         self.num_pixels = 8
@@ -173,9 +173,9 @@ class GigabarMapping(RGBMapping):
 
 
 class SonicPulseLEDBarMapping(RGBMapping):
-    def __init__(self, model, name, address, pixel):
+    def __init__(self, model, name, address, pixel, universe=0):
         # the first 2 addresses in 26-channel mode are reserved for functions
-        super().__init__(model, name, address, pixel)
+        super().__init__(model, name, address, pixel, universe=universe)
         self.num_pixels = 1
 
     @property
@@ -219,9 +219,9 @@ class SonicPulseLEDBarMapping(RGBMapping):
 
 
 class OctagonMapping(DMXMapping):
-    def __init__(self, model, name, address, pixel):
+    def __init__(self, model, name, address, pixel, universe):
         # the first 2 addresses in 26-channel mode are reserved for functions
-        super().__init__(model, name, address)
+        super().__init__(model, name, address, universe=universe)
         self.pixel = pixel
         self.num_pixels = 4
 
@@ -276,9 +276,9 @@ class OctagonMapping(DMXMapping):
 
 
 class DimmerPackMapping(DMXMapping):
-    def __init__(self, model, name, address, pixel):
+    def __init__(self, model, name, address, pixel, universe=0):
         # the first 2 addresses in 26-channel mode are reserved for functions
-        super().__init__(model, name, address)
+        super().__init__(model, name, address, universe=universe)
         self.pixel = pixel
         self.num_pixels = 1
 
@@ -313,8 +313,8 @@ class DimmerPackMapping(DMXMapping):
 
 
 class CameoRootPAR6Mapping(DMXMapping):
-    def __init__(self, model, name, address, pixel):
-        super().__init__(model, name, address)
+    def __init__(self, model, name, address, pixel, universe=0):
+        super().__init__(model, name, address, universe=universe)
         self.pixel = pixel
         self.num_pixels = 1
 
@@ -388,8 +388,8 @@ class CameoRootPAR6Mapping(DMXMapping):
 
 
 class RevueLED120Mapping(DMXMapping):
-    def __init__(self, model, name, address, pixel):
-        super().__init__(model, name, address)
+    def __init__(self, model, name, address, pixel, universe=0):
+        super().__init__(model, name, address, universe=universe)
         self.pixel = pixel
         self.num_pixels = 1
 
@@ -443,6 +443,65 @@ class RevueLED120Mapping(DMXMapping):
                 'pixel': self.pixel,
                 'channels': [
                     {'name': 'prg', 'channel_id': self.light_id + '/auto/prg'},
+                ],
+            },
+        ]
+
+    def state_to_dmx(self, data_dict):
+        return self.map_consecutive_channels(data_dict, self.channel_ids)
+
+    def dmx_to_state(self, dmx_data):
+        return self.map_consecutive_dmx(dmx_data, self.address, self.channel_ids)
+
+
+class CompactPar7Q4Mapping(DMXMapping):
+    def __init__(self, model, name, address, pixel, universe=0):
+        super().__init__(model, name, address, universe=universe)
+        self.pixel = pixel
+        self.num_pixels = 1
+
+    @property
+    def channel_ids(self):
+        return [
+            self.light_id + '/dimmer/dim',
+            self.light_id + '/strobe/str',
+            self.light_id + '/rgb/r',
+            self.light_id + '/rgb/g',
+            self.light_id + '/rgb/b',
+            self.light_id + '/white/whi',
+        ]
+
+    @property
+    def elements(self):
+        return [
+            {
+                'name': 'dimmer',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'dim', 'channel_id': self.light_id + '/dimmer/dim'},
+                ],
+            },
+            {
+                'name': 'strobe',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'str', 'channel_id': self.light_id + '/strobe/str'},
+                ],
+            },
+            {
+                'name': 'rgb',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'r', 'channel_id': self.light_id + '/rgb/r'},
+                    {'name': 'g', 'channel_id': self.light_id + '/rgb/g'},
+                    {'name': 'b', 'channel_id': self.light_id + '/rgb/b'}
+                ],
+            },
+            {
+                'name': 'white',
+                'pixel': self.pixel,
+                'channels': [
+                    {'name': 'whi', 'channel_id': self.light_id + '/white/whi'},
                 ],
             },
         ]

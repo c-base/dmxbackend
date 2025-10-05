@@ -96,9 +96,11 @@ class ArtNetServerProtocol(asyncio.Protocol):
             log.debug("Art-Net poll (opcode 0x2000) received.")
             return
 
+        
+        universe = artnet_packet.universe + 1
         dmx = artnet_packet.dmx
 
-        channel_state.update_dmx(dmx)
+        channel_state.update_dmx(dmx, universe)
         #if self.enttec_protocol is not None:
         #    self.enttec_protocol.send_dmx(dmx)
 
