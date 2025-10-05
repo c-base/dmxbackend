@@ -11,6 +11,7 @@ from .channel_mapping import (
     SonicPulseLEDBarMapping,
     RevueLED120Mapping,
     CompactPar7Q4Mapping,
+    CompactPar18MKIIMapping,
     CB100LedColorMapping,
     LEDFloodPanel7x3WMapping,
     MirrorBallMotorMapping,
@@ -99,6 +100,9 @@ def map_fixture(fixture, first_pixel):
     elif model.strip() == 'LED TSL-250 Scan COB' and int(channels) == 10:
         my_model = 'LED TSL-250 Scan COB'
         return [TSL250ScanMapping(my_model, name, address, first_pixel, universe=universe)]
+    elif model.strip() == 'Compact Par 18 MKII' and int(channels) == 6:
+        my_model = 'Compact Par 18 MKII'
+        return [CompactPar18MKIIMapping(my_model, name, address, first_pixel, universe=universe)]
     else:
         return []
 
