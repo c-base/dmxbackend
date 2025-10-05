@@ -44,6 +44,7 @@ class EnttecProtocol(asyncio.Protocol):
         # self.transport.close()
 
     async def notify_dmx(self):
+        log.debug("notify called")
         dmx = channel_state.as_dmx(self.universe)
         self.send_dmx(dmx)
 

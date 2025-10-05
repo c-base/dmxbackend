@@ -63,18 +63,19 @@ def run_main_loop(usb_device, second_usb_device, qxw_filename, pos_filename, mqt
         usb_serial = serial_asyncio.create_serial_connection(loop, enttec_protocal_factory, usb_device, baudrate=250000)
         enttec_transport, enttec_protocol = loop.run_until_complete(usb_serial)
 
+    second_enttec_protocol = None
     if second_usb_device is not None:
         # Baud rate is not needed with the Enttec device because DMX's baudrate is fixed.
         def second_enttec_protocal_factory():
             return EnttecProtocol(universe=1)
-        usb_serial = serial_asyncio.create_serial_connection(loop, second_enttec_protocal_factory, usb_device, baudrate=250000)
-        enttec_transport, enttec_protocol = loop.run_until_complete(usb_serial)
+        second_usb_serial = serial_asyncio.create_serial_connection(loop, second_enttec_protocal_factory, second_usb_device, baudrate=250000)
+        second_enttec_transport, second_enttec_protocol = loop.run_until_complete(second_usb_serial)
 
     ## ArtNet device UDP
     udp_listen = loop.create_datagram_endpoint(ArtNetServerProtocol, local_addr=('0.0.0.0', 6454))
     artnet_transport, artnet_protocol = loop.run_until_complete(udp_listen)
     # tell the artnet protocol about the USB device
-    artnet_protocol.enttec_protocol = enttec_protocol
+    # TODO: DeleteMe: artnet_protocol.enttec_protocol = enttec_protocol
 
     ## Animation play-back
     asyncio.ensure_future( animation_loop(loop, image_queue, 1/30, None, mapping) )
@@ -94,7 +95,10 @@ def run_main_loop(usb_device, second_usb_device, qxw_filename, pos_filename, mqt
         pass
 
     artnet_transport.close()
-    enttec_transport.close()
+    if enttec_protocol is not None:
+        enttec_transport.close()
+    if second_enttec_protocol is not None:
+        second_enttec_transport.close()
     loop.close()
 
 

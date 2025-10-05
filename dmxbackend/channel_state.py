@@ -101,7 +101,7 @@ def notify():
     now = datetime.now()
 
     # Update the the outgoing channels every second.
-    if (now - _last_notify).total_seconds() >= 5.0:
+    if (now - _last_notify).total_seconds() >= 1.0:
         for call_when_updated in _subscribers:
             asyncio.ensure_future(call_when_updated())
         for call_when_updated in _dmx_subscribers:
