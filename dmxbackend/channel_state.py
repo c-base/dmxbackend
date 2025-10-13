@@ -32,7 +32,7 @@ def initialize_state(mapping):
     global _enabled
     _enabeld = False
     for i in UNIVERSES:
-        _dmx[i] = bytearray([0, ] * 512)
+        _dmx[i] = bytearray(512)
     _state = OrderedDict()
     _mapping = mapping
     for light in mapping:
