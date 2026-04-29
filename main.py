@@ -22,6 +22,7 @@ from dmxbackend.enttex_usb_dmx import EnttecProtocol
 from dmxbackend.server import setup_web_app
 from dmxbackend.parse_qxw import find_fixtures, get_mapping_from_qxw
 from dmxbackend.artnet_server import ArtNetServerProtocol
+from dmxbackend.artnet_outgoing import ArtNetOutgoingProtocol
 from dmxbackend import channel_state
 from dmxbackend.mqtt import AsyncMQTT
 
@@ -47,7 +48,7 @@ def prepare_mapping(qxw_filename, positions):
     return mapping
 
 
-def run_main_loop(usb_device, second_usb_device, qxw_filename, pos_filename, mqtt_server, port, dev_mode):
+def run_main_loop(usb_device, second_usb_device, qxw_filename, pos_filename, mqtt_server, port, outgoing_artnet_ip, dev_mode):
     loop = asyncio.get_event_loop()
     positions = configparser.ConfigParser()
     positions.read(pos_filename)
@@ -70,6 +71,14 @@ def run_main_loop(usb_device, second_usb_device, qxw_filename, pos_filename, mqt
             return EnttecProtocol(universe=1)
         second_usb_serial = serial_asyncio.create_serial_connection(loop, second_enttec_protocal_factory, second_usb_device, baudrate=250000)
         second_enttec_transport, second_enttec_protocol = loop.run_until_complete(second_usb_serial)
+
+
+    outgoing_transport = None
+    outgoing_protocol = None
+    if outgoing_artnet_ip is not None:
+        remote_addr = (outgoing_artnet_ip.strip(), 6454)
+        udp_outgoing = loop.create_datagram_endpoint(ArtNetOutgoingProtocol, remote_addr=remote_addr)
+        outgoing_transport, outgoing_protocol = loop.run_until_complete(udp_outgoing)
 
     ## ArtNet device UDP
     udp_listen = loop.create_datagram_endpoint(ArtNetServerProtocol, local_addr=('0.0.0.0', 6454))
@@ -95,6 +104,8 @@ def run_main_loop(usb_device, second_usb_device, qxw_filename, pos_filename, mqt
         pass
 
     artnet_transport.close()
+    if outgoing_protocol is not None:
+        outgoing_transport.close()
     if enttec_protocol is not None:
         enttec_transport.close()
     if second_enttec_protocol is not None:
@@ -109,8 +120,9 @@ def run_main_loop(usb_device, second_usb_device, qxw_filename, pos_filename, mqt
 @click.option('--second-usb', default=None, help='second universe USB device')
 @click.option('--mqtt', default=None, help='MQTT server')
 @click.option('--port', default=80, help='Web server port')
+@click.option('--outgoing', default=None, help='Outgoing Art-Net IP address')
 @click.option('--devmode', default=False)
-def main(qxw_file, pos_file, usb, second_usb, mqtt, port, devmode):
+def main(qxw_file, pos_file, usb, second_usb, mqtt, port, outgoing, devmode):
     root = logging.getLogger()
     root.setLevel(logging.DEBUG)
 
@@ -124,7 +136,7 @@ def main(qxw_file, pos_file, usb, second_usb, mqtt, port, devmode):
     if devmode is False:
         dev_mode_on = False
 
-    run_main_loop(usb, second_usb, qxw_file, pos_file, mqtt, port, dev_mode_on)
+    run_main_loop(usb, second_usb, qxw_file, pos_file, mqtt, port, outgoing, dev_mode_on)
 
 
 if __name__ == '__main__':

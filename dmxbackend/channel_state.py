@@ -22,7 +22,7 @@ _enabled = False
 
 log = logging.getLogger(__name__)
 
-UNIVERSES = [0, 1]
+UNIVERSES = [0, 1, 2, 3]
 
 def initialize_state(mapping):
     global _state
