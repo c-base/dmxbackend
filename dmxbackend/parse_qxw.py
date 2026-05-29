@@ -58,10 +58,10 @@ def map_fixture(fixture, first_pixel):
     channels = retrieve(fixture, 'Channels')[0].text
 
     log.debug("Parsed univ %s, addr %s, name: %s" % (universe, address, name))
-    if model == 'LED PAR56':
-        if manufacturer == 'Stairville':
+    if model == 'LED PAR56' or model == 'LED Par 56':
+        if manufacturer == 'Stairville': 
             return [StairVilleMapping(model, name, address, first_pixel, universe=universe)]
-        elif manufacturer == 'Eurolite':
+        elif manufacturer == 'Eurolite' or manufacturer == 'Showtec':
             return [RGBMapping(model, name, address, first_pixel, universe=universe)]
     elif model == 'LED PAR 36 COB RGBW 12W':
         return [SonicPulseLEDBarMapping(model, name, address, first_pixel, universe=universe)]
