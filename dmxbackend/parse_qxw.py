@@ -69,9 +69,9 @@ def map_fixture(fixture, first_pixel):
         return [RGBMapping(model, name, address, first_pixel, universe=universe)]
     elif model == 'Gigabar II':
         return [GigabarMapping(model, name, address, first_pixel, univers=universe)]
-    elif model == 'Octagon Theater 20x6W CW/WW/A' and int(channels) == 4 and 'octacon' in name.lower():
+    elif model == 'Octagon Theater 20x6W CW/WW/A' and int(channels) == 4 and 'octagon' in name.lower():
         # Model is called "Octacon" in the QXW file
-        my_model = 'Octagon'
+        my_model = 'Octagon Theater 20x6W CW/WW/A'
         return [OctagonMapping(my_model, name, address, first_pixel, universe=universe)]
     elif model == 'Generic' and int(channels) == 4 and 'dimmer' in name.lower():
         my_model = 'Dimmer 4 CH'
