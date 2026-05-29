@@ -4,6 +4,7 @@
   import RGBControl from "./lib/RGBControl.svelte"
   import DimmerPackControl from "./lib/DimmerPackControl.svelte"
   import GenericControl from "./lib/GenericControl.svelte"
+  import RotationSpeedControl from "./lib/RotationSpeedControl.svelte"
 
   // state variables
   let fixtures = $state<object[]>([])
@@ -339,12 +340,12 @@
             disabled={false}
             onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
           {:else if element == 'speed'}
-          <GenericControl
+          <RotationSpeedControl
             channelName="spe"
             channelStateByID={channelStateByID} 
             channels={channels}
             disabled={false}
-            onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></GenericControl>
+            onUpdate={(id: string, val: number) => updateChannel(id, val)} onFinished={() => finnishUpdate()}></RotationSpeedControl>
           {:else if element == 'auto'}
           <GenericControl
             channelName="prg"
