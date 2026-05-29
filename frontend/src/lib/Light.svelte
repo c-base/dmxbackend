@@ -83,6 +83,15 @@
      style:background-color={myColor}
      style:left="{fixture.pos_x - 10}px"
      style:top="{fixture.pos_y - 10}px"></div>
+{:else if fixture.model === 'MBM40D Mirror Ball Motor DMX'}
+<div role="checkbox" tabindex="0" aria-checked={selected}
+     onclick={() => onToggle(fixture.fixture_id)}
+     onkeydown={() => onToggle(fixture.fixture_id)}
+     title="{fixture.name} ({fixture.model}, {fixture.fixture_id})"
+     class="mirrorball" 
+     class:selected={selected}
+     style:left="{fixture.pos_x - 10}px"
+     style:top="{fixture.pos_y - 10}px"></div>
 {:else}
 <div role="checkbox" tabindex="0" aria-checked={selected}
      onclick={() => onToggle(fixture.fixture_id)}
@@ -115,6 +124,19 @@
     border: none;
   }
   .octagon.selected {
+    box-shadow: 0 0 4px 2px #000, 0 0 0 2px #fff inset;
+  }
+  .mirrorball{
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: #ffffff;
+  }
+  .mirrorball.selected {
     box-shadow: 0 0 4px 2px #000, 0 0 0 2px #fff inset;
   }
   .light {
