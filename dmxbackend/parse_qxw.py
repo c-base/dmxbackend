@@ -63,7 +63,7 @@ def map_fixture(fixture, first_pixel):
             return [StairVilleMapping(model, name, address, first_pixel, universe=universe)]
         elif manufacturer == 'Eurolite' or manufacturer == 'Showtec':
             return [RGBMapping(model, name, address, first_pixel, universe=universe)]
-    elif model == 'LED PAR 36 COB RGBW 12W':
+    elif model == 'SonicPulse LED Bar 10':
         return [SonicPulseLEDBarMapping(model, name, address, first_pixel, universe=universe)]
     elif model == 'LED Flood Panel 150':
         return [RGBMapping(model, name, address, first_pixel, universe=universe)]

@@ -176,38 +176,67 @@ class SonicPulseLEDBarMapping(RGBMapping):
     def __init__(self, model, name, address, pixel, universe=0):
         # the first 2 addresses in 26-channel mode are reserved for functions
         super().__init__(model, name, address, pixel, universe=universe)
-        self.num_pixels = 1
+        self.num_pixels = 8
 
     @property
     def channel_ids(self):
         channels = [
-            self.light_id + '/rgb/r',
-            self.light_id + '/rgb/g',
-            self.light_id + '/rgb/b',
-            self.light_id + '/white/whi',
+            self.light_id + '/dimmer/dim',
+            self.light_id + '/strobe/str',
+            self.light_id + '/functions/mode',
+            self.light_id + '/functions/colormode',
+            self.light_id + '/functions/colorchange',
+            self.light_id + '/functions/soundmode',
+            self.light_id + '/functions/speedvolume',
         ]
-        return channels
+        for i in range(self.num_pixels):
+            part_name_rgb = 'rgb%d' % (i + 1)
+            part_name_ww = 'warmwhite%d' % (i + 1)
 
+            channels += [
+                self.light_id + '/' + part_name_rgb + '/r',
+                self.light_id + '/' + part_name_rgb + '/g',
+                self.light_id + '/' + part_name_rgb + '/b',
+                self.light_id + '/' + part_name_ww + '/ww',
+            ]
+        return channels
+    
     @property
     def elements(self):
-        return [
+        parts = [
             {
-                'name': 'rgb',
+                'name': 'dimmer',
                 'pixel': self.pixel,
                 'channels': [
-                    {'name': 'r', 'channel_id': self.light_id + '/rgb/r'},
-                    {'name': 'g', 'channel_id': self.light_id + '/rgb/g'},
-                    {'name': 'b', 'channel_id': self.light_id + '/rgb/b'},
-                ]
-            },
-            {
-                'name': 'white',
-                'pixel': self.pixel,
-                'channels': [
-                    {'name': 'whi', 'channel_id': self.light_id + '/white/whi'},
+                    {'name': 'dim', 'channel_id': self.light_id + '/dimmer/dim'},
                 ],
-            }
+            },
         ]
+        for i in range(self.num_pixels):
+            current_pixel = self.pixel + i
+            part_name_rgb = 'rgb%d' % (i + 1)
+            part_name_ww = 'warmwhite%d' % (i + 1)
+            parts.append(
+                {
+                    'name': part_name_rgb,
+                    'pixel': current_pixel,
+                    'channels': [
+                        {'name': 'r', 'channel_id': f'{self.light_id}/{part_name_rgb}/r'},
+                        {'name': 'g', 'channel_id': f'{self.light_id}/{part_name_rgb}/g'},
+                        {'name': 'b', 'channel_id': f'{self.light_id}/{part_name_rgb}/b'},
+                    ]
+                }
+            )
+            parts.append(
+                {
+                    'name': part_name_ww,
+                    'pixel': current_pixel,
+                    'channels': [
+                        {'name': 'ww', 'channel_id': f'{self.light_id}/{part_name_ww}/ww'},
+                    ],
+                }
+            )
+        return parts
 
     def state_to_dmx(self, data_dict):
         channel_ids = self.channel_ids

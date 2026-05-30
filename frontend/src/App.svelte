@@ -250,7 +250,7 @@
           {element}
         </div>
         <div class="control-element">
-          {#if element == 'rgb'}
+          {#if element == 'rgb' || element == 'rgb1' || element == 'rgb2'}
           <RGBControl 
             channelStateByID={channelStateByID} 
             channels={channels}
