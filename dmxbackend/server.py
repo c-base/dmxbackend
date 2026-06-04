@@ -96,7 +96,8 @@ async def list_presets(request):
            if x.name.lower() == 'readme.md':
                continue
            file_list.append(x.name)
-    return web.json_response(data={'presets': file_list})
+    preset_list = sorted(file_list, key=str.casefold)
+    return web.json_response(data={'presets': preset_list})
 
 
 async def automode_post(request):
